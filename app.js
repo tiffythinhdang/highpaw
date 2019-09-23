@@ -3,12 +3,16 @@ const app = express();
 const mongoose = require("mongoose");
 const db = require('./config/keys').mongoURI;
 
-const users = require("./routes/api/users");
-const dogs = require("./routes/api/dogs");
-
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+const passport = require('passport');
+const users = require("./routes/api/users");
+const dogs = require("./routes/api/dogs");
+
+app.use(passport.initialize());
+require('./config/passport')(passport);
 
 mongoose
   .connect(db, { useNewUrlParser: true })
