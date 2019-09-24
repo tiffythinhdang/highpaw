@@ -1,48 +1,41 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
-// import './navbar.css'
+import { withRouter, Link } from 'react-router-dom';
+import mainLogo from '../../assets/logo.png';
+import iconMenu from '../../assets/small_icon_menu.png';
+
+import MenuContainer from './menu_container';
+
+import '../../stylesheets/nav_bar.scss';
 
 class NavBar extends React.Component {
   constructor(props) {
     super(props);
-    this.logoutUser = this.logoutUser.bind(this);
-    this.getLinks = this.getLinks.bind(this);
   }
 
-  logoutUser(e) {
-    e.preventDefault();
-    this.props.logout();
+  toggleMenu(){
+    let menu = document.getElementById("nav-bar-menu");
+    menu.classList.toggle("hidden");
   }
-
-  // Selectively render links dependent on whether the user is logged in
-  getLinks() {
-    if (this.props.loggedIn) {
-      return (
-        <div>
-          <Link to={'/tweets'}>All Tweets</Link>
-          <Link to={'/profile'}>Profile</Link>
-          <Link to={'/new_tweet'}>Write a Tweet</Link>
-          <button onClick={this.logoutUser}>Logout</button>
-        </div>
-      );
-    } else {
-      return (
-        <div>
-          <Link to={'/signup'}>Signup</Link>
-          <Link to={'/login'}>Login</Link>
-        </div>
-      );
-    }
-  }
-
+  
   render() {
     return (
-      <div>
-        <h1>Chirper</h1>
-        {this.getLinks()}
+      <div className="top-bar container">
+        <MenuContainer toggleMenu={this.toggleMenu} />
+        <div className="nav-bar container">
+          <a className="nav-bar menu-icon">
+            <img 
+              className="small icon menu"
+              onClick={this.toggleMenu}
+              src={iconMenu} 
+              alt="menu-icon"/>
+          </a>
+          <Link className="nav-bar logo" to={'/'}>
+            <img src={mainLogo} alt="logo"/>
+          </Link>
+        </div>
       </div>
     );
   }
 }
 
-export default NavBar;
+export default withRouter(NavBar);

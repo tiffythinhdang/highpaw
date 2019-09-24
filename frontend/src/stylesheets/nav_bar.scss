@@ -1,0 +1,39 @@
+@import './util.scss';
+
+.nav-bar.container {
+  height: 54px;
+  width: 100%;
+  padding: 15px;
+  background: $off_white;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.nav-bar.logo {
+  height: 32px;
+  width: auto;
+}
+
+.nav-bar.logo > img{
+  height: 100%;
+  width: auto;
+}
+
+#nav-bar-menu {
+  position: absolute;
+  height: 100%;
+  width: 50%;
+  padding: 15px;
+  background: $main_pink;
+}
+
+#nav-bar-menu .link {
+  padding: 20px 20px 0 0;
+  display: flex;
+  justify-content: flex-start;
+  color: $white;
+  font-size: 18px;
+  z-index: 2;
+}
