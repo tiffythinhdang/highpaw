@@ -14,11 +14,11 @@ class Menu extends React.Component {
     this.props.logout();
   }
 
-  // Selectively render links dependent on whether the user is logged in
   getLinks() {
     if (this.props.loggedIn) {
       return (
         <div className="personal greeting">
+          <p>Welcome back!</p>
           <button onClick={this.logoutUser}>Logout</button>
         </div>
       );
