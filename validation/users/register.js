@@ -1,6 +1,6 @@
 const Validator = require('validator');
-const validText = require('./valid-text');
-const validAge = require('./valid-age');
+const validText = require('../valid-text');
+const validAge = require('../valid-age');
 
 module.exports = function validateRegisterInput(data) {
   let errors = {};
@@ -9,7 +9,8 @@ module.exports = function validateRegisterInput(data) {
   data.email = validText(data.email) ? data.email : '';
   data.password = validText(data.password) ? data.password : '';
   data.password2 = validText(data.password2) ? data.password2 : '';
-  // data.age = parseInt(data.age);
+  data.gender = validText(data.gender) ? data.gender : '';
+  data.age = validText(data.age) ? data.age : '';
 
   // if (!validAge(data.age)) {
   //   errors.age = "Invalid age";
@@ -45,6 +46,18 @@ module.exports = function validateRegisterInput(data) {
 
   if (!Validator.equals(data.password, data.password2)) {
     errors.password2 = 'Passwords must match';
+  }
+
+  if (!Validator.isIn(data.gender, ['Male', 'Female', ''])) {
+    errors.gender = 'Gender must be Male, Female or empty string'
+  }
+
+  if (Validator.isEmpty(data.age)) {
+    errors.age = 'Age is required'
+  }
+
+  if (!Validator.isInt(data.age, {min: 0})) {
+    errors.age = 'Age is invalid'
   }
 
   return {

@@ -24,8 +24,6 @@
     "mongoose": "^5.7.1",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
-    "react": "^16.9.0",
-    "react-redux": "^7.1.1",
     "validator": "^11.1.0"
   },
   "devDependencies": {
