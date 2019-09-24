@@ -2,9 +2,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const WalkSchema = new Schema({
-  dog: {
-    type: Schema.Types.ObjectId,
-    ref: 'dogs',
+  dogs: {
+    // type: Schema.Types.ObjectId,
+    // ref: 'dogs',
+    type: [{ type: Schema.Types.ObjectId, ref: 'dogs' }], 
     required: true
   },
   user: {
@@ -12,7 +13,7 @@ const WalkSchema = new Schema({
     ref: 'users',
     required: true
   },
-  request: {
+  request: { // may not be necessary
     type: [{ type: Schema.Types.ObjectId, ref: 'requests' }],
     required: false,
   },
