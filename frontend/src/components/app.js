@@ -1,17 +1,17 @@
 import React from 'react';
 
-import '../stylesheets/index.css';
+import '../stylesheets/index.scss';
 
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import { Switch , Route} from 'react-router-dom';
-import NavBarContainer from './nav/navbar_container';
+import NavBar from './nav/navbar';
 
 import MainPage from './main/main_page';
 import Footer from './footer/footer';
 
 const App = () => (
   <div>
-    <NavBarContainer />
+    <NavBar />
     <Switch>
       <Route exact path="/" component={MainPage} />
       {/* <AuthRoute exact path="/login" component={LoginFormContainer} />

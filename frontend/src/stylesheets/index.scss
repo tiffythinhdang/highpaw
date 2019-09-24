@@ -1,0 +1,73 @@
+#root {
+  position: relative;
+  min-height: 100vh;
+  clear: both;
+}
+
+.hidden {
+  display: none;
+}
+
+html, body, header, nav, h1, h2, h3, h4, h5, h6, a,
+ul, li, strong, main, button, i,
+section, img, div, p, form,
+fieldset, label, input, textarea,
+span, article, footer, time, small {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+  text-decoration: inherit;
+  vertical-align: inherit;
+  box-sizing: inherit;
+  background: transparent;
+}
+
+body {
+  background-image: url('../assets/background.png');
+  font-family: 'Varela Round', sans-serif;
+  font-size: 14px;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+input[type="password"],
+input[type="email"],
+input[type="text"],
+input[type="submit"],
+select,
+option,
+textarea,
+button {
+  /*
+  Get rid of native styling. Read more here:
+  http://css-tricks.com/almanac/properties/a/appearance/
+  */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+button,
+input[type="submit"] {
+  cursor: pointer;
+}
+
+.small.icon {
+  height: 25px;
+  width: 25px;
+}
+
+.icon:hover {
+  cursor: pointer;
+}
