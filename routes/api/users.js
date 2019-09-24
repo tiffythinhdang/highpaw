@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 const keys = require('../../config/keys');
 const passport = require('passport');
 const User = require('../../models/User');
+const validateRegisterInput = require('../../validation/register');
 
 // Register Route
 router.post("/register", (req, res) => {
