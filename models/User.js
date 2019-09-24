@@ -34,18 +34,10 @@ const UserSchema = new Schema({
     type: String,
     default: undefined
   },
-  lat: {
-    type: Number,
-    default: undefined
-  },
-  lng: {
-    type: Number,
-    default: undefined
-  },
   date: {
     type: Date,
     default: Date.now
   }
-})
+});
 
 module.exports = User = mongoose.model('users', UserSchema);

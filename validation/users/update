@@ -1,0 +1,54 @@
+const Validator = require('validator');
+const validText = require('../valid-text');
+const validAge = require('../valid-age');
+
+module.exports = function validateUpdateInput(data) {
+  let errors = {};
+
+  data.name = validText(data.name) ? data.name : '';
+  data.email = validText(data.email) ? data.email : '';
+  data.password = validText(data.password) ? data.password : '';
+  data.password2 = validText(data.password2) ? data.password2 : '';
+  data.gender = validText(data.gender) ? data.gender : '';
+  data.age = validText(data.age) ? data.age : '';
+  data.location = validText(data.location) ? data.long : '';
+
+  Object.keys(data).forEach(key => {
+    if(!Validator.isIn(key, ["name" , "email", "password", "password2", "gender", "age", "location"]) ) {
+      errors[key] = `${key} cannot be updated`
+    }
+  });
+
+  if (!Validator.isEmpty(data.name && !Validator.isLength(data.name, { min: 2, max: 30 }))) {
+    errors.name = 'Name must be between 2 and 30 characters';
+  }
+
+  if (!Validator.isEmpty(data.email) && !Validator.isEmail(data.email)) {
+    errors.email = 'Email is invalid';
+  }
+
+  if (!Validator.isEmpty(data.password) && !Validator.isLength(data.password, { min: 6, max: 30 })) {
+    errors.password = 'Password must be at least 6 characters';
+  }
+
+  if (!Validator.isEmpty(data.password) && Validator.isEmpty(data.password2)) {
+    errors.password2 = 'Confirm Password field is required when entering new password';
+  }
+
+  if (!Validator.isEmpty(data.password2) && !Validator.equals(data.password, data.password2)) {
+    errors.password2 = 'Passwords must match';
+  }
+
+  if (!Validator.isEmpty(data.gender) && !Validator.isIn(data.gender, ['Male', 'Female', null])) {
+    errors.gender = 'Gender must be Male, Female or null'
+  }
+
+  if (!Validator.isEmpty(data.age) && !Validator.isInt(data.age, {min: 0})) {
+    errors.age = 'Age must be >= 0'
+  }
+
+  return {
+    errors,
+    isValid: Object.keys(errors).length === 0
+  };
+};
