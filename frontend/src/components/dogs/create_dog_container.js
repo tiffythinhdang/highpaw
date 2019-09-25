@@ -11,7 +11,7 @@ const mapStateToProps = state => {
       gender: "",
       breed: ""
     },
-    formType: "Regiter",
+    formType: "Register",
     errors: state.errors.dog
   }
 };
