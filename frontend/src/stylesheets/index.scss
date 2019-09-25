@@ -138,6 +138,14 @@ input[type="submit"] {
   font-size: 16px;
 }
 
+.form.main.header {
+  font-family: Chilanka;
+  font-size: 40px;
+  line-height: 44px;
+  color: $black_gray;
+  text-align: center;
+}
+
 .form.input::placeholder {
   color: $light_gray;
 }
