@@ -15,13 +15,13 @@ class WalksForm extends React.Component {
   //   })
   }
 
-  handleSubmit() {
-    e.preventDefault();
-    this.props.createWalks({
-      dogs: [],
-      user: this.props.currentUser
-    })
-  }
+  // handleSubmit() {
+  //   e.preventDefault();
+  //   this.props.createWalks({
+  //     dogs: [],
+  //     user: this.props.currentUser
+  //   })
+  // }
 
   render() {
 

@@ -2,7 +2,7 @@ import React from 'react';
 
 import '../stylesheets/index.scss';
 
-// import { AuthRoute, ProtectedRoute } from '../util/route_util';
+import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import { Switch , Route} from 'react-router-dom';
 import NavBar from './nav/navbar';
 import SignUpContainer from "./auth/signup_container";
