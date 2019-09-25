@@ -22,8 +22,10 @@ class DogForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.createADog(this.state)
-      .then(payload => this.props.history.push(`/dogs/${payload.dog.data._id}`))
-      .catch(error => this.renderErrors(error))
+      .then(payload => {
+        if (payload.dog) this.props.history.push(`/dogs/${payload.dog.data._id}`)
+      })
+
   }
 
   componentWillUnmount() {
