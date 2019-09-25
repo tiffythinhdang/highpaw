@@ -1,0 +1,116 @@
+@import './util.scss';
+
+.walks-index-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+
+  border: 1px dotted white;
+}
+
+.walks-index-top-buttons-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 12%;
+  width: 95%;
+
+  border: 1px dotted green;
+}
+
+.walks-index-map-btn {
+  height: 50px;
+  width: 50px;
+
+  margin-left: 10px;
+
+  border: 1px dotted purple
+}
+
+.walks-index-map-btn:hover {
+  cursor: pointer;
+}
+
+.walks-index-form-btn {
+  height: 50px;
+  width: 50px;
+
+  margin-right: 10px;
+  
+  border: 1px dotted purple
+}
+
+.walks-index-form-btn:hover {
+  cursor: pointer;
+}
+
+.walks-head {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 12%;
+  width: 95%;
+
+  border: 1px dotted red;
+}
+
+.walks-items-container {
+  display: flex;
+  height: 71%;
+  width: 95%;
+
+  border: 1px dotted teal
+}
+
+.walk-item-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 15%;
+  width: 100%;
+
+  border: 1px dotted orange;
+}
+
+.walks-dog-information-container {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  height: 95%;
+  width: auto;
+
+  border: 1px dotted red;
+}
+
+.walks-dog-icon {
+  height: 50px;
+  width: 50px;
+
+  margin: 0px 10px;
+
+  border: 1px dotted green
+}
+
+.walks-dog-name-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  height: 50px;
+  width: auto;
+
+}
+
+.walks-request-container {
+  height: 50px;
+  width: 50px;
+  
+  border: 1px dotted black;
+}

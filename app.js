@@ -2,7 +2,6 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const db = require('./config/keys').mongoURI;
-const walks = require('./routes/api/walks');
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -12,6 +11,7 @@ const passport = require('passport');
 const users = require("./routes/api/users");
 const dogs = require("./routes/api/dogs");
 const requests = require('./routes/api/requests');
+const walks = require('./routes/api/walks');
 
 app.use(passport.initialize());
 require('./config/passport')(passport);
