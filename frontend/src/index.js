@@ -10,6 +10,11 @@ import { setAuthToken } from './util/session_api_util';
 
 import { logout } from './actions/session_actions';
 
+// testing codes start
+import { login } from './actions/session_actions';
+import { createADog, fetchDogsFromUser, fetchDogsFromWalk, deleteADog, fetchADog } from './actions/dogs_action';
+// testing codes end
+
 document.addEventListener('DOMContentLoaded', () => {
   let store;
 
@@ -29,8 +34,24 @@ document.addEventListener('DOMContentLoaded', () => {
     store = configureStore({});
   }
 
-  const root = document.getElementById('root');
-  ReactDOM.render(<Root store={store} />, root);
+  // testing codes start
+  window.login = login;
+  window.setAuthToken = setAuthToken;
   window.getState = store.getState;
-  // ReactDOM.render(<h1>Hi</h1>, root);
+
+  window.createADog = createADog;
+  window.fetchDogsFromUser = fetchDogsFromUser;
+  window.fetchDogsFromWalk = fetchDogsFromWalk;
+  window.deleteADog = deleteADog;
+  window.fetchADog = fetchADog;
+  window.dispatch = store.dispatch;
+  // testing codes end
+
+  const root = document.getElementById('root');
+  
+  // test
+  window.getState = store.getState;
+  // end test
+
+  ReactDOM.render(<Root store={store} />, root);
 });

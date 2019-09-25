@@ -23,7 +23,7 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/',
-  // passport.authenticate('jwt', { session: false }),
+  passport.authenticate('jwt', { session: false }),
   (req, res) => {
 
     // const { errors, isValid } = validateWalkInput(req.body);
@@ -37,7 +37,7 @@ router.post('/',
     //   return res.json(dog)
     // })
 
-    Dog.find({ owner: { $in: req.body.user } }).then(dogsArr => {
+    Dog.find({ owner: { $in: req.user.id } }).then(dogsArr => {
 
       if (dogsArr.length < 1) {
         return res.status(404).json({ dog: 'Must walk at least one dog'})
@@ -46,7 +46,8 @@ router.post('/',
       const newWalk = new Walk({
         // dog: req.body.dog, 
         dogs: dogsArr,
-        user: req.body.user, // req.user.id 
+        user: req.user.id,
+        // user: req.body.user, // req.user.id 
         //
       });
 

@@ -68,6 +68,7 @@ input[type="submit"] {
 }
 
 // Button settings
+
 .button {
   text-align: center;
   margin: 8px 0 8px 0;
@@ -84,14 +85,14 @@ input[type="submit"] {
   width: 144px;
   height: 45px;
   font-size: 16px;
-  border-radius: 200px;
+  border-radius: 200px; 
 }
 
 .large.button {
   width: 300px;
   height: 45px;
   font-size: 18px;
-  border-radius: 300px;
+  border-radius: 300px; 
 }
 
 .main.button {
@@ -116,6 +117,14 @@ input[type="submit"] {
 }
 
 // Form Input settings
+.form.main.header {
+  font-family: Chilanka;
+  font-size: 40px;
+  line-height: 44px;
+  color: $black_gray;
+  text-align: center;
+}
+
 .form.input {
   width: 300px;
   height: 54px;
@@ -124,33 +133,24 @@ input[type="submit"] {
   border: 1px solid $black_gray;
   box-sizing: border-box;
   padding-left: 15px;
-  margin: 10px 0 10px 0; 
-}
-
-.form.input::placeholder {
-  color: $light_gray;
-}
-
-.form.input:focus {
-  border: 2px solid $main_pink;
+  margin: 10px 0 10px 0;
+  font-size: 16px;
 }
 
 .form.main.header {
-  font-family: Chilanka, sans-serif;
+  font-family: Chilanka;
   font-size: 40px;
   line-height: 44px;
   color: $black_gray;
   text-align: center;
 }
 
-// Icons
-.small.icon {
-  height: 25px;
-  width: 25px;
+.form.input::placeholder {
+  color: $light_gray;
 }
 
-.icon:hover {
-  cursor: pointer;
+.form.input:focus, select option:focus {
+  border: 2px solid $main_pink;
 }
 
 select {
@@ -163,5 +163,20 @@ option {
 }
 
 option:first-child{
-  color: $light_gray;;
+  color: $light_gray;
+}
+
+// Icons
+.small.icon {
+  height: 25px;
+  width: 25px;
+}
+
+.icon:hover {
+  cursor: pointer;
+}
+
+// Errors
+.errors {
+  color: red;
 }
