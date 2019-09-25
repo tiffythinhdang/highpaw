@@ -1,4 +1,4 @@
-import '../../stylesheets/walks.scss'
+import '../../stylesheets/walks_index.scss'
 
 import React from 'react';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import WalksIndexItem from './walks_index_item';
-import '../../stylesheets/walks.scss';
+import '../../stylesheets/walks_index.scss';
 import { Link } from 'react-router-dom';
 
 class WalksIndex extends React.Component {
