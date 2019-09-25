@@ -23,8 +23,8 @@ export default class ModifyRequest extends React.Component {
   render() {
     return (
       <form>
-        <button onClick={this.handleApprove} >Approve</button>
-        <button onClick={this.handleDeny} >Deny</button>
+        <button className="" onClick={this.handleApprove} >Approve</button>
+        <button className="samll disabled button" onClick={this.handleDeny} >Deny</button>
       </form>
     )
   }
