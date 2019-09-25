@@ -2,12 +2,14 @@ import React from 'react';
 
 import '../stylesheets/index.scss';
 
-import { AuthRoute, ProtectedRoute } from '../util/route_util';
+// import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import { Switch , Route} from 'react-router-dom';
 import NavBar from './nav/navbar';
 
 import MainPage from './main/main_page';
 import Footer from './footer/footer';
+import CreateDogContainer from './dogs/create_dog_container';
+import DogShowContainer from './dogs/dog_show_container';
 
 import WalksIndexContainer from '../components/walks/walks_index_container';
 import WalksFormContainer from '../components/walks/walks_form_container';
@@ -24,12 +26,8 @@ const App = () => (
       <Route exact path="/" component={MainPage} />
       <Route exact path="/walks" component={WalksIndexContainer} />
       <Route exact path="/walks/create" component={WalksFormContainer} />
-      {/* <AuthRoute exact path="/login" component={LoginFormContainer} />
-      <AuthRoute exact path="/signup" component={SignupFormContainer} /> */}
-
-      {/* <ProtectedRoute exact path="/tweets" component={TweetsContainer} />
-      <ProtectedRoute exact path="/profile" component={ProfileContainer} />
-      <ProtectedRoute exact path="/new_tweet" component={TweetComposeContainer} /> */}
+      <Route path="/dogs/:id" component={DogShowContainer} />
+      <Route path="/dogs" component={CreateDogContainer} />
     </Switch>
     <Footer />
   </div>

@@ -68,6 +68,7 @@ input[type="submit"] {
 }
 
 // Button settings
+
 .button {
   text-align: center;
   margin: 8px 0 8px 0;
@@ -116,7 +117,16 @@ input[type="submit"] {
 }
 
 // Form Input settings
-form.input {
+
+.form.main.header {
+  font-family: Chilanka;
+  font-size: 40px;
+  line-height: 44px;
+  color: $black_gray;
+  text-align: center;
+}
+
+.form.input {
   width: 300px;
   height: 54px;
   border-radius: 8px;
@@ -124,7 +134,8 @@ form.input {
   border: 1px solid $black_gray;
   box-sizing: border-box;
   padding-left: 15px;
-  margin: 10px 0 10px 0; 
+  margin: 10px 0 10px 0;
+  font-size: 16px;
 }
 
 .form.main.header {
@@ -139,8 +150,21 @@ form.input {
   color: $light_gray;
 }
 
-.form.input:focus {
+.form.input:focus, select option:focus {
   border: 2px solid $main_pink;
+}
+
+select {
+  font-size: 16px;
+  color:  $light_gray;
+}
+
+option {
+  color: $black_gray;
+}
+
+option:first-child{
+  color: $light_gray;;
 }
 
 // Icons
@@ -151,4 +175,9 @@ form.input {
 
 .icon:hover {
   cursor: pointer;
+}
+
+// Errors
+.errors {
+  color: red;
 }
