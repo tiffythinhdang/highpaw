@@ -30,6 +30,7 @@ export const clearSessionErrors = () => ({
 
 // set token helper method
 export const setAuthToken = (res, dispatch) => {
+  // debugger 
   const { token } = res.data;
   localStorage.setItem('jwtToken', token);
   APIUtil.setAuthToken(token);
