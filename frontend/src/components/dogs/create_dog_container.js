@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 
 import DogForm from './dog_form';
+import { createADog, fetchADog, clearDogErrors } from '../../actions/dogs_action';
 
 const mapStateToProps = state => {
   return {
@@ -10,13 +11,16 @@ const mapStateToProps = state => {
       gender: "",
       breed: ""
     },
-    loggedIn: state.session.isAuthenticated
+    formType: "Regiter",
+    errors: state.errors.dog
   }
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    
+    createADog: (data) => dispatch(createADog(data)),
+    fetchADog: (id) => dispatch(fetchADog(id)),
+    clearDogErrors: () => dispatch(clearDogErrors())
   }
 };
 

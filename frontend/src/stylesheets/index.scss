@@ -134,7 +134,8 @@ input[type="submit"] {
   border: 1px solid $black_gray;
   box-sizing: border-box;
   padding-left: 15px;
-  margin: 10px 0 10px 0; 
+  margin: 10px 0 10px 0;
+  font-size: 16px;
 }
 
 .form.input::placeholder {
@@ -145,6 +146,19 @@ input[type="submit"] {
   border: 2px solid $main_pink;
 }
 
+select {
+  font-size: 16px;
+  color:  $light_gray;
+}
+
+option {
+  color: $black_gray;
+}
+
+option:first-child{
+  color: $light_gray;;
+}
+
 // Icons
 .small.icon {
   height: 25px;
@@ -153,4 +167,9 @@ input[type="submit"] {
 
 .icon:hover {
   cursor: pointer;
+}
+
+// Errors
+.errors {
+  color: red;
 }

@@ -1,21 +1,20 @@
 import {
   RECEIVE_DOGS,
-  RECEIVE_USER_DOGS,
   RECEIVE_A_DOG
 } from '../actions/dogs_action';
 
 
 const dogsReducer = (state = {}, action) => {
   Object.freeze(state);
+  let newState = {};
+
   switch (action.type) {
     case RECEIVE_DOGS:
-      return Object.assign({}, state, { all: action.dogs.data });
-  
-    case RECEIVE_USER_DOGS:
-      return Object.assign({}, state, { user: action.dogs.data });
-  
+      action.dogs.data.forEach(dog => newState[dog._id] = dog)
+      return newState;
+
     case RECEIVE_A_DOG:
-      return Object.assign({}, state, { all: action.dogs.data });
+      return Object.assign({}, state, { [action.dog.data._id]: action.dog.data });
   
     default:
       return state;
