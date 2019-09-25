@@ -1,4 +1,5 @@
 import React from 'react';
+import Map from '../map/map';
 
 class MainPage extends React.Component {
 
@@ -6,6 +7,7 @@ class MainPage extends React.Component {
     return (
       <div>
         <h1>Splash Page</h1>
+        <Map />
       </div>
     );
   }
