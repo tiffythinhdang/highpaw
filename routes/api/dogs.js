@@ -7,13 +7,11 @@ const Dog = require('../../models/Dog');
 const validateDogInput = require('../../validation/dogs');
 
 // Gets all dogs that belongs to a walk
-router.get('/walks/:walkid', 
+router.get('/walks/:walk_id', 
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
-  let dog_ids = req.params.dog_id;
-  let dogs = dog_ids.map(id => Dog.findbyId(id));
-  return dogs
-    .then(dogs => res.json(dogs))
+  Walk.findById(req.params.walk_id).populate('dogs')
+    .then(walk => res.json(walk.dogs))
     .catch(err => res.status(404).json({ nodogfound: 'No dog found' }));
 });
 
@@ -33,7 +31,7 @@ router.get('/user/:user_id',
 router.get('/:id', 
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
-  Dog.findById(req.params.id)
+  Dog.findById(req.params.id).populate("owner")
     .then(dog => res.json(dog))
     .catch(err =>
       res.status(404).json({ notweetfound: 'No dog found' })
@@ -45,7 +43,7 @@ router.post('/',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
     const { errors, isValid } = validateDogInput(req.body);
-
+    debugger
     if (!isValid) {
       return res.status(400).json(errors);
     }
@@ -66,18 +64,18 @@ router.post('/',
 router.delete('/:id',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
-    let dog = Dog.find({
-      id: req.params.id,
-      owner: req.user.id
-    });
-    if (!dog) return res.status(400).json("Invalid request")
-    
-    dog.remove()
-      .then(dog => res.json(dog))
+    Dog.findById(req.params.id)
+      .then(dog => {
+        dog.remove()
+          .then(dog => res.json(dog))
+          .catch(err =>
+            res.status(404).json({ notweetfound: 'Invalid Request' })
+          );
+      })
       .catch(err =>
-        res.status(404).json({ notweetfound: 'Invalid Request' })
+        res.status(404).json({ notweetfound: 'No dog found' })
       );
     }
 );
 
-module.exports = router
+module.exports = router;
