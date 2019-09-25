@@ -6,11 +6,13 @@ import configureStore from './store/store';
 
 import jwt_decode from 'jwt-decode';
 
-import { setAuthToken } from './util/session_api_util';
 
 import { logout } from './actions/session_actions';
+import { setAuthToken } from './util/session_api_util';
 
-// testing codes start
+
+//test
+import { fetchRequests, modifyRequest, sendRequest } from './actions/request_actions';
 import { login } from './actions/session_actions';
 import { createADog, fetchDogsFromUser, fetchDogsFromWalk, deleteADog, fetchADog } from './actions/dogs_action';
 // testing codes end
@@ -48,10 +50,5 @@ document.addEventListener('DOMContentLoaded', () => {
   // testing codes end
 
   const root = document.getElementById('root');
-  
-  // test
-  window.getState = store.getState;
-  // end test
-
   ReactDOM.render(<Root store={store} />, root);
 });
