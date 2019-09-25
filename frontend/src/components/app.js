@@ -10,6 +10,7 @@ import MainPage from './main/main_page';
 import Footer from './footer/footer';
 
 import WalksIndexContainer from '../components/walks/walks_index_container';
+import WalksFormContainer from '../components/walks/walks_form_container';
 
 // test
 import { setAuthToken, login } from '../util/session_api_util';
@@ -22,6 +23,7 @@ const App = () => (
     <Switch>
       <Route exact path="/" component={MainPage} />
       <Route exact path="/walks" component={WalksIndexContainer} />
+      <Route exact path="/walks/create" component={WalksFormContainer} />
       {/* <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} /> */}
 

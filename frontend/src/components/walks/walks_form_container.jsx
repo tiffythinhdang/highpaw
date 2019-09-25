@@ -1,21 +1,19 @@
 import { connect } from 'react-redux';
-import { createWalk, fetchWalks } from '../../actions/walk_actions';
+import { createWalk } from '../../actions/walk_actions';
 // import { fetchDog } from '../../actions/dog_actions';
-import WalksIndex from './walks_index';
+import WalksForm from './walks_form';
 
 const mapStateToProps = state => {
-  // debugger
   return {
-    walks: Object.values(state.entities.walks)
+
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     createWalk: () => dispatch(createWalk()),
-    fetchWalks: () => dispatch(fetchWalks()),
     // fetchDog: id => dispatch(fetchDog(id))
-  };
-};
+  }
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(WalksIndex)
+export default connect(mapStateToProps, mapDispatchToProps)(WalksForm)
