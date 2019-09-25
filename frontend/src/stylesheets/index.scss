@@ -69,25 +69,29 @@ input[type="submit"] {
 
 // Button settings
 .button {
-  border-radius: 50%;
+  text-align: center;
+  margin: 8px 0 8px 0;
 }
 
 .small.button {
   width: 78px;
   height: 34px;
   font-size: 14px;
+  border-radius: 150px;
 }
 
 .medium.button {
   width: 144px;
   height: 45px;
   font-size: 16px;
+  border-radius: 200px;
 }
 
 .large.button {
   width: 300px;
   height: 45px;
   font-size: 18px;
+  border-radius: 300px;
 }
 
 .main.button {
@@ -112,7 +116,7 @@ input[type="submit"] {
 }
 
 // Form Input settings
-form.input {
+.form.input {
   width: 300px;
   height: 54px;
   border-radius: 8px;
@@ -131,6 +135,14 @@ form.input {
   border: 2px solid $main_pink;
 }
 
+.form.main.header {
+  font-family: Chilanka, sans-serif;
+  font-size: 40px;
+  line-height: 44px;
+  color: $black_gray;
+  text-align: center;
+}
+
 // Icons
 .small.icon {
   height: 25px;
@@ -139,4 +151,17 @@ form.input {
 
 .icon:hover {
   cursor: pointer;
+}
+
+select {
+  font-size: 16px;
+  color:  $light_gray;
+}
+
+option {
+  color: $black_gray;
+}
+
+option:first-child{
+  color: $light_gray;;
 }
