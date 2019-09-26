@@ -35,10 +35,10 @@ class DogShow extends React.Component {
   }
 
   handleFile(e) {
+    // debugger
     const file = e.currentTarget.files[0];
     if (file) {
-      this.getSignedRequest(file)
-        .then(this.handleAddPhoto())
+      this.getSignedRequest(file);
     }
   }
 
@@ -66,7 +66,8 @@ class DogShow extends React.Component {
       if (xhr.readyState === 4) {
         if (xhr.status === 200) {
           let newPhotoURLs = this.props.dog.photoURLs.concat(url);
-          this.setState({ photoURLs: newPhotoURLs })
+          this.setState({ photoURLs: newPhotoURLs });
+          this.handleAddPhoto();
         }
         else {
           alert('Could not upload file.');
@@ -76,9 +77,13 @@ class DogShow extends React.Component {
     xhr.send(file);
   }
 
-  handleAddPhoto(e) {
-    e.preventDefault();
-    
+  handleAddPhoto() {
+    let newDog = this.props.dog;
+    newDog["photoURLs"] = this.state.photoURLs;
+    this.props.updateADog(newDog)
+      .then(payload => {
+        if (payload.dog) this.props.fetchADog(payload.dog.data._id)
+      })
   }
   
   // Need to relook at this once connected with walk and request

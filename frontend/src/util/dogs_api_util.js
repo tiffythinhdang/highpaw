@@ -17,6 +17,7 @@ export const createADog = (data) => {
 };
 
 export const updateADog = (data) => {
+  debugger
   return axios.patch(`/api/dogs/${data._id}`, data);
 };
 
