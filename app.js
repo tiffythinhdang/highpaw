@@ -54,10 +54,10 @@ io
       socket.join(room)
       return socket.emit('success', "You have successfully joined " + room)
     })
-    socket.on('sendMessage', msg => {
+    socket.on('sendLocation', location => {
       io
         .of('/walks')
-        .in('testing').emit('sendMessage', msg) 
+        .in('testing').emit('sendLocation',location) 
     })
   })
 

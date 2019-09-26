@@ -13,8 +13,8 @@ walks.emit('joinRoom', 'testing')
 
 walks.on('success', (res) => console.log(res))
 
-walks.on('sendMessage', message => {
-  console.log(message)
+walks.on('sendLocation', location => {
+  console.log(location)
 });
 
 
@@ -49,13 +49,11 @@ export default class Map extends React.Component {
       setInterval(() => {
         navigator.geolocation.getCurrentPosition((position) => {
           let latLng = { lat: position.coords.latitude, lng: position.coords.longitude }
-
+          
+          
           if (this.state.marker) {
-            // console.log(this.state.marker)
             this.state.marker.setPosition(latLng)
-            
           } else {
-            // console.log("new mark")
             let marker = new google.maps.Marker({
               position: latLng,
               map: this.map
@@ -76,42 +74,7 @@ export default class Map extends React.Component {
   }
 
   componentDidUpdate() {
-    const locationTag = document.getElementById('demo');
-
-    // if (navigator.geolocation) {
-    //   this.maker = false
-    //   setInterval(() => {
-    //     navigator.geolocation.getCurrentPosition((position) => {
-    //       let latLng = { lat: position.coords.latitude, lng: position.coords.longitude }
-
-        
-    //       if (marker) {
-    //         marker.setCenter(latLng)
-    //       } else {
-    //         marker = new google.maps.Marker({
-    //           position: latLng,
-    //           map: this.map
-    //         })
-    //       }
-
-    //       // this.map.setCenter(latLng)
-    //     })
-    //   }, 1000)
-
-
-      // navigator.geolocation.watchPosition((position) => {
-      //   let latLng = { lat: position.coords.latitude, lng: position.coords.longitude }
-        
-      //   const marker = new google.maps.Marker({
-      //     position: latLng,
-      //     map: this.map
-      //   })
-
-      //   this.map.setCenter(latLng)
-      // })
-    // } else {
-    //   locationTag.innerHTML = "Geolocation isn't supported by your browser."
-    // }
+    
   }
 
 

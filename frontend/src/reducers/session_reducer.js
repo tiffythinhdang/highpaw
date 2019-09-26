@@ -5,7 +5,8 @@ import {
 
 const initialState = {
   isAuthenticated: false,
-  user: {}
+  user: {},
+  socket: null
 };
 
 const SessionReducer = (state = initialState, action) => {
