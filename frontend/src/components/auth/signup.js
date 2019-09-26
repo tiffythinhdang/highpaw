@@ -22,6 +22,7 @@ export default class SignUp extends React.Component {
       }
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleCancel = this.handleCancel.bind(this);
   }
 
   componentDidMount() {
@@ -40,6 +41,11 @@ export default class SignUp extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.signup(this.state);
+  }
+
+  handleCancel(e) {
+    e.preventDefault();
+    this.props.history.push('/')
   }
 
   render() {
@@ -92,6 +98,7 @@ export default class SignUp extends React.Component {
             />
             <h3 className="errors">{this.props.errors.age}</h3>
             <input type="submit" value="Submit" className="main large button"/>
+            <button className="tertiary large button" onClick={this.handleCancel}>Cancel</button>
           </div>
         </form>
       </div>

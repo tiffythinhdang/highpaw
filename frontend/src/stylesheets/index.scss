@@ -23,6 +23,7 @@ body {
   background-image: url('../assets/background.png');
   font-family: 'Varela Round', sans-serif;
   font-size: 14px;
+  //position: fixed;
 }
 
 ul {
@@ -179,10 +180,16 @@ option:first-child{
 
 //Map
 #map-container {
-  width: 500px;
+  width: 100%;
   height: 500px;
 } 
 // Errors
 .errors {
   color: red;
+}
+
+.app {
+  height: 100%;
+  width: 100%;
+  position: absolute;
 }
