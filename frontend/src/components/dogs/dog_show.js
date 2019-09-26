@@ -29,11 +29,10 @@ class DogShow extends React.Component {
           <div className="dog-show header-container">
 
             <div className="dog-show header infor">
-              <div className="profile-img container">
+              <div className="profile-photo container">
                 <img 
                   src={this.props.dog.profilePhotoUrl}
                   alt="dog-pic"
-                  className="profile-img"
                 />
               </div>
               <div className="dog-show name-age">

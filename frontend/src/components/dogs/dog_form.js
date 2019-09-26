@@ -20,7 +20,6 @@ class DogForm extends React.Component {
     xhr.onreadystatechange = () => {
       if (xhr.readyState === 4) {
         if (xhr.status === 200) {
-          // document.getElementById('avatar-url').value = url;
           this.setState({ profilePhotoUrl: url})
         }
         else {
@@ -57,12 +56,7 @@ class DogForm extends React.Component {
 
   handleFile(e) {
     const file = e.currentTarget.files[0];
-    // const fileReader = new FileReader();
-    // fileReader.onloadend = () => {
-    //   this.setState({ photoFile: file, profilePhotoUrl: fileReader.result });
-    // }
     if (file) {
-      // fileReader.readAsDataURL(file);
       this.getSignedRequest(file);
     }
   }
