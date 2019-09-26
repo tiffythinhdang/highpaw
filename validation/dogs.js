@@ -8,6 +8,7 @@ module.exports = function validateDogInput(data) {
   data.name = validText(data.name) ? data.name : '';
   data.breed = validText(data.breed) ? data.breed : '';
   data.gender = validText(data.gender) ? data.gender : '';
+  data.profilePhotoUrl = validText(data.profilePhotoUrl) ? data.profilePhotoUrl : '';
  
   if (!validAge(parseInt(data.age))) {
     errors.age = "Invalid age";
@@ -35,6 +36,14 @@ module.exports = function validateDogInput(data) {
 
   if (Validator.isEmpty(data.gender)) {
     errors.gender = 'Gender field is required';
+  }
+
+  if (Validator.isEmpty(data.profilePhotoUrl)) {
+    errors.profilePhotoUrl = 'Profile photo is required';
+  }
+
+  if (!Validator.isURL(data.profilePhotoUrl)) {
+    errors.profilePhotoUrl = 'Uploading photo failed';
   }
 
   return {

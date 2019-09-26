@@ -53,7 +53,8 @@ router.post('/',
       age: req.body.age,
       breed: req.body.breed,
       gender: req.body.gender,
-      owner: req.user.id
+      owner: req.user.id,
+      profilePhotoUrl: req.body.profilePhotoUrl
     });
 
     newDog.save().then(dog => res.json(dog));
