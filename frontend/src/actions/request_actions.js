@@ -43,6 +43,14 @@ export const fetchRequests = walkId => dispatch => (
     )
 )
 
+export const fetchActiveRequest = userId => dispatch => (
+  RequestApiUtil.fetchActiveRequest(userId)
+    .then(
+      request => dispatch(receiveRequest(request)),
+      err => dispatch(receiveRequestErrors(err.response.data))
+    )
+)
+
 window.fetchRequests = fetchRequests;
 window.sendRequest = sendRequest;
 window.modifyRequest = modifyRequest;

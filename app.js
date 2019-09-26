@@ -3,7 +3,7 @@ const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
 const mongoose = require("mongoose");
-const db = require('./config/keys').mongoURI;
+const db = process.env.mongoURI ? process.env.mongoURI : require('./config/keys').mongoURI;
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -67,3 +67,38 @@ app.use("/api/users", users);
 app.use("/api/dogs", dogs);
 app.use("/api/walks", walks);
 app.use("/api/requests", requests);
+
+
+//Websockets
+
+io
+  .of('/walks')
+  .on('connection', (socket) => {
+    console.log('New Client');
+    socket.emit('welcome', 'Welcome to the walk namespace')
+
+    // socket.on('sendMessage', message => {
+    //   socket.emit('sendMessage', message)
+    // })
+
+    
+    socket.on('joinRoom', (room) => {
+      socket.join(room)
+      return socket.emit('success', "You have successfully joined " + room)
+    })
+    socket.on('sendLocation', location => {
+      io
+        .of('/walks')
+        .in('testing').emit('sendLocation',location) 
+    })
+  })
+
+// io.on('connection', socket => {
+//   socket.on('sendMessage', message => {
+//     io.emit('sendMessage', message)
+//   })
+// })
+   
+server.listen( port + 1, () => {
+  console.log(`Server is listening on localhost: ${port + 1}`)
+})

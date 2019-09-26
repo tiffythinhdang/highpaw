@@ -1,8 +1,35 @@
 import React from 'react';
 const google = window.google
+const io = require('socket.io-client');
+const port = process.env.PORT || 5000;
+
+let walks = io.connect(process.env.PORT ? `http://highpaw.herokuapp.com:${process.env.PORT + 1}` : `http://localhost:${port + 1}/walks`)
+
+walks.on('welcome', (msg) => {
+  console.log('Received: ', msg)
+})
+
+walks.emit('joinRoom', 'testing')
+
+walks.on('success', (res) => console.log(res))
+
+walks.on('sendLocation', location => {
+  console.log(location)
+});
+
+
+// walks.emit('sendText', msg )
+
+window.walks = walks
 
 export default class Map extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      marker: false
+    }
+  }
 
   componentDidMount() {
 
@@ -11,8 +38,6 @@ export default class Map extends React.Component {
       zoom: 17
     };
 
-
-
     // wrap this.mapNode in a Google Map
     this.map = new google.maps.Map(this.mapNode, mapOptions);
 
@@ -20,7 +45,27 @@ export default class Map extends React.Component {
     const locationTag = document.getElementById('demo');
 
     if (navigator.geolocation) {
-      navigator.geolocation.watchPosition(this.mapPosition)
+      
+      setInterval(() => {
+        navigator.geolocation.getCurrentPosition((position) => {
+          let latLng = { lat: position.coords.latitude, lng: position.coords.longitude }
+          
+          
+          if (this.state.marker) {
+            this.state.marker.setPosition(latLng)
+          } else {
+            let marker = new google.maps.Marker({
+              position: latLng,
+              map: this.map
+            })
+            this.setState({
+              marker
+            })
+            
+            this.map.setCenter(latLng)
+          }    
+        })
+      }, 1000)
     } else {
       locationTag.innerHTML = "Geolocation isn't supported by your browser."
     }
@@ -29,26 +74,16 @@ export default class Map extends React.Component {
   }
 
   componentDidUpdate() {
-    const locationTag = document.getElementById('demo');
-
-    if (navigator.geolocation) {
-      navigator.geolocation.watchPosition(this.mapPosition)
-    } else {
-      locationTag.innerHTML = "Geolocation isn't supported by your browser."
-    }
+    
   }
 
-  mapPosition(position) {
-    let latLng = {lat: position.coords.latitude, lng: position.coords.longitude}
-    // new GeolocationMarker(this.map, { position: latLng })
-  }
 
   render() {
     return (
       <div>
 
         <div id="map-container" ref={map => this.mapNode = map}>
-          
+
         </div>
         <p id="demo"></p>
       </div>
