@@ -8,16 +8,24 @@ class DogShow extends React.Component {
   constructor(props) {
     super(props);
 
-    this.handleSubmitRequest = this.handleSubmitRequest.bind(this);
+    // this.handleSubmitRequest = this.handleSubmitRequest.bind(this);
+    this.handleGoBack = this.handleGoBack.bind(this);
   }
 
   componentDidMount(){
     this.props.fetchADog(this.props.match.params.id)
   }
   
-  handleSubmitRequest(e) {
-    e.preventDefault();
+  // Need to relook at this once connected with walk and request
+
+  // handleSubmitRequest(e) {
+  //   e.preventDefault();
     
+  // }
+
+  handleGoBack(e) {
+    e.preventDefault();
+    this.props.history.goBack();
   }
 
   render() {
@@ -40,8 +48,8 @@ class DogShow extends React.Component {
                 <p className="dog-age">{displayAge(this.props.dog.age)}</p>
               </div>
             </div>
-
-            <button className="small main button paw">Paw!</button>
+            {/* Need to relook at this once connected with walk and request */}
+            {/* <button className="small main button paw">Paw!</button> */}
           </div>
 
         
@@ -83,7 +91,11 @@ class DogShow extends React.Component {
               />
           </div>
 
-          <button className="medium tertiary button">Back</button>
+          <button 
+            onClick={this.handleGoBack}
+            className="medium tertiary button"
+            >Back
+          </button>
         </div>
       </div>
     );
