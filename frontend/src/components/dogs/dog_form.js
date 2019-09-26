@@ -54,6 +54,23 @@ class DogForm extends React.Component {
         <form 
           className="create-dog form"
           onSubmit={this.handleSubmit}>
+          <div className="photo-upload input">
+            <div className="profile-photo container">
+              <img 
+                src="https://www.thesprucepets.com/thmb/KEkwV1YeL3obCMo0YSPDXTCxjRA=/450x0/filters:no_upscale():max_bytes(150000):strip_icc()/19933184_104417643500613_5541725731421159424_n-5ba0548546e0fb0050edecc0.jpg"
+                alt="profile pic" />
+            </div>
+             
+            <label for="file-upload" className="small secondary button">
+              Upload
+            </label>
+            <input
+              type="file"
+              id="file-upload"
+              onChange={this.handleChange('photo')}
+            />
+          </div>
+
           <input
             className="form input"
             placeholder="Name"
@@ -80,6 +97,7 @@ class DogForm extends React.Component {
             placeholder="Breed"
             onChange={this.handleChange('breed')}
           />
+
           <button 
             className="main large button">
             {this.props.formType}

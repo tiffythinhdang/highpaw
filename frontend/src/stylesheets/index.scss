@@ -166,6 +166,16 @@ option:first-child{
   color: $light_gray;
 }
 
+input[type="file"] {
+  display: none;
+}
+
+label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 // Icons
 .small.icon {
   height: 25px;
@@ -176,12 +186,12 @@ option:first-child{
   cursor: pointer;
 }
 
-
 //Map
 #map-container {
   width: 500px;
   height: 500px;
 } 
+
 // Errors
 .errors {
   color: red;

@@ -72,6 +72,16 @@ class DogShow extends React.Component {
               alt="dog-pic"
               className="dog-show pic"
               />
+            <img 
+              src="https://www.thesprucepets.com/thmb/KEkwV1YeL3obCMo0YSPDXTCxjRA=/450x0/filters:no_upscale():max_bytes(150000):strip_icc()/19933184_104417643500613_5541725731421159424_n-5ba0548546e0fb0050edecc0.jpg"
+              alt="dog-pic"
+              className="dog-show pic"
+              />
+            <img 
+              src="https://www.thesprucepets.com/thmb/KEkwV1YeL3obCMo0YSPDXTCxjRA=/450x0/filters:no_upscale():max_bytes(150000):strip_icc()/19933184_104417643500613_5541725731421159424_n-5ba0548546e0fb0050edecc0.jpg"
+              alt="dog-pic"
+              className="dog-show pic"
+              />
           </div>
 
           <button className="medium tertiary button">Back</button>
