@@ -47,17 +47,17 @@ class DogForm extends React.Component {
     xhr.send();
   }
 
-  handleChange(type) {
-    return (e) => {
-      if (e.target.tagName === "SELECT") {changeSelectorColor(e.target)}
-      this.setState({ [type]: e.target.value })
-    }
-  }
-
   handleFile(e) {
     const file = e.currentTarget.files[0];
     if (file) {
       this.getSignedRequest(file);
+    }
+  }
+
+  handleChange(type) {
+    return (e) => {
+      if (e.target.tagName === "SELECT") {changeSelectorColor(e.target)}
+      this.setState({ [type]: e.target.value })
     }
   }
 

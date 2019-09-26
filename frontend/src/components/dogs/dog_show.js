@@ -7,26 +7,78 @@ import displayAge from '../../util/display_age_util';
 class DogShow extends React.Component {
   constructor(props) {
     super(props);
+    this.state = this.props.dog;
 
     // this.handleSubmitRequest = this.handleSubmitRequest.bind(this);
     this.handleGoBack = this.handleGoBack.bind(this);
-    this.handleUpdatePhotos = this.handleUpdatePhotos.bind(this);
+    this.handleAddPhoto = this.handleAddPhoto.bind(this);
+    this.handleFile = this.handleFile.bind(this);
   }
 
   componentDidMount(){
     this.props.fetchADog(this.props.match.params.id)
   }
 
-  displayUpdatePhotos(){
+  displayAddPhoto(){
     if (this.props.dog.owner._id === this.props.currentUserId) {
       return (
-        <div 
-          className="dog-show update-photos"
-          onClick={this.handleUpdatePhotos}>
-          <p>Add Photo</p>
-        </div>
+        <label 
+          className="dog-show update-photos">
+          Add Photo
+          <input
+            type="file"
+            onChange={this.handleFile}
+          />
+        </label>
       )
     }
+  }
+
+  handleFile(e) {
+    const file = e.currentTarget.files[0];
+    if (file) {
+      this.getSignedRequest(file)
+        .then(this.handleAddPhoto())
+    }
+  }
+
+  getSignedRequest(file) {
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', `/sign-s3?file-name=${file.name}&file-type=${file.type}`);
+    xhr.onreadystatechange = () => {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          const response = JSON.parse(xhr.responseText);
+          this.uploadFile(file, response.signedRequest, response.url);
+        }
+        else {
+          alert('Could not get signed URL.');
+        }
+      }
+    };
+    xhr.send();
+  }
+
+  uploadFile(file, signedRequest, url) {
+    const xhr = new XMLHttpRequest();
+    xhr.open('PUT', signedRequest);
+    xhr.onreadystatechange = () => {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          let newPhotoURLs = this.props.dog.photoURLs.concat(url);
+          this.setState({ photoURLs: newPhotoURLs })
+        }
+        else {
+          alert('Could not upload file.');
+        }
+      }
+    };
+    xhr.send(file);
+  }
+
+  handleAddPhoto(e) {
+    e.preventDefault();
+    
   }
   
   // Need to relook at this once connected with walk and request
@@ -39,11 +91,6 @@ class DogShow extends React.Component {
   handleGoBack(e) {
     e.preventDefault();
     this.props.history.goBack();
-  }
-
-  handleUpdatePhotos(e) {
-    e.preventDefault();
-    
   }
 
   render() {
@@ -87,35 +134,23 @@ class DogShow extends React.Component {
           </div>
 
           <div className="dog-show pictures">
-            {this.displayUpdatePhotos()}
-            <img 
-              src="https://www.thesprucepets.com/thmb/KEkwV1YeL3obCMo0YSPDXTCxjRA=/450x0/filters:no_upscale():max_bytes(150000):strip_icc()/19933184_104417643500613_5541725731421159424_n-5ba0548546e0fb0050edecc0.jpg"
-              alt="dog-pic"
-              className="dog-show pic"
-              />
-            <img 
-              src="https://www.thesprucepets.com/thmb/KEkwV1YeL3obCMo0YSPDXTCxjRA=/450x0/filters:no_upscale():max_bytes(150000):strip_icc()/19933184_104417643500613_5541725731421159424_n-5ba0548546e0fb0050edecc0.jpg"
-              alt="dog-pic"
-              className="dog-show pic"
-              />
-            <img 
-              src="https://www.thesprucepets.com/thmb/KEkwV1YeL3obCMo0YSPDXTCxjRA=/450x0/filters:no_upscale():max_bytes(150000):strip_icc()/19933184_104417643500613_5541725731421159424_n-5ba0548546e0fb0050edecc0.jpg"
-              alt="dog-pic"
-              className="dog-show pic"
-              />
-            <img 
-              src="https://www.thesprucepets.com/thmb/KEkwV1YeL3obCMo0YSPDXTCxjRA=/450x0/filters:no_upscale():max_bytes(150000):strip_icc()/19933184_104417643500613_5541725731421159424_n-5ba0548546e0fb0050edecc0.jpg"
-              alt="dog-pic"
-              className="dog-show pic"
-              />
+            {this.displayAddPhoto()}
+            {
+              this.props.dog.photoURLs.map(url => 
+                <img
+                  src={url}
+                  alt="dog-pic"
+                  className="dog-show pic"
+                />
+              )
+            }
           </div>
-
-          <button 
-            onClick={this.handleGoBack}
-            className="medium tertiary button"
-            >Back
-          </button>
         </div>
+        <button
+          onClick={this.handleGoBack}
+          className="medium tertiary button"
+        >Back
+        </button>
       </div>
     );
   }
