@@ -10,10 +10,23 @@ class DogShow extends React.Component {
 
     // this.handleSubmitRequest = this.handleSubmitRequest.bind(this);
     this.handleGoBack = this.handleGoBack.bind(this);
+    this.handleUpdatePhotos = this.handleUpdatePhotos.bind(this);
   }
 
   componentDidMount(){
     this.props.fetchADog(this.props.match.params.id)
+  }
+
+  displayUpdatePhotos(){
+    if (this.props.dog.owner._id === this.props.currentUserId) {
+      return (
+        <div 
+          className="dog-show update-photos"
+          onClick={this.handleUpdatePhotos}>
+          <p>Add Photo</p>
+        </div>
+      )
+    }
   }
   
   // Need to relook at this once connected with walk and request
@@ -26,6 +39,11 @@ class DogShow extends React.Component {
   handleGoBack(e) {
     e.preventDefault();
     this.props.history.goBack();
+  }
+
+  handleUpdatePhotos(e) {
+    e.preventDefault();
+    
   }
 
   render() {
@@ -69,6 +87,7 @@ class DogShow extends React.Component {
           </div>
 
           <div className="dog-show pictures">
+            {this.displayUpdatePhotos()}
             <img 
               src="https://www.thesprucepets.com/thmb/KEkwV1YeL3obCMo0YSPDXTCxjRA=/450x0/filters:no_upscale():max_bytes(150000):strip_icc()/19933184_104417643500613_5541725731421159424_n-5ba0548546e0fb0050edecc0.jpg"
               alt="dog-pic"

@@ -105,11 +105,21 @@
   box-sizing: border-box;
 }
 
-.dog-show.pictures > img {
+.dog-show.pictures > img, .dog-show.pictures > .update-photos {
   width: 100px;
   height: 100px;
   border-radius: 4px;
   margin: 5px;
   object-fit: cover;
   flex: 0 0 auto;
+  background-color: $lightest_gray;
+}
+
+.dog-show.pictures > .update-photos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  text-align: center;
+  color: $light_gray;
 }
