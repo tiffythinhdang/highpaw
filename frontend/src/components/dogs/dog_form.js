@@ -2,6 +2,7 @@ import React from 'react';
 
 import '../../stylesheets/index.scss';
 import '../../stylesheets/dog_form.scss';
+import iconDog from '../../assets/medium_icon_dog.png';
 import { changeSelectorColor } from '../../util/css_util';
 
 class DogForm extends React.Component {
@@ -10,12 +11,24 @@ class DogForm extends React.Component {
     this.state = this.props.form;
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleFile = this.handleFile.bind(this);
   }
 
   handleChange(type) {
     return (e) => {
       if (e.target.tagName === "SELECT") {changeSelectorColor(e.target)}
       this.setState({ [type]: e.target.value })
+    }
+  }
+
+  handleFile(e) {
+    const file = e.currentTarget.files[0];
+    const fileReader = new FileReader();
+    fileReader.onloadend = () => {
+      this.setState({ photoFile: file, profilePhotoUrl: fileReader.result });
+    }
+    if (file) {
+      fileReader.readAsDataURL(file);
     }
   }
 
@@ -56,19 +69,16 @@ class DogForm extends React.Component {
           onSubmit={this.handleSubmit}>
           <div className="photo-upload input">
             <div className="profile-photo container">
-              <img 
-                src="https://www.thesprucepets.com/thmb/KEkwV1YeL3obCMo0YSPDXTCxjRA=/450x0/filters:no_upscale():max_bytes(150000):strip_icc()/19933184_104417643500613_5541725731421159424_n-5ba0548546e0fb0050edecc0.jpg"
-                alt="profile pic" />
+              {this.state.profilePhotoUrl ? <img src={this.state.profilePhotoUrl}/> : <img className="medium light icon dog" src={iconDog}/>}
             </div>
              
-            <label for="file-upload" className="small secondary button">
+            <label className="small secondary button">
               Upload
+              <input
+                type="file"
+                onChange={this.handleFile}
+              />
             </label>
-            <input
-              type="file"
-              id="file-upload"
-              onChange={this.handleChange('photo')}
-            />
           </div>
 
           <input
