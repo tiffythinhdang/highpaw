@@ -12,23 +12,55 @@ class WalksIndex extends React.Component {
     this.props.fetchWalks();
   }
 
+  renderButtons() {
+    // debugger
+    let walks = this.props.walks;
+    let currentUser = this.props.currentUser;
+
+    for (let i = 0; i < walks.length; i++) {
+      let walk = walks[i]
+      if (walk.user === currentUser.id) {
+        return (
+          <div className="walks-index-top-buttons-container">
+            <Link to={`/walks/${walk._id}`} >
+              <button className="walks-index-map-btn">Your walk</button>
+            </Link>
+            {/* <Link to="/walks/create" className="walks-index-form-btn"> */}
+            <button className="walks-index-form-btn inactive">Start a walk!</button>
+            {/* </Link> */}
+          </div>
+        )
+      }
+    }
+    return (
+      <div className="walks-index-top-buttons-container">
+        <button className="walks-index-map-btn inactive">Your walk</button>
+        <Link to="/walks/create" className="walks-index-form-btn">
+          <button className="">Start a walk!</button>
+        </Link>
+      </div>
+    )
+  }
+
   render() {
+    // debugger
     if (!this.props.walks) return null;
-// debugger
+    // debugger
     let walks = this.props.walks.map(walk => {
-      return(
-        <WalksIndexItemContainer key={walk._id} walk={walk}/>
+      return (
+        <WalksIndexItemContainer key={walk._id} walk={walk} />
       )
     })
 
-    return(
+    return (
       <div className="walks-index-main">
-        <div className="walks-index-top-buttons-container">
-          <button className="walks-index-map-btn"></button>
-          <Link to="/walks/create" className="walks-index-form-btn"> 
-            <button className="walks-index-form-btn">Start a walk!</button>
+        {this.renderButtons()}
+        {/* <div className="walks-index-top-buttons-container">
+          <button className="walks-index-map-btn">Your walk</button>
+          <Link to="/walks/create" className="walks-index-form-btn">
+            <button className="">Start a walk!</button>
           </Link>
-        </div>
+        </div> */}
         <div className="walks-head">
           <p className="walks-head-text">active walks</p>
         </div>

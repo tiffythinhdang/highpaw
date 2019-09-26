@@ -24,12 +24,17 @@
 }
 
 .walks-index-map-btn {
-  height: 50px;
-  width: 50px;
-
-  margin-left: 10px;
-
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 144px;
+  height: 48px;
+  left: 216px;
+  top: 170px;
+  background: #FAFAFA;
+  border: 1px solid #3C3C3C;
+  box-sizing: border-box;
+  border-radius: 200px; 
 
   // border: 1px dotted purple
 }
@@ -45,11 +50,14 @@
   // margin-right: 10px;
   display: flex;
   justify-content: center;
-  width: 164px;
-  height: 40px;
-  left: 206px;
-  top: 160px;
-  
+  width: 144px;
+  height: 48px;
+  left: 216px;
+  top: 170px;
+  background: #FAFAFA;
+  border: 1px solid #3C3C3C;
+  box-sizing: border-box;
+  border-radius: 200px; 
   // border: 1px dotted purple
 }
 

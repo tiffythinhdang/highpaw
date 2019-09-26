@@ -1,0 +1,21 @@
+@import './util.scss';
+
+.walks-show-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 100vw;
+  height: 100vh;
+}
+
+.walks-show-buttons-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 12%;
+  width: 95%;
+
+  border: 1px green dotted;
+}

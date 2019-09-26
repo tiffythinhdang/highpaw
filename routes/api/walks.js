@@ -9,6 +9,7 @@ const Dog = require('../../models/Dog');
 // const User = require('../../models/User');
 const validateWalkInput = require('../../validation/walks');
 
+// get all walks
 router.get('/', (req, res) => {
   Walk.find()
     .sort({ date: -1 })
@@ -16,6 +17,8 @@ router.get('/', (req, res) => {
     .catch(err => res.status(404).json({ nowalksfound: 'No walks found' }));
 });
 
+
+// get walk by id
 router.get('/:id', (req, res) => {
   Walk.findById(req.params.id)
     .then(walk => res.json(walk))
@@ -39,10 +42,10 @@ router.post('/create',
 
     // Dog.find({ owner: { $in: req.user.id } }).then(dogsArr => {
 
-    //   if (dogsArr.length < 1) {
-    //     return res.status(404).json({ dog: 'Must walk at least one dog'})
+      if (req.body.dogs.length < 1) {
+        return res.status(404).json({ dog: 'Must walk at least one dog'})
 
-    //   }
+      }
 
       console.log(req.body.dogs.length)
       console.log(res)

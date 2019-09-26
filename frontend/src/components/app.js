@@ -14,6 +14,7 @@ import DogShowContainer from './dogs/dog_show_container';
 
 import WalksIndexContainer from '../components/walks/walks_index_container';
 import WalksFormContainer from '../components/walks/walks_form_container';
+import WalksShowContainer from '../components/walks/walks_show_container';
 
 // test
 import { setAuthToken, login } from '../util/session_api_util';
@@ -27,6 +28,7 @@ const App = () => (
       <Route exact path="/" component={MainPage} />
       <AuthRoute exact path="/login" component={SignInContainer} />
       <AuthRoute exact path="/signup" component={SignUpContainer} />
+      <Route exact path="/walks/:id" component={WalksShowContainer} />
       <Route exact path="/walks" component={WalksIndexContainer} />
       <Route exact path="/walks/create" component={WalksFormContainer} />
       <Route path="/dogs/:id" component={DogShowContainer} />
