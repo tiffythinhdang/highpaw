@@ -3,6 +3,12 @@ const google = window.google
 
 export default class Map extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      markers: []
+    }
+  }
 
   componentDidMount() {
 
@@ -20,7 +26,14 @@ export default class Map extends React.Component {
     const locationTag = document.getElementById('demo');
 
     if (navigator.geolocation) {
-      navigator.geolocation.watchPosition(this.mapPosition)
+      navigator.geolocation.watchPosition((position) => {
+        let latLng = { lat: position.coords.latitude, lng: position.coords.longitude }
+        const marker = new google.maps.Marker({
+          position: latLng,
+          map: this.map
+        })
+
+      })
     } else {
       locationTag.innerHTML = "Geolocation isn't supported by your browser."
     }
@@ -32,23 +45,25 @@ export default class Map extends React.Component {
     const locationTag = document.getElementById('demo');
 
     if (navigator.geolocation) {
-      navigator.geolocation.watchPosition(this.mapPosition)
+      navigator.geolocation.watchPosition((position) => {
+        let latLng = { lat: position.coords.latitude, lng: position.coords.longitude }
+        const marker = new google.maps.Marker({
+          position: latLng,
+          map: this.map
+        })
+      })
     } else {
       locationTag.innerHTML = "Geolocation isn't supported by your browser."
     }
   }
 
-  mapPosition(position) {
-    let latLng = {lat: position.coords.latitude, lng: position.coords.longitude}
-    // new GeolocationMarker(this.map, { position: latLng })
-  }
 
   render() {
     return (
       <div>
 
         <div id="map-container" ref={map => this.mapNode = map}>
-          
+
         </div>
         <p id="demo"></p>
       </div>
