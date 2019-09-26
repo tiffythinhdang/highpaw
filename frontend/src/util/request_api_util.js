@@ -12,3 +12,7 @@ export const fetchRequests = (walkId) => {
   return axios.get(`/api/requests/walks/${walkId}`)
 }
 
+export const fetchActiveRequest = (userId) => {
+  return axios.get(`/api/requests/users/${userId}`)
+}
+
