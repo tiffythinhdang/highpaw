@@ -166,22 +166,68 @@ option:first-child{
   color: $light_gray;
 }
 
+input[type="file"] {
+  display: none;
+}
+
+label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 // Icons
 .small.icon {
   height: 25px;
   width: 25px;
 }
 
+.medium.icon {
+  height: 50px;
+  width: 50px;
+}
+
+.light.icon {
+  opacity: 0.3;
+}
+
 .icon:hover {
   cursor: pointer;
 }
 
+// Profile Picture setting
+.profile-photo.container {
+  width: 75px;
+  height: 75px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  border: 3px solid $white;
+  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
+  background-color: $light_gray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-//Map
+.profile-photo.container > img{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-photo.container > .icon{
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+}
+
+// Map
 #map-container {
   width: 500px;
   height: 500px;
 } 
+
 // Errors
 .errors {
   color: red;
