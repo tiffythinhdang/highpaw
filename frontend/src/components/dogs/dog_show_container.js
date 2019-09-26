@@ -6,7 +6,8 @@ import { fetchADog } from '../../actions/dogs_action';
 const mapStateToProps = (state, ownProps) => {
   let dogId = ownProps.match.params.id;
   return {
-    dog: state.entities.dogs[dogId]
+    dog: state.entities.dogs[dogId],
+    currentUserId: state.session.user.id
   }
 };
 

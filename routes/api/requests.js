@@ -50,5 +50,12 @@ router.patch("/:id",
      )
 })
 
+router.get('/users/:userId',
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    const requests = Request.find({requster: req.user._id})
+    const request = requests.filter((request) => request.status === "approved")
+    res.json(request)
+})
 
 module.exports = router

@@ -8,14 +8,40 @@ class DogShow extends React.Component {
   constructor(props) {
     super(props);
 
-    this.handleSubmitRequest = this.handleSubmitRequest.bind(this);
+    // this.handleSubmitRequest = this.handleSubmitRequest.bind(this);
+    this.handleGoBack = this.handleGoBack.bind(this);
+    this.handleUpdatePhotos = this.handleUpdatePhotos.bind(this);
   }
 
   componentDidMount(){
     this.props.fetchADog(this.props.match.params.id)
   }
+
+  displayUpdatePhotos(){
+    if (this.props.dog.owner._id === this.props.currentUserId) {
+      return (
+        <div 
+          className="dog-show update-photos"
+          onClick={this.handleUpdatePhotos}>
+          <p>Add Photo</p>
+        </div>
+      )
+    }
+  }
   
-  handleSubmitRequest(e) {
+  // Need to relook at this once connected with walk and request
+
+  // handleSubmitRequest(e) {
+  //   e.preventDefault();
+    
+  // }
+
+  handleGoBack(e) {
+    e.preventDefault();
+    this.props.history.goBack();
+  }
+
+  handleUpdatePhotos(e) {
     e.preventDefault();
     
   }
@@ -29,11 +55,10 @@ class DogShow extends React.Component {
           <div className="dog-show header-container">
 
             <div className="dog-show header infor">
-              <div className="profile-img container">
+              <div className="profile-photo container">
                 <img 
-                  src="https://www.thesprucepets.com/thmb/KEkwV1YeL3obCMo0YSPDXTCxjRA=/450x0/filters:no_upscale():max_bytes(150000):strip_icc()/19933184_104417643500613_5541725731421159424_n-5ba0548546e0fb0050edecc0.jpg"
+                  src={this.props.dog.profilePhotoUrl}
                   alt="dog-pic"
-                  className="profile-img"
                 />
               </div>
               <div className="dog-show name-age">
@@ -41,8 +66,8 @@ class DogShow extends React.Component {
                 <p className="dog-age">{displayAge(this.props.dog.age)}</p>
               </div>
             </div>
-
-            <button className="small main button paw">Paw!</button>
+            {/* Need to relook at this once connected with walk and request */}
+            {/* <button className="small main button paw">Paw!</button> */}
           </div>
 
         
@@ -62,6 +87,17 @@ class DogShow extends React.Component {
           </div>
 
           <div className="dog-show pictures">
+            {this.displayUpdatePhotos()}
+            <img 
+              src="https://www.thesprucepets.com/thmb/KEkwV1YeL3obCMo0YSPDXTCxjRA=/450x0/filters:no_upscale():max_bytes(150000):strip_icc()/19933184_104417643500613_5541725731421159424_n-5ba0548546e0fb0050edecc0.jpg"
+              alt="dog-pic"
+              className="dog-show pic"
+              />
+            <img 
+              src="https://www.thesprucepets.com/thmb/KEkwV1YeL3obCMo0YSPDXTCxjRA=/450x0/filters:no_upscale():max_bytes(150000):strip_icc()/19933184_104417643500613_5541725731421159424_n-5ba0548546e0fb0050edecc0.jpg"
+              alt="dog-pic"
+              className="dog-show pic"
+              />
             <img 
               src="https://www.thesprucepets.com/thmb/KEkwV1YeL3obCMo0YSPDXTCxjRA=/450x0/filters:no_upscale():max_bytes(150000):strip_icc()/19933184_104417643500613_5541725731421159424_n-5ba0548546e0fb0050edecc0.jpg"
               alt="dog-pic"
@@ -74,7 +110,11 @@ class DogShow extends React.Component {
               />
           </div>
 
-          <button className="medium tertiary button">Back</button>
+          <button 
+            onClick={this.handleGoBack}
+            className="medium tertiary button"
+            >Back
+          </button>
         </div>
       </div>
     );

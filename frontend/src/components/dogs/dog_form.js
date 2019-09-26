@@ -2,6 +2,7 @@ import React from 'react';
 
 import '../../stylesheets/index.scss';
 import '../../stylesheets/dog_form.scss';
+import iconDog from '../../assets/medium_icon_dog.png';
 import { changeSelectorColor } from '../../util/css_util';
 
 class DogForm extends React.Component {
@@ -10,12 +11,53 @@ class DogForm extends React.Component {
     this.state = this.props.form;
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleFile = this.handleFile.bind(this);
+  }
+
+  uploadFile(file, signedRequest, url) {
+    const xhr = new XMLHttpRequest();
+    xhr.open('PUT', signedRequest);
+    xhr.onreadystatechange = () => {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          this.setState({ profilePhotoUrl: url})
+        }
+        else {
+          alert('Could not upload file.');
+        }
+      }
+    };
+    xhr.send(file);
+  }
+
+  getSignedRequest(file) {
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', `/sign-s3?file-name=${file.name}&file-type=${file.type}`);
+    xhr.onreadystatechange = () => {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          const response = JSON.parse(xhr.responseText);
+          this.uploadFile(file, response.signedRequest, response.url);
+        }
+        else {
+          alert('Could not get signed URL.');
+        }
+      }
+    };
+    xhr.send();
   }
 
   handleChange(type) {
     return (e) => {
       if (e.target.tagName === "SELECT") {changeSelectorColor(e.target)}
       this.setState({ [type]: e.target.value })
+    }
+  }
+
+  handleFile(e) {
+    const file = e.currentTarget.files[0];
+    if (file) {
+      this.getSignedRequest(file);
     }
   }
 
@@ -54,6 +96,20 @@ class DogForm extends React.Component {
         <form 
           className="create-dog form"
           onSubmit={this.handleSubmit}>
+          <div className="photo-upload input">
+            <div className="profile-photo container">
+              {this.state.profilePhotoUrl ? <img src={this.state.profilePhotoUrl}/> : <img className="medium light icon dog" src={iconDog}/>}
+            </div>
+             
+            <label className="small secondary button">
+              Upload
+              <input
+                type="file"
+                onChange={this.handleFile}
+              />
+            </label>
+          </div>
+
           <input
             className="form input"
             placeholder="Name"
@@ -80,6 +136,7 @@ class DogForm extends React.Component {
             placeholder="Breed"
             onChange={this.handleChange('breed')}
           />
+
           <button 
             className="main large button">
             {this.props.formType}
