@@ -17,7 +17,7 @@ class WalksIndex extends React.Component {
 // debugger
     let walks = this.props.walks.map(walk => {
       return(
-        <WalksIndexItemContainer key={walk.id} walk={walk}/>
+        <WalksIndexItemContainer key={walk._id} walk={walk}/>
       )
     })
 
@@ -26,13 +26,15 @@ class WalksIndex extends React.Component {
         <div className="walks-index-top-buttons-container">
           <button className="walks-index-map-btn"></button>
           <Link to="/walks/create" className="walks-index-form-btn"> 
-            <button className="walks-index-form-btn"></button>
+            <button className="walks-index-form-btn">Start a walk!</button>
           </Link>
         </div>
         <div className="walks-head">
           <p className="walks-head-text">active walks</p>
         </div>
-        {walks}
+        <div className="walks-items-container">
+          {walks}
+        </div>
       </div>
     )
   }

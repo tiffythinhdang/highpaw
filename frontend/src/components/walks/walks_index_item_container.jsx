@@ -4,7 +4,7 @@ import { fetchDogsFromWalk } from '../../actions/dogs_action';
 import WalksIndexItem from './walks_index_item';
 
 const mapStateToProps = state => {
-  debugger
+  // debugger
   return {
     dogs: Object.values(state.entities.dogs)
   };

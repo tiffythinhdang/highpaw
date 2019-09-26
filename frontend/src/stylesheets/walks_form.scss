@@ -36,18 +36,29 @@
 
 .walks-form-dogs-item-container {
   display: flex;
+  overflow: hidden;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   flex: 0 0 33%;
-
+  opacity: 0.5;
   height: 100px;
   width: 50px;
 
   border: 1px dotted green
 }
 
+.walks-form-dogs-item-container:hover {
+  cursor: pointer;
+}
 
+.walks-form-dogs-item-container:checked {
+  opacity: 1;
+}
+
+.walk-form-icon {
+  z-index: 1000;
+}
 
 .walks-submit-btn-container {
   display: flex;

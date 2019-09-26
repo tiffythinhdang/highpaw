@@ -33,7 +33,7 @@ class WalksForm extends React.Component {
 
   handleCheckbox(e) {
     // debugger
-    // console.log("clicked")
+    console.log("clicked")
     // console.log(this.state.dogs)
     // console.log(this.state)
     let dog = JSON.parse(e.target.value)
@@ -52,11 +52,16 @@ class WalksForm extends React.Component {
   showDogs(dog) {
     // debugger
     return (
-      <div className="walks-form-dogs-item-container">
-
-        <input type="checkbox" value={JSON.stringify(dog)} id="walk-checkbox" onClick={this.handleCheckbox}/>
-        {dog.name}
-      </div>
+ 
+        <label className="walks-form-dogs-item-container">
+          <p className="walk-form-name">{dog.name}</p>
+          <img
+            src="https://www.thesprucepets.com/thmb/KEkwV1YeL3obCMo0YSPDXTCxjRA=/450x0/filters:no_upscale():max_bytes(150000):strip_icc()/19933184_104417643500613_5541725731421159424_n-5ba0548546e0fb0050edecc0.jpg"
+            alt="dog-pic"
+            // className="profile-img"
+          />
+          <input type="checkbox" value={JSON.stringify(dog)} id="walk-checkbox" onClick={this.handleCheckbox}/>
+        </label>
 
     )
   }
