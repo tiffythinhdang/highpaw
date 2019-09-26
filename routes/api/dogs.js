@@ -5,15 +5,43 @@ const passport = require('passport');
 
 const Dog = require('../../models/Dog');
 const validateDogInput = require('../../validation/dogs');
+const Walk = require('../../models/Walk');
 
 // Gets all dogs that belongs to a walk
-router.get('/walks/:walk_id', 
+router.get('/walks/:walkId', 
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
-  Walk.findById(req.params.walk_id).populate('dogs')
-    .then(walk => res.json(walk.dogs))
-    .catch(err => res.status(404).json({ nodogfound: 'No dog found' }));
+  // let dog_ids = req.params.dog_id;
+  // let dogs = dog_ids.map(id => Dog.findbyId(id));
+  console.log(req.params)
+  let walk = Walk.findById(req.params.walkId).then(walk => { 
+    console.log(walk.dogs)
+    // let dogs = [];
+    // walk.dogs.map(dog => Dog.findById(dog.id).then(dog => console.log(dog))
+    // );
+    Dog.find({ _id: { $in: walk.dogs }}).then(dogs => {
+      console.log(dogs)
+      res.json(dogs)
+    })
+    // return dogs
+      // .then(dogs => res.json(dogs))
+      // .catch(err => res.status(404).json({ nodogfound: 'No dog found' }));
+
+  })
 });
+
+// console.log(req.params)
+// Walk.findById(req.params.walkId).then(walk => {
+//   console.log(walk)
+//   walk.dogs.map(id => Dog.findById(id).then(dogs => {
+//     console.log('hihi' + dogs)
+//     return dogs
+//       .then(dogs => res.json(dogs))
+//       .catch(err => res.status(404).json({ nodogfound: 'No dog found' }));
+
+//   }));
+// })
+
 
 // Get all dogs that belong to a user
 router.get('/user/:user_id',

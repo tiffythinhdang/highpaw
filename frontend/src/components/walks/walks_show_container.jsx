@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { createWalk, fetchWalks } from '../../actions/walk_actions';
 import { fetchDogsFromWalk } from '../../actions/dogs_action';
-import WalksIndex from './walks_index';
+import WalksShow from './walks_show';
 
 const mapStateToProps = state => {
   // debugger;
@@ -21,4 +21,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(WalksIndex)
+export default connect(mapStateToProps, mapDispatchToProps)(WalksShow)

@@ -19,22 +19,25 @@ const removeWalk = walkId => ({
   walkId
 });
 
-export const fetchWalks = query =>  dispatch => (
-  WalkApiUtil.fetchWalks(query)
+export const fetchWalks = () => dispatch => (
+  WalkApiUtil.fetchWalks()
     .then(walks => dispatch(receiveAllWalks(walks)))
 )
 
-export const fetchWalk = walk => dispatch => {
+export const fetchWalk = walk => dispatch => (
   WalkApiUtil.fetchWalk(walk)
     .then(walk => dispatch(receiveWalk(walk)))
-}
+)
 
 export const createWalk = walk => dispatch => {
-  WalkApiUtil.createWalk(walk)
-    .then(walk => dispatch(receiveWalk(walk)))
+  console.log(walk)
+  return (
+    WalkApiUtil.createWalk(walk)
+      .then(walk => dispatch(receiveWalk(walk)))
+  )
 }
 
-export const deleteWalk = walkId => dispatch => {
+export const deleteWalk = walkId => dispatch => (
   WalkApiUtil.deleteWalk(walkId)
     .then(walk => dispatch(removeWalk(walkId)))
-}
+)

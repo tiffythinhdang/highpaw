@@ -9,7 +9,8 @@ export const fetchWalk = id => {
 }
 
 export const createWalk = data => {
-  return axios.post(`/api/walks/`, data)
+  console.log(data)
+  return axios.post(`/api/walks/create`, data)
 }
 
 export const deleteWalk = id => {
