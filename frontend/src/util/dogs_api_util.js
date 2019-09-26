@@ -16,6 +16,10 @@ export const createADog = (data) => {
   return axios.post('/api/dogs/', data);
 };
 
+export const updateADog = (data) => {
+  return axios.patch(`/api/dogs/${data._id}`, data);
+};
+
 export const deleteADog = (id) => {
   return axios.delete(`/api/dogs/${id}`);
 };
