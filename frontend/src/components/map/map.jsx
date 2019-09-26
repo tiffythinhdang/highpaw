@@ -17,8 +17,6 @@ export default class Map extends React.Component {
       zoom: 17
     };
 
-
-
     // wrap this.mapNode in a Google Map
     this.map = new google.maps.Map(this.mapNode, mapOptions);
 
@@ -33,6 +31,7 @@ export default class Map extends React.Component {
           map: this.map
         })
 
+        this.map.setCenter(latLng)
       })
     } else {
       locationTag.innerHTML = "Geolocation isn't supported by your browser."
@@ -47,10 +46,13 @@ export default class Map extends React.Component {
     if (navigator.geolocation) {
       navigator.geolocation.watchPosition((position) => {
         let latLng = { lat: position.coords.latitude, lng: position.coords.longitude }
+        
         const marker = new google.maps.Marker({
           position: latLng,
           map: this.map
         })
+
+        this.map.setCenter(latLng)
       })
     } else {
       locationTag.innerHTML = "Geolocation isn't supported by your browser."
