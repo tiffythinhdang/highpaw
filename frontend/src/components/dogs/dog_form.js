@@ -14,6 +14,40 @@ class DogForm extends React.Component {
     this.handleFile = this.handleFile.bind(this);
   }
 
+  uploadFile(file, signedRequest, url) {
+    const xhr = new XMLHttpRequest();
+    xhr.open('PUT', signedRequest);
+    xhr.onreadystatechange = () => {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          // document.getElementById('avatar-url').value = url;
+          this.setState({ profilePhotoUrl: url})
+        }
+        else {
+          alert('Could not upload file.');
+        }
+      }
+    };
+    xhr.send(file);
+  }
+
+  getSignedRequest(file) {
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', `/sign-s3?file-name=${file.name}&file-type=${file.type}`);
+    xhr.onreadystatechange = () => {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          const response = JSON.parse(xhr.responseText);
+          this.uploadFile(file, response.signedRequest, response.url);
+        }
+        else {
+          alert('Could not get signed URL.');
+        }
+      }
+    };
+    xhr.send();
+  }
+
   handleChange(type) {
     return (e) => {
       if (e.target.tagName === "SELECT") {changeSelectorColor(e.target)}
@@ -23,12 +57,13 @@ class DogForm extends React.Component {
 
   handleFile(e) {
     const file = e.currentTarget.files[0];
-    const fileReader = new FileReader();
-    fileReader.onloadend = () => {
-      this.setState({ photoFile: file, profilePhotoUrl: fileReader.result });
-    }
+    // const fileReader = new FileReader();
+    // fileReader.onloadend = () => {
+    //   this.setState({ photoFile: file, profilePhotoUrl: fileReader.result });
+    // }
     if (file) {
-      fileReader.readAsDataURL(file);
+      // fileReader.readAsDataURL(file);
+      this.getSignedRequest(file);
     }
   }
 
