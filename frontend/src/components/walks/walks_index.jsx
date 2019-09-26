@@ -1,5 +1,5 @@
 import React from 'react';
-import WalksIndexItem from './walks_index_item';
+import WalksIndexItemContainer from './walks_index_item_container';
 import '../../stylesheets/walks_index.scss';
 import { Link } from 'react-router-dom';
 
@@ -13,10 +13,11 @@ class WalksIndex extends React.Component {
   }
 
   render() {
-
+    if (!this.props.walks) return null;
+// debugger
     let walks = this.props.walks.map(walk => {
       return(
-        <WalksIndexItem walk={walk} fetchDog={this.props.fetchDog}/>
+        <WalksIndexItemContainer key={walk.id} walk={walk}/>
       )
     })
 

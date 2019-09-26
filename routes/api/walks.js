@@ -22,7 +22,7 @@ router.get('/:id', (req, res) => {
     .catch(err => res.status(404).json({ nowalksfound: 'No walk found with that ID' }));
 });
 
-router.post('/',
+router.post('/create',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
 
@@ -37,15 +37,18 @@ router.post('/',
     //   return res.json(dog)
     // })
 
-    Dog.find({ owner: { $in: req.user.id } }).then(dogsArr => {
+    // Dog.find({ owner: { $in: req.user.id } }).then(dogsArr => {
 
-      if (dogsArr.length < 1) {
-        return res.status(404).json({ dog: 'Must walk at least one dog'})
-      }
-      
+    //   if (dogsArr.length < 1) {
+    //     return res.status(404).json({ dog: 'Must walk at least one dog'})
+
+    //   }
+
+      console.log(req.body.dogs.length)
+      console.log(res)
       const newWalk = new Walk({
-        // dog: req.body.dog, 
-        dogs: dogsArr,
+        dogs: req.body.dogs, 
+        // dogs: dogsArr,
         user: req.user.id,
         // user: req.body.user, // req.user.id 
         //
@@ -53,7 +56,7 @@ router.post('/',
 
       newWalk.save().then(walk => res.json(walk));
 
-    })
+    // })
   }
 );
 

@@ -10,9 +10,9 @@ const dogsReducer = (state = {}, action) => {
 
   switch (action.type) {
     case RECEIVE_DOGS:
-      action.dogs.data.forEach(dog => newState[dog._id] = dog)
-      return newState;
-
+      // action.dogs.data.forEach(dog => newState[dog._id] = dog)
+      // return newState
+    return action.dogs.data // ??
     case RECEIVE_A_DOG:
       return Object.assign({}, state, { [action.dog.data._id]: action.dog.data });
   

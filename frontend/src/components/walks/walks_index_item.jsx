@@ -8,12 +8,13 @@ class WalksIndexItem extends React.Component {
   }
 
   componentDidMount() {
-    // this.props.fetchDog(this.props.walk.dog[0])
+    this.props.fetchDogsFromWalk(this.props.walk._id)
   }
 
   render() {
-    // debugger;
+    debugger;
     let walk = this.props.walk
+    // if (this.props.dogs.length < 1) return null;
 
     return(
       <div className="walks-items-container">
@@ -21,7 +22,7 @@ class WalksIndexItem extends React.Component {
           <div className="walks-dog-information-container">
             <div className="walks-dog-icon"></div>
             <div className="walks-dog-name-container">
-              <p className="walks-dog-name">dog1</p>
+              <p className="walks-dog-name"></p>
               <p className="walks-dog-age">age</p>
             </div>
           </div>
