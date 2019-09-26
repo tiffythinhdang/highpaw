@@ -1,6 +1,6 @@
 import { RECEIVE_ALL_WALKS, RECEIVE_WALK, REMOVE_WALK } from '../actions/walk_actions';
 
-const WalkReducer = (state={}, action) => {
+const walkReducer = (state={}, action) => {
   Object.freeze(state);
 
   switch(action.type) {
@@ -17,4 +17,4 @@ const WalkReducer = (state={}, action) => {
   }
 };
 
-export default WalkReducer;
+export default walkReducer;

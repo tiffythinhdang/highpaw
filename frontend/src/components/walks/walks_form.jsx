@@ -13,6 +13,7 @@ class WalksForm extends React.Component {
   //   walk.dogs.forEach(dog => {
   //     this.props.fetchDog(dog)
   //   })
+    this.props.fetchDogsFromUser(this.props.currentUser.id)
   }
 
   // handleSubmit() {
