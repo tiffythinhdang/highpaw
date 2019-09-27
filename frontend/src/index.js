@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const io = require('socket.io-client');
   const port = process.env.PORT || 5000;
 
-  let walks = io.connect(process.env.PORT ? `http://highpaw.herokuapp.com:${10001}/walks` : `http://localhost:${10001}/walks`)
+  let walks = io.connect(process.env.mongoURI ? `http://highpaw.herokuapp.com:${10001}/walks` : `http://localhost:${10001}/walks`)
 
   if (localStorage.jwtToken) {
     setAuthToken(localStorage.jwtToken);
