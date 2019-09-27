@@ -31,7 +31,7 @@ export default class Map extends React.Component {
   componentDidMount() {
     
     const mapOptions = {
-      center: { lat: 37.7758, lng: -122.435 }, // this is SF
+      center: { lat: 37.798887, lng: -122.401373 }, // this is SF
       zoom: 17
     };
 
@@ -69,7 +69,8 @@ export default class Map extends React.Component {
 
         let marker = new google.maps.Marker({
           position: location,
-          map: this.map
+          map: this.map,
+          label: user
         })
 
         this.state.markers[user] = marker;
@@ -85,11 +86,11 @@ export default class Map extends React.Component {
           let latLng = { lat: position.coords.latitude, lng: position.coords.longitude }
 
           let data = { currentUser: this.props.currentUser , latLng}
-          
+          console.log(latLng);
           walks.emit('sendLocation', data)
           // debugger;
         })
-      }, 10000)
+      }, 4000)
     } else {
       locationTag.innerHTML = "Geolocation isn't supported by your browser."
     }
