@@ -10,7 +10,7 @@ export default class Chat extends React.Component {
   }
 
   componentDidMount() {
-    this.chat = io.connect(process.env.PORT ? `http://highpaw.herokuapp.com:${process.env.PORT + 1}` : `http://localhost:${port + 1}/walks`)
+    this.chat = io.connect(process.env.PORT ? `http://highpaw.herokuapp.com:${10001}/walks` : `http://localhost:${10001}/walks`);
 
     this.chat.emit('joinRoom', 'chattest')
 
