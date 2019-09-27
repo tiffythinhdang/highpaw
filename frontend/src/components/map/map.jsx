@@ -40,7 +40,7 @@ export default class Map extends React.Component {
 
     const locationTag = document.getElementById('demo');
 
-    let walks = io.connect(process.env.PORT ? `http://highpaw.herokuapp.com:${10001}/walks` : `http://localhost:${10001}/walks`);
+    let walks = io.connect(process.env.mongoURI ? `http://highpaw.herokuapp.com:${10001}/walks` : `http://localhost:${10001}/walks`);
 
     walks.on('welcome', (msg) => {
       console.log('Received: ', msg)
