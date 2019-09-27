@@ -1,64 +1,35 @@
 
-import * as DogAPIUtil from '../util/dogs_api_util';
+import * as UserAPIUtil from '../util/users_api_util';
 
 export const RECEIVE_A_USER = "RECEIVE_A_USER";
 
-export const RECEIVE_DUser_ERRORS = "RECEIVE_DUser_ERRORS";
-export const CLEAR_DOG_ERRORS = "CLEAR_DOG_ERRORS";
+export const RECEIVE_USER_ERRORS = "RECEIVE_USER_ERRORS";
+export const CLEAR_USER_ERRORS = "CLEAR_USER_ERRORS";
 
 // actions
-export const receiveDogs = dogs => ({
-  type: RECEIVE_DOGS,
-  dogs
-});
-
-export const receiveADog = dog => ({
+export const receiveAUser = user => ({
   type: RECEIVE_A_USER,
-  dog
+  user
 });
 
-export const receiveDogErrors = errors => ({
-  type: RECEIVE_DUser_ERRORS,
+export const receiveUserErrors = errors => ({
+  type: RECEIVE_USER_ERRORS,
   errors
 });
 
-export const clearDogErrors = () => ({
-  type: CLEAR_DOG_ERRORS
+export const clearUserErrors = () => ({
+  type: CLEAR_USER_ERRORS
 });
 
 // thunk actions
-export const fetchDogsFromWalk = (walkId) => dispatch => (
-  DogAPIUtil.fetchDogsFromWalk(walkId)
-    .then(dogs => dispatch(receiveDogs(dogs)))
-    .catch(err => dispatch(receiveDogErrors(err.response.data)))
+export const fetchAUser = (id) => dispatch => (
+  UserAPIUtil.fetchAUser(id)
+    .then(user => dispatch(receiveAUser(user)))
+    .catch(err => dispatch(receiveUserErrors(err.response.data)))
 );
 
-export const fetchDogsFromUser = (userId) => dispatch => (
-  DogAPIUtil.fetchDogsFromUser(userId)
-    .then(dogs => dispatch(receiveDogs(dogs)))
-    .catch(err => dispatch(receiveDogErrors(err.response.data)))
-);
-
-export const fetchADog = (id) => dispatch => (
-  DogAPIUtil.fetchADog(id)
-    .then(dog => dispatch(receiveADog(dog)))
-    .catch(err => dispatch(receiveDogErrors(err.response.data)))
-);
-
-export const createADog = (data) => dispatch => (
-  DogAPIUtil.createADog(data)
-    .then(dog => dispatch(receiveADog(dog)),
-      err => dispatch(receiveDogErrors(err.response.data)))
-);
-
-export const updateADog = (data) => dispatch => (
-  DogAPIUtil.updateADog(data)
-    .then(dog => dispatch(receiveADog(dog)),
-      err => dispatch(receiveDogErrors(err.response.data)))
-);
-
-export const deleteADog = (id) => dispatch => (
-  DogAPIUtil.deleteADog(id)
-    .then(dog => dispatch(receiveADog(dog)))
-    .catch(err => dispatch(receiveDogErrors(err.response.data)))
+export const updateAUser = (data) => dispatch => (
+  UserAPIUtil.updateAUser(data)
+    .then(user => dispatch(receiveAUser(user)),
+      err => dispatch(receiveUserErrors(err.response.data)))
 );
