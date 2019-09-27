@@ -1,0 +1,167 @@
+@import './util.scss';
+
+.walks-index-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+
+  // border: 1px dotted white;
+}
+
+.walks-index-top-buttons-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 12%;
+  width: 95%;
+
+  // border: 1px dotted green;
+}
+
+.walks-index-map-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 144px;
+  height: 48px;
+  left: 216px;
+  top: 170px;
+  background: #FAFAFA;
+  border: 1px solid #3C3C3C;
+  box-sizing: border-box;
+  border-radius: 200px; 
+
+  // border: 1px dotted purple
+}
+
+.walks-index-map-btn:hover {
+  cursor: pointer;
+}
+
+.walks-index-form-btn {
+  // height: 50px;
+  // width: 50px;
+
+  // margin-right: 10px;
+  display: flex;
+  justify-content: center;
+  width: 144px;
+  height: 48px;
+  left: 216px;
+  top: 170px;
+  background: #FAFAFA;
+  border: 1px solid #3C3C3C;
+  box-sizing: border-box;
+  border-radius: 200px; 
+  // border: 1px dotted purple
+}
+
+.walks-index-form-btn:hover {
+  cursor: pointer;
+}
+
+.walks-head {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 12%;
+  width: 95%;
+
+  // border: 1px dotted red;
+}
+
+.walks-items-container {
+  display: flex;
+  flex-direction: column;
+  height: 71%;
+  width: 95%;
+  flex-wrap: nowrap;
+  overflow-y: auto;
+
+  // border: 1px dotted teal
+}
+
+.walk-item-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 15%;
+  width: 100%;
+  margin-bottom: 10px;
+
+  background: white;
+  box-shadow: 0px 3px 11px
+    rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  // z-index: 50;
+  // border: 1px dotted orange;
+}
+
+
+.walk-dogs-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  width: 50%;
+}
+
+.walks-dog-information-container {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  height: 95%;
+  width: auto;
+  flex: 0 0 50%;
+  // z-index: 1000;
+  // border: 1px dotted red;
+}
+
+.walks-dog-icon {
+  height: 50px;
+  width: 50px;
+
+  margin: 0px 10px;
+
+  // border: 1px dotted green
+}
+
+.walks-dog-name-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  white-space: nowrap;
+  height: 50px;
+  width: auto;
+
+}
+
+.walks-request-container {
+  height: auto;
+  width: auto;
+  margin-right: 5px;
+  // border: 1px dotted black;
+}
+
+.walks-head-text {
+  font-size: 40px;
+}
+
+.your-dog-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 78px;
+  height: 34px;
+  font-size: 14px;
+  border-radius: 150px;
+  background-color: $main_pink;
+  color: $white;
+}

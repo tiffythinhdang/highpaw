@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 const keys = require('../../config/keys');
 const passport = require('passport');
 const User = require('../../models/User');
+const Request = require('../../models/Request');
 
 const validateRegisterInput = require('../../validation/users/register');
 const validateLoginInput = require('../../validation/users/login');
@@ -29,6 +30,7 @@ router.post("/register", (req, res) => {
         password: req.body.password,
         age: req.body.age,
         gender: req.body.gender,
+        profilePhotoUrl: req.body.profilePhotoUrl,
         // location: req.body.location
       });
 
@@ -94,7 +96,8 @@ router.post("/login", (req, res) => {
   });
 });
 
-router.patch("/", passport.authenticate('jwt', {session: false}), (req, res) => {
+// Update current user
+router.patch("/:id", passport.authenticate('jwt', {session: false}), (req, res) => {
   const { errors, isValid } = validateUpdateInput(req.body);
   if (!isValid) {
     return res.status(400).json(errors);
@@ -112,8 +115,30 @@ router.patch("/", passport.authenticate('jwt', {session: false}), (req, res) => 
   });
 });
 
-router.get("/", passport.authenticate('jwt', {session: false}), (req, res) => {
-  res.json(req.user)
+// Show a user
+router.get("/:id", 
+  passport.authenticate('jwt', 
+  {session: false}), 
+  (req, res) => {
+    User.findById(req.params.id)
+      .then(user => res.json(user))
+      .catch(err =>
+        res.status(404).json({ notweetfound: 'No user found' })
+      );
 });
+
+router.get('/requests/:requestId', passport.authenticate('jwt', {session: false}),
+  (req, res) => {
+    // console.log(req)
+    // // console.log(req.body)
+    // Request.findOne({ requester: req.user._id}).then(requester => console.log(requester))
+    // // console.log(requester + 'test2')
+    // console.log(requester)
+    // console.log(req.params.requestId)
+    User.findOne({ _id: req.params.requestId }).then(user => {
+      res.json(user)
+    })
+    // console.log(user + 'test')
+})
 
 module.exports = router;

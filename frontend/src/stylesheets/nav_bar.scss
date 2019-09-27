@@ -27,6 +27,8 @@
   width: 50%;
   padding: 15px;
   background: $main_pink;
+  z-index: 2;
+  box-shadow: 8px 0 4px -2px rgba(0, 0, 0, 0.25);
 }
 
 #nav-bar-menu .link {
@@ -36,4 +38,16 @@
   color: $white;
   font-size: 18px;
   z-index: 2;
+}
+
+#nav-bar-menu .link.inactive {
+  color: $dark_pink;
+}
+
+.login.link a:hover{
+  cursor: pointer;
+}
+
+.link button:hover {
+  cursor: pointer;
 }

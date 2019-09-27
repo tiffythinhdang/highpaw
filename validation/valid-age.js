@@ -1,5 +1,6 @@
 const validAge = num => {
-  return typeof num === 'Integer' && num > 0;
+  return typeof num === 'number' && num > 0;
 }
+
 
 module.exports = validAge;

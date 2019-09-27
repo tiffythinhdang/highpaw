@@ -1,5 +1,6 @@
 const Validator = require('validator');
 const validText = require('./valid-text');
+const validAge = require('./valid-age');
 
 module.exports = function validateDogInput(data) {
   let errors = {};
@@ -7,13 +8,13 @@ module.exports = function validateDogInput(data) {
   data.name = validText(data.name) ? data.name : '';
   data.breed = validText(data.breed) ? data.breed : '';
   data.gender = validText(data.gender) ? data.gender : '';
-  data.age = validText(data.age) ? data.age : '';
-
+  data.profilePhotoUrl = validText(data.profilePhotoUrl) ? data.profilePhotoUrl : '';
+  
   if (!validAge(parseInt(data.age))) {
     errors.age = "Invalid age";
   }
   
-  if (Validator.isEmpty(data.age)) {
+  if (Validator.isEmpty(String(data.age))) {
     errors.age = 'Age field is required';
   }
 
@@ -26,15 +27,23 @@ module.exports = function validateDogInput(data) {
   }
 
   if (Validator.isEmpty(data.breed)) {
-    errors.name = 'Breed field is required';
-  }
-
-  if (Validator.isEmpty(data.gender)) {
-    errors.name = 'Gender field is required';
+    errors.breed = 'Breed field is required';
   }
 
   if (!Validator.isIn(data.gender, ['male', 'female', 'other'])) {
-    errors.name = 'Gender has to be in one of these values: male, female, other';
+    errors.gender = 'Gender has to be in one of these values: male, female, other';
+  }
+
+  if (Validator.isEmpty(data.gender)) {
+    errors.gender = 'Gender field is required';
+  }
+
+  if (Validator.isEmpty(data.profilePhotoUrl)) {
+    errors.profilePhotoUrl = 'Profile photo is required';
+  }
+
+  if (!Validator.isURL(data.profilePhotoUrl)) {
+    errors.profilePhotoUrl = 'Uploading photo failed';
   }
 
   return {

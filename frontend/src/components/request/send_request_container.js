@@ -1,14 +1,22 @@
-import { sendRequest } from '../../actions/request_actions';
+import { sendRequest, deleteRequest } from '../../actions/request_actions';
 import { connect } from 'react-redux';
 import SendRequest from './send_request';
 
+const mapStateToProps = state => {
+  return {
+    requester: state.session.user.id,
+    
+  }
+}
+
 const mapDispatchToProps = dispatch => {
   return {
-    paw: walkId => dispatch(sendRequest(walkId))
+    paw: walkId => dispatch(sendRequest(walkId)),
+    deleteRequest: requestId => dispatch(deleteRequest(requestId))
   }
 }
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(SendRequest);

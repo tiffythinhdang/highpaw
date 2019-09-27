@@ -11,6 +11,7 @@ module.exports = function validateRegisterInput(data) {
   data.password2 = validText(data.password2) ? data.password2 : '';
   data.gender = validText(data.gender) ? data.gender : '';
   data.age = validText(data.age) ? data.age : '';
+  data.profilePhotoUrl = validText(data.profilePhotoUrl) ? data.profilePhotoUrl : '';
 
   // if (!validAge(data.age)) {
   //   errors.age = "Invalid age";
@@ -58,6 +59,14 @@ module.exports = function validateRegisterInput(data) {
 
   if (!Validator.isInt(data.age, {min: 0})) {
     errors.age = 'Age is invalid'
+  }
+
+  if (Validator.isEmpty(data.profilePhotoUrl)) {
+    errors.profilePhotoUrl = 'Profile photo is required';
+  }
+
+  if (!Validator.isURL(data.profilePhotoUrl)) {
+    errors.profilePhotoUrl = 'Uploading photo failed';
   }
 
   return {

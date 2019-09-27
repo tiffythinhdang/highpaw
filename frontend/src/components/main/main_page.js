@@ -1,13 +1,12 @@
 import React from 'react';
-import Map from '../map/map';
+import MapContainer from '../map/map_container';
 
 class MainPage extends React.Component {
 
   render() {
     return (
       <div>
-        <h1>Splash Page</h1>
-        <Map />
+        <MapContainer />
       </div>
     );
   }

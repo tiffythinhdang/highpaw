@@ -23,6 +23,7 @@ body {
   background-image: url('../assets/background.png');
   font-family: 'Varela Round', sans-serif;
   font-size: 14px;
+  //position: fixed;
 }
 
 ul {
@@ -68,6 +69,7 @@ input[type="submit"] {
 }
 
 // Button settings
+
 .button {
   text-align: center;
   margin: 8px 0 8px 0;
@@ -77,7 +79,7 @@ input[type="submit"] {
   width: 78px;
   height: 34px;
   font-size: 14px;
-  border-radius: 150px; 
+  border-radius: 150px;
 }
 
 .medium.button {
@@ -116,7 +118,15 @@ input[type="submit"] {
 }
 
 // Form Input settings
-form.input {
+.form.main.header {
+  font-family: Chilanka;
+  font-size: 40px;
+  line-height: 44px;
+  color: $black_gray;
+  text-align: center;
+}
+
+.form.input {
   width: 300px;
   height: 54px;
   border-radius: 8px;
@@ -124,15 +134,48 @@ form.input {
   border: 1px solid $black_gray;
   box-sizing: border-box;
   padding-left: 15px;
-  margin: 10px 0 10px 0; 
+  margin: 10px 0 10px 0;
+  font-size: 16px;
+}
+
+.form.main.header {
+  font-family: Chilanka;
+  font-size: 40px;
+  line-height: 44px;
+  color: $black_gray;
+  text-align: center;
 }
 
 .form.input::placeholder {
   color: $light_gray;
 }
 
-.form.input:focus {
+.form.input:focus, .form.input select:focus {
   border: 2px solid $main_pink;
+  outline: none;
+}
+
+select {
+  font-size: 16px;
+  color:  $light_gray;
+}
+
+option {
+  color: $black_gray;
+}
+
+option:first-child{
+  color: $light_gray;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 // Icons
@@ -141,12 +184,74 @@ form.input {
   width: 25px;
 }
 
+.medium.icon {
+  height: 50px;
+  width: 50px;
+}
+
+.light.icon {
+  opacity: 0.3;
+}
+
 .icon:hover {
   cursor: pointer;
 }
 
-//Map
+// Profile Picture setting
+.profile-photo.container {
+  width: 75px;
+  height: 75px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  border: 3px solid $white;
+  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
+  background-color: $light_gray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-photo.container > img{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-photo.container > .icon{
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+}
+
+// Map
 #map-container {
-  width: 500px;
+  width: 100%;
   height: 500px;
+} 
+
+// Errors
+.errors {
+  color: red;
+}
+
+// Links
+.field-input.active-link{
+  text-decoration: underline;
+  color: $main_pink;
+}
+
+.app {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+.inactive {
+  pointer-events: none;
+  color: lightgrey;
+}
+
+.hidden {
+  display: none;
 }
