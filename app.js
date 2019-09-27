@@ -39,8 +39,6 @@ aws.config.region = 'us-west-1';
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Server is running on port ${port}`));
 
-
-
 // AWS
 app.get('/sign-s3', (req, res) => {
   const s3 = new aws.S3();

@@ -105,6 +105,7 @@ export default class Map extends React.Component {
       <div>
 
         <div id="map-container" ref={map => this.mapNode = map}>
+
         </div>
         <p id="demo"></p>
       </div>
