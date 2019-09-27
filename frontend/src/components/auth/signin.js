@@ -53,14 +53,14 @@ export default class SignIn extends React.Component {
                    placeholder={ "Email" }
                    className="form input"
             />
-            <h3 className="errors">{ this.props.errors.email }</h3>
+            <div className="errors">{ this.props.errors.email }</div>
             <input type="password"
                    value={ this.state.password }
                    onChange={ this.update('password') }
                    placeholder={ "Password" }
                    className="form input"
             />
-            <h3 className="errors">{ this.props.errors.password }</h3>
+            <div className="errors">{ this.props.errors.password }</div>
             <input type="submit" value="Submit" className="main large button"/>
             <button className="tertiary large button" onClick={this.handleCancel}>Cancel</button>
           </div>

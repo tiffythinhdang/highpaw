@@ -89,7 +89,12 @@ io
     socket.on('sendLocation', location => {
       io
         .of('/walks')
-        .in('testing').emit('sendLocation',location) 
+        .in('testing').emit('sendLocation', location) 
+    })
+    socket.on('sendMessage', message => {
+      io
+        .of('/walks')
+        .in('chattest').emit('sendMessage', message)
     })
   })
 

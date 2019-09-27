@@ -1,13 +1,22 @@
-import { RECEIVE_USER } from '../actions/user_actions';
 
-export const userReducer = (state = {}, action) => {
+import {
+  RECEIVE_A_USER, RECEIVE_USER
+} from '../actions/user_actions';
+
+const usersReducer = (state = {}, action) => {
   Object.freeze(state);
-  let newState = Object.assign({}, state);
-  switch(action.type) {
-    case RECEIVE_USER:
-      newState[action.user.data._id] = action.user.data;
-      return newState;
+
+  switch (action.type) {
+    case RECEIVE_A_USER:
+      return Object.assign({}, state, { [action.user.data._id]: action.user.data });
+   case RECEIVE_USER:
+    newState[action.user.data._id] = action.user.data;
+    return newState;
+
     default:
       return state;
   }
-}
+};
+
+export default usersReducer;
+
