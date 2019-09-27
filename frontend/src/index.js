@@ -51,12 +51,6 @@ document.addEventListener('DOMContentLoaded', () => {
   window.login = login;
   window.setAuthToken = setAuthToken;
   window.getState = store.getState;
-
-  window.createADog = createADog;
-  window.fetchDogsFromUser = fetchDogsFromUser;
-  window.fetchDogsFromWalk = fetchDogsFromWalk;
-  window.deleteADog = deleteADog;
-  window.fetchADog = fetchADog;
   window.dispatch = store.dispatch;
   // testing codes end
 

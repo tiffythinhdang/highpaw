@@ -38,11 +38,10 @@ export default class Chat extends React.Component {
     const msg = document.createElement('p');
     const str = document.createElement('strong');
     const name = this.props.currentUserName
-    
     str.innerText += `${name}:  `;
     msg.append(str)
     msg.innerText += input.value
-    
+    input.value = "";
     this.chat.emit('sendMessage', msg.innerText)
   }
 
@@ -52,9 +51,12 @@ export default class Chat extends React.Component {
         <div id="chat-output">
           
         </div>
-        <input type="text" id="chat-name" placeholder="Name"/>
-        <input type="text" id="chat-input" placeholder="Message"/>
-        <button className="small main button" onClick={this.handleSend}>Send</button>
+        <form>
+
+          <input type="text" id="chat-input" placeholder="Message"/>
+          <button className="small main button" onClick={this.handleSend}>Send</button>
+
+        </form>
       </div>
     )
   }

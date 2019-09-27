@@ -17,9 +17,13 @@ class Menu extends React.Component {
   getLinks() {
     if (this.props.loggedIn) {
       return (
-        <div className="personal greeting">
-          <p>Welcome back!</p>
-          <button onClick={this.logoutUser}>Logout</button>
+        <div className="session links">
+          <div className="link">
+            <p>Welcome back!</p>
+          </div>
+          <div className="link">
+            <button onClick={this.logoutUser}>Logout</button>
+          </div>
         </div>
       );
     } else {

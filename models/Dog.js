@@ -29,6 +29,14 @@ const DogSchema = new Schema({
     type: String,
     required: true
   },
+  profilePhotoUrl: {
+    type: String,
+    required: true
+  },
+  photoURLs: {
+    type: Array,
+    default: []
+  },
   date: {
     type: Date,
     default: Date.now

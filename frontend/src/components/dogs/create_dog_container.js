@@ -9,7 +9,8 @@ const mapStateToProps = state => {
       name: "",
       age: "",
       gender: "",
-      breed: ""
+      breed: "",
+      profilePhotoUrl: ""
     },
     formType: "Register",
     errors: state.errors.dog
