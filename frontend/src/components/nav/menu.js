@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import iconMenuWhite from '../../assets/small_icon_menu_white.png';
+import '../../stylesheets/index.scss';
 
 class Menu extends React.Component {
   constructor(props) {
@@ -21,11 +22,21 @@ class Menu extends React.Component {
           <div className="link inactive">
             <p>Welcome back!</p>
           </div>
+
+          <div className="link" onClick={this.props.toggleMenu}>
+            <Link to={`/`}>Main</Link>
+          </div>
+
+          <div className="link" onClick={this.props.toggleMenu}>
+            <Link to={`/walks`}>Active Walks</Link>
+          </div>
+
           <div className="link" onClick={this.props.toggleMenu}>
             <Link to={`/users/${this.props.currentUserId}`}>Profile</Link>
           </div>
-          <div className="link" onClick={this.props.toggleMenu}>
-            <button onClick={this.logoutUser}>Logout</button>
+
+          <div className="link logout-button-container" onClick={this.props.toggleMenu}>
+            <button className="medium secondary button" onClick={this.logoutUser}>Logout</button>
           </div>
         </div>
       );
