@@ -3,6 +3,7 @@ import * as RequestApiUtil from '../util/request_api_util';
 export const RECEIVE_REQUESTS = 'RECEIVE_REQUESTS';
 export const RECEIVE_REQUEST = 'RECEIVE_REQUEST';
 export const RECEIVE_REQUEST_ERRORS = 'RECEIVE_REQUEST_ERRORS';
+export const REMOVE_REQUEST = 'REMOVE_REQUEST';
 
 const receiveRequests = (requests) => ({
   type: RECEIVE_REQUESTS,
@@ -17,6 +18,11 @@ const receiveRequest = (request) => ({
 const receiveRequestErrors = (errors) => ({
   type: RECEIVE_REQUEST_ERRORS,
   errors
+})
+
+const removeRequest = requestId => ({
+  type: REMOVE_REQUEST,
+  requestId
 })
 
 export const sendRequest = walkId => dispatch => (
@@ -49,6 +55,11 @@ export const fetchActiveRequest = userId => dispatch => (
       request => dispatch(receiveRequest(request)),
       err => dispatch(receiveRequestErrors(err.response.data))
     )
+)
+
+export const deleteRequest = requestId => dispatch => (
+  RequestApiUtil.deleteRequest(requestId)
+    .then(request => dispatch(removeRequest(requestId)))
 )
 
 window.fetchRequests = fetchRequests;

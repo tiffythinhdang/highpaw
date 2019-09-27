@@ -1,71 +1,104 @@
 import '../../stylesheets/walks_show.scss'
 
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+import Map from '../map/map'
+import WalkShowItemContainer from './walks_show_item_container';
 
 class WalksShow extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      map: false
+    }
+    this.handleDelete = this.handleDelete.bind(this);
+    this.handleMapBtn = this.handleMapBtn.bind(this);
+    this.handleReqBtn = this.handleReqBtn.bind(this);
   }
 
-  // componentDidMount() {
-  //   this.props.fetchDogsFromWalk(this.props.walk._id)
-  // }
+  componentDidMount() {
+    // debugger
+    this.props.fetchRequests(this.props.match.params.id)
+  }
 
-  renderDogs(dog) {
-    return (
-      <Link to={`/dogs/${dog._id}`} key={dog._id} >
-        <div className="walks-dog-information-container">
-          <div className="walks-dog-icon">
-            <img
-              src="https://www.thesprucepets.com/thmb/KEkwV1YeL3obCMo0YSPDXTCxjRA=/450x0/filters:no_upscale():max_bytes(150000):strip_icc()/19933184_104417643500613_5541725731421159424_n-5ba0548546e0fb0050edecc0.jpg"
-              alt="dog-pic"
-              className="profile-img"
-            />
-          </div>
-          <div className="walks-dog-name-container">
-            <p className="walks-dog-name">{dog.name}</p>
-            <p className="walks-dog-age">{dog.age} {dog.age > 1 ? "yrs old" : "yr old"}</p>
+  handleDelete() {
+    this.props.deleteWalk(this.props.match.params.id)
+      .then(this.props.history.push('/walks'))
+  }
+
+  renderMap(requests) {
+    if (!this.state.map) {
+      return (
+        <div className="walks-req-container">
+          <p className="walks-req-head">Active requests</p>
+          <div className="walks-req-index">
+            {requests}
           </div>
         </div>
-      </Link>
-    )
+      )
+    } else {
+      return (
+        <div className="walks-map-container">
+          <Map />
+        </div> 
+      )
+    }
+  }
+
+  renderButtons() {
+    if (!this.state.map) {
+      return <button className="walks-show-map-btn" onClick={this.handleMapBtn}>Show Map</button>
+    } else {
+      return <button className="walks-show-map-btn" onClick={this.handleReqBtn}>Show Requests</button>
+    }
+  }
+
+  handleMapBtn() {
+    this.setState({ map: true })
+  }
+
+  handleReqBtn() {
+    this.setState({ map: false })
   }
 
   render() {
     // debugger;
-    // let walk = this.props.walk
-
-    // let dogs = this.props.dogs.map(dog => {
-    //   if (this.props.walk.dogs.includes(dog._id)) {
-    //     return (
-    //       this.renderDogs(dog)
-    //     )
-    //   }
-    // })
+    let requests = this.props.requests.map(request => {
+      return (
+        <WalkShowItemContainer request={request} />
+      )
+    })
 
 
     return (
 
       <div className="walks-show-main">
         <div className="walks-show-buttons-container">
-          <button className="walks-show-back-btn"></button>
-          <button className="walks-show-chat-btn"></button>
+          <Link to="/walks" >
+            <button className="walks-show-back-btn">Back</button>
+          </Link>
+          <button className="walks-show-chat-btn">Chat</button>
         </div>
-        <div className="walks-head-container"></div>
-        <div className="walks-map-container"></div>
-        <button className="walks-delete-btn">Delete walk</button>
+        <div className="walks-head-container">Your walk</div>
+        {this.renderMap(requests)}
+        {/* <div className="walks-map-container">
+          <Map />
+        </div> */}
+        {/* <div className="walks-req-container">
+          <p className="walks-req-head">Active requests</p>
+          <div className="walks-req-index">
+            {requests}
+          </div>
+        </div> */}
+        <div className="walks-delete-button-container">
+          <button className="walks-delete-btn" onClick={this.handleDelete}>Delete walk</button>
+          {this.renderButtons()}
+          {/* <button className="walks-show-map-btn" onClick={this.handleMapBtn}>Show Map</button> */}
+        </div>
       </div>
 
-      // <div className="walk-item-container">
-      //   <div className="walk-dogs-container">
-      //     {dogs}
-      //   </div>
-      //   <div className="walks-request-container">
-      //   </div>
-      // </div>
     )
   }
 }
 
-export default WalksShow;
+export default withRouter(WalksShow);

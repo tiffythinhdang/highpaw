@@ -246,3 +246,12 @@ label {
   width: 100%;
   position: absolute;
 }
+
+.inactive {
+  pointer-events: none;
+  color: lightgrey;
+}
+
+.hidden {
+  display: none;
+}
