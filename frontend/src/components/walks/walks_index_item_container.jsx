@@ -16,7 +16,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchDogsFromWalk: id => dispatch(fetchDogsFromWalk(id)),
-    fetchRequests: walkId => dispatch(fetchRequests(walkId))
+    fetchRequests: walkId => dispatch(fetchRequests(walkId)),
     // fetchDog: id => dispatch(fetchDog(id))
   };
 };

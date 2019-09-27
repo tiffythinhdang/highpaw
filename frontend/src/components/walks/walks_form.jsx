@@ -15,7 +15,7 @@ class WalksForm extends React.Component {
 
 
   componentDidMount() {
-
+// debugger
     this.props.fetchDogsFromUser(this.props.currentUser.id)
   }
 

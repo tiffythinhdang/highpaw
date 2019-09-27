@@ -68,7 +68,51 @@
   border: 1px dotted green
 }
 
+.walks-req-container {
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+  height: 68%; 
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.walks-req-head {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.walks-req-index {
+  display: flex;
+  flex-direction: column;
+  height: 90%;
+  width: 95%;
+  flex-wrap: nowrap;
+  overflow-y: auto;
+
+  border: 1px dotted purple
+}
+
+.walks-delete-button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .walks-delete-btn {
+  display: flex;
+  justify-content: center;
+  width: 144px;
+  height: 40px;
+  left: 216px;
+  top: 170px;
+  background: red;
+  border: 1px solid #3C3C3C;
+  box-sizing: border-box;
+  border-radius: 200px; 
+}
+
+.walks-show-map-btn {
   display: flex;
   justify-content: center;
   width: 144px;
@@ -78,5 +122,37 @@
   background: #FAFAFA;
   border: 1px solid #3C3C3C;
   box-sizing: border-box;
-  border-radius: 200px; 
+  border-radius: 200px;  
+}
+
+.request-item-main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 15%;
+  width: 100%;
+  margin-bottom: 10px;
+
+  background: white;
+  box-shadow: 0px 3px 11px
+    rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+}
+
+.request-user-information-container {
+
+}
+
+.req-user-icon {
+
+}
+
+.req-user-name-container {
+
+}
+
+.req-user-name {
+  
 }

@@ -1,4 +1,4 @@
-import { RECEIVE_REQUEST, RECEIVE_REQUESTS  } from '../actions/request_actions';
+import { RECEIVE_REQUEST, RECEIVE_REQUESTS, REMOVE_REQUEST  } from '../actions/request_actions';
 
 
 export const requestsReducer = (state = {}, action) => {
@@ -14,6 +14,9 @@ export const requestsReducer = (state = {}, action) => {
       return obj;
     case RECEIVE_REQUEST:
       newState[action.request.data._id] = action.request.data;
+      return newState;
+    case REMOVE_REQUEST:
+      delete newState[action.requestId];
       return newState;
     default:
       return state;

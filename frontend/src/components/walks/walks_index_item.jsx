@@ -46,12 +46,14 @@ class WalksIndexItem extends React.Component {
 
     // }
     // }
-    let requesters = this.props.requests.map(request => request.requester)
-    if (requesters.includes(this.props.currentUser.id)) {
-      return <SendRequestContainer walk={walk} requester={true} />
-    } else {
-      return <SendRequestContainer walk={walk} requester={false} />
-    }
+    // let requesters = this.props.requests.map(request => request.requester)
+    // if (requesters.includes(this.props.currentUser.id)) {
+    let request = this.props.requests.find(request => this.props.requests.includes(request))
+      if (request) {
+        return <SendRequestContainer walk={walk} request={request} requested={true} />
+      } else {
+        return <SendRequestContainer walk={walk} request={request} requested={false} />
+      }
   }
 
   render() {
