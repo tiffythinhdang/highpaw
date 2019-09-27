@@ -6,9 +6,15 @@ import { fetchAUser } from '../../actions/user_actions';
 
 const mapStateToProps = (state, ownProps) => {
   let userId = ownProps.match.params.id;
+
+  let currentUserId;
+  if (state.session.user) {
+    currentUserId = state.session.user.id
+  }
+
   return {
     user: state.entities.users[userId],
-    currentUserId: state.session.user.id,
+    currentUserId,
     dogs: state.entities.dogs
   }
 };
