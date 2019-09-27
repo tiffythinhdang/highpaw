@@ -47,6 +47,7 @@ router.get('/walks/:walkId',
 router.get('/user/:user_id',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
+    // console.log(req.params)
   Dog.find({ owner: req.params.user_id })
     .then(dogs => res.json(dogs))
     .catch(err =>

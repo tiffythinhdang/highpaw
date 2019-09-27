@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
-import { createWalk, fetchWalks } from '../../actions/walk_actions';
+import { deleteWalk } from '../../actions/walk_actions';
 import { fetchDogsFromWalk } from '../../actions/dogs_action';
+import { fetchRequests } from '../../actions/request_actions';
 import WalksShow from './walks_show';
 
 const mapStateToProps = state => {
@@ -8,15 +9,16 @@ const mapStateToProps = state => {
   return {
     currentUser: state.session.user,
     walks: Object.values(state.entities.walks),
+    requests: Object.values(state.entities.requests)
     // walks: state.entities.walks
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    createWalk: () => dispatch(createWalk()),
-    fetchWalks: () => dispatch(fetchWalks()),
-    fetchDogsFromWalk: id => dispatch(fetchDogsFromWalk(id))
+    deleteWalk: walkId => dispatch(deleteWalk(walkId)),
+    fetchDogsFromWalk: id => dispatch(fetchDogsFromWalk(id)),
+    fetchRequests: walkId =>  dispatch(fetchRequests(walkId)),
     // fetchDog: id => dispatch(fetchDog(id))
   };
 };

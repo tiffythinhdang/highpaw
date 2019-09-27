@@ -16,3 +16,6 @@ export const fetchActiveRequest = (userId) => {
   return axios.get(`/api/requests/users/${userId}`)
 }
 
+export const deleteRequest = id => {
+  return axios.delete(`/api/requests/${id}`)
+}

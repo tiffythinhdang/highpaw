@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 const keys = require('../../config/keys');
 const passport = require('passport');
 const User = require('../../models/User');
+const Request = require('../../models/Request');
 
 const validateRegisterInput = require('../../validation/users/register');
 const validateLoginInput = require('../../validation/users/login');
@@ -125,5 +126,21 @@ router.get("/:id",
         res.status(404).json({ notweetfound: 'No user found' })
       );
 });
+
+router.get('/requests/:requestId', passport.authenticate('jwt', {session: false}),
+  (req, res) => {
+    // console.log(req)
+    // // console.log(req.body)
+    // Request.findOne({ requester: req.user._id}).then(requester => console.log(requester))
+    // // console.log(requester + 'test2')
+    // console.log(requester)
+    // console.log(req.params.requestId)
+    User.findOne({ _id: req.params.requestId }).then(user => {
+      res.json(user)
+    })
+    // console.log(user + 'test')
+
+
+})
 
 module.exports = router;
