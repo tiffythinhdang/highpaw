@@ -36,7 +36,7 @@ export const fetchUserFromRequest = (requestId) => dispatch => {
   // debugger
   UserAPIUtil.fetchUserFromRequest(requestId)
     .then(
-      user => dispatch(receiveUser(user))
+      user => dispatch(receiveAUser(user))
 
     )
 }

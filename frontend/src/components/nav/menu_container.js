@@ -4,9 +4,16 @@ import { logout } from '../../actions/session_actions';
 import Menu from './menu';
 
 const mapStateToProps = state => {
+
+  let currentUserId;
+
+  if (state.session.user) {
+    currentUserId = state.session.user.id
+  }
+
   return {
     loggedIn: state.session.isAuthenticated,
-    currentUserId: state.session.user.id
+    currentUserId
   }
 };
 

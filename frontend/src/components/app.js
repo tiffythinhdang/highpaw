@@ -35,9 +35,9 @@ const App = () => (
       <AuthRoute exact path="/signup" component={SignUpContainer} />
 
       <ProtectedRoute path="/users/:id" component={UserShowContainer}/>
+      <Route exact path="/walks/create" component={WalksFormContainer} />
       <Route exact path="/walks/:id" component={WalksShowContainer} />
       <Route exact path="/walks" component={WalksIndexContainer} />
-      <Route exact path="/walks/create" component={WalksFormContainer} />
       <Route path="/dogs/:id/edit" component={EditDogContainer} />
       <Route path="/dogs/:id" component={DogShowContainer} />
       <Route path="/dogs" component={CreateDogContainer} />

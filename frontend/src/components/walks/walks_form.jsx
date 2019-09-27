@@ -53,9 +53,9 @@ class WalksForm extends React.Component {
     // debugger
     return (
 
-      <div className="walks-form-dogs-item-container">
+      <div className="walks-form-dogs-item-container" key={dog.name}>
         <label className="walks-form-dogs-item">
-          <input type="checkbox" value={JSON.stringify(dog)} class="walk-checkbox" onClick={this.handleCheckbox} />
+          <input type="checkbox" value={JSON.stringify(dog)} className="walk-checkbox" onClick={this.handleCheckbox} />
           <img
             src="https://www.thesprucepets.com/thmb/KEkwV1YeL3obCMo0YSPDXTCxjRA=/450x0/filters:no_upscale():max_bytes(150000):strip_icc()/19933184_104417643500613_5541725731421159424_n-5ba0548546e0fb0050edecc0.jpg"
             alt="dog-pic"
