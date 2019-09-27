@@ -14,6 +14,7 @@ import MainPage from './main/main_page';
 import Footer from './footer/footer';
 
 import CreateDogContainer from './dogs/create_dog_container';
+import EditDogContainer from './dogs/edit_dog_container';
 import DogShowContainer from './dogs/dog_show_container';
 
 import WalksIndexContainer from '../components/walks/walks_index_container';
@@ -37,6 +38,7 @@ const App = () => (
       <Route exact path="/walks/:id" component={WalksShowContainer} />
       <Route exact path="/walks" component={WalksIndexContainer} />
       <Route exact path="/walks/create" component={WalksFormContainer} />
+      <Route path="/dogs/:id/edit" component={EditDogContainer} />
       <Route path="/dogs/:id" component={DogShowContainer} />
       <Route path="/dogs" component={CreateDogContainer} />
       <Route path="/chat" component={ChatContainer} />

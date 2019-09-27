@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 import '../../stylesheets/index.scss';
 import '../../stylesheets/dog_form.scss';
@@ -12,6 +13,12 @@ class DogForm extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleFile = this.handleFile.bind(this);
+    this.handleGoBack = this.handleGoBack.bind(this);
+  }
+
+  handleGoBack(e) {
+    e.preventDefault();
+    this.props.history.goBack();
   }
 
   uploadFile(file, signedRequest, url) {
@@ -63,11 +70,10 @@ class DogForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.createADog(this.state)
+    this.props.action(this.state)
       .then(payload => {
         if (payload.dog) this.props.history.push(`/dogs/${payload.dog.data._id}`)
       })
-
   }
 
   componentWillUnmount() {
@@ -77,7 +83,7 @@ class DogForm extends React.Component {
   render() {
     return (
       <div className="create-dog form-container">
-        <h1 className="form main header">register your dog</h1>
+        <h1 className="form main header">{this.props.header}</h1>
         <form 
           className="create-dog form"
           onSubmit={this.handleSubmit}>
@@ -98,6 +104,7 @@ class DogForm extends React.Component {
 
           <input
             className="form input"
+            value={this.state.name}
             placeholder="Name"
             onChange={this.handleChange('name')}
           />
@@ -105,6 +112,7 @@ class DogForm extends React.Component {
 
           <input
             className="form input"
+            value={this.state.age}
             placeholder="Age"
             onChange={this.handleChange('age')}
           />
@@ -123,6 +131,7 @@ class DogForm extends React.Component {
 
           <input
             className="form input"
+            value={this.state.breed}
             placeholder="Breed"
             onChange={this.handleChange('breed')}
           />
@@ -133,7 +142,8 @@ class DogForm extends React.Component {
             {this.props.formType}
           </button>
           <button 
-            className="tertiary large button">
+            className="tertiary large button"
+            onClick={this.handleGoBack}>
             Cancel
           </button>
         </form>
@@ -142,4 +152,4 @@ class DogForm extends React.Component {
   }
 }
 
-export default DogForm;
+export default withRouter(DogForm);

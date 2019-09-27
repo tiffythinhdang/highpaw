@@ -30,6 +30,7 @@ router.post("/register", (req, res) => {
         password: req.body.password,
         age: req.body.age,
         gender: req.body.gender,
+        profilePhotoUrl: req.body.profilePhotoUrl,
         // location: req.body.location
       });
 
@@ -95,7 +96,8 @@ router.post("/login", (req, res) => {
   });
 });
 
-router.patch("/", passport.authenticate('jwt', {session: false}), (req, res) => {
+// Update current user
+router.patch("/:id", passport.authenticate('jwt', {session: false}), (req, res) => {
   const { errors, isValid } = validateUpdateInput(req.body);
   if (!isValid) {
     return res.status(400).json(errors);
@@ -113,8 +115,16 @@ router.patch("/", passport.authenticate('jwt', {session: false}), (req, res) => 
   });
 });
 
-router.get("/", passport.authenticate('jwt', {session: false}), (req, res) => {
-  res.json(req.user)
+// Show a user
+router.get("/:id", 
+  passport.authenticate('jwt', 
+  {session: false}), 
+  (req, res) => {
+    User.findById(req.params.id)
+      .then(user => res.json(user))
+      .catch(err =>
+        res.status(404).json({ notweetfound: 'No user found' })
+      );
 });
 
 router.get('/requests/:requestId', passport.authenticate('jwt', {session: false}),

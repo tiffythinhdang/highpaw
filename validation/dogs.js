@@ -9,12 +9,12 @@ module.exports = function validateDogInput(data) {
   data.breed = validText(data.breed) ? data.breed : '';
   data.gender = validText(data.gender) ? data.gender : '';
   data.profilePhotoUrl = validText(data.profilePhotoUrl) ? data.profilePhotoUrl : '';
- 
+  
   if (!validAge(parseInt(data.age))) {
     errors.age = "Invalid age";
   }
   
-  if (Validator.isEmpty(data.age)) {
+  if (Validator.isEmpty(String(data.age))) {
     errors.age = 'Age field is required';
   }
 

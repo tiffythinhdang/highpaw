@@ -23,10 +23,12 @@ class DogShow extends React.Component {
   displayEditButton() {
     if (this.props.dog.owner._id === this.props.currentUserId) {
       return (
-        <button
-          className="tertiary small button dog-show edit">
-          Edit
-        </button>
+        <Link to={`/dogs/${this.props.dog._id}/edit`}>
+          <button
+            className="tertiary small button dog-show edit">
+            Edit
+          </button>
+        </Link>
       )
     }
   }
