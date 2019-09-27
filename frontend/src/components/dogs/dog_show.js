@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import '../../stylesheets/index.scss';
 import '../../stylesheets/dog_show.scss';
@@ -17,6 +18,17 @@ class DogShow extends React.Component {
 
   componentDidMount(){
     this.props.fetchADog(this.props.match.params.id)
+  }
+
+  displayEditButton() {
+    if (this.props.dog.owner._id === this.props.currentUserId) {
+      return (
+        <button
+          className="tertiary small button dog-show edit">
+          Edit
+        </button>
+      )
+    }
   }
 
   displayAddPhoto(){
@@ -119,20 +131,28 @@ class DogShow extends React.Component {
             </div>
             {/* Need to relook at this once connected with walk and request */}
             {/* <button className="small main button paw">Paw!</button> */}
+            {this.displayEditButton()}
           </div>
 
-        
           <div className="dog-show bgo-infor-container">
             <div className="dog-show bgo-infor">
-              <div className="dog-show field-name">
-                <p>Breed</p>
-                <p>Gender</p>
-                <p>Owner</p>
+              <div className="dog-show name">
+                <p className="field-name">Breed</p>
+                <p className="field-input">{this.props.dog.breed}</p>
               </div>
-              <div className="dog-show field-input">
-                <p>{this.props.dog.breed}</p>
-                <p>{this.props.dog.gender}</p>
-                <p>{this.props.dog.owner.name}</p>
+
+              <div className="dog-show age">
+                <p className="field-name">Gender</p>
+                <p className="field-input">{this.props.dog.gender}</p>
+              </div>
+
+              <div className="dog-show dogs">
+                <p className="field-name">Owner</p>
+                <Link
+                  to={`/users/${this.props.dog.owner._id}`} 
+                  className="field-input active-link"
+                  >{this.props.dog.owner.name}
+                </Link>
               </div>
             </div>
           </div>

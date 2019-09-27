@@ -235,6 +235,12 @@ label {
   color: red;
 }
 
+// Links
+.field-input.active-link{
+  text-decoration: underline;
+  color: $main_pink;
+}
+
 .app {
   height: 100%;
   width: 100%;
