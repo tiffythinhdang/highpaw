@@ -10,7 +10,9 @@ export default class Chat extends React.Component {
   }
 
   componentDidMount() {
-    this.chat = io.connect(window.location.href.includes("heroku") ? `https://highpaw.herokuapp.com:${process.env.PORT}/walks` : `http://localhost:${5001}/walks`);
+
+    this.chat = io();
+
 
     this.chat.emit('joinRoom', 'chattest')
 

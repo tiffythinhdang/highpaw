@@ -40,7 +40,9 @@ export default class Map extends React.Component {
 
     const locationTag = document.getElementById('demo');
 
-    let walks = io.connect(window.location.href.includes("heroku") ? `https://highpaw.herokuapp.com:${process.env.PORT}/walks` : `http://localhost:${5001}/walks`);
+
+    let walks = io();
+
 
     walks.on('welcome', (msg) => {
       console.log('Received: ', msg)

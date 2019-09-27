@@ -37,7 +37,7 @@ const S3_BUCKET = process.env.S3_BUCKET;
 aws.config.region = 'us-west-1';
 
 const port = process.env.PORT || 5000;
-app.listen(port, () => console.log(`Server is running on port ${port}`));
+// app.listen(port, () => console.log(`Server is running on port ${port}`));
 
 // AWS
 app.get('/sign-s3', (req, res) => {
@@ -80,7 +80,6 @@ app.use("/api/requests", requests);
 //Websockets
 
 io
-  .of('/walks')
   .on('connection', (socket) => {
     console.log('New Client');
     socket.emit('welcome', 'Welcome to the walk namespace')
@@ -112,4 +111,8 @@ io
 //   })
 // })
    
-server.listen( process.env.PORT || 5001)
+
+server.listen( port, () => {
+  console.log(`Server is listening on localhost: ${port}`)
+})
+
