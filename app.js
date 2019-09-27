@@ -4,8 +4,16 @@ const server = require('http').Server(app);
 const io = require('socket.io')(server);
 const mongoose = require("mongoose");
 const db = process.env.mongoURI ? process.env.mongoURI : require('./config/keys').mongoURI;
+const path = require('path');
 
 const bodyParser = require('body-parser');
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('frontend/build'));
+  app.get('/', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
+  })
+}
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
