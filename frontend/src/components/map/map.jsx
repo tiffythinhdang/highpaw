@@ -89,7 +89,7 @@ export default class Map extends React.Component {
           walks.emit('sendLocation', data)
           // debugger;
         })
-      }, 1000)
+      }, 10000)
     } else {
       locationTag.innerHTML = "Geolocation isn't supported by your browser."
     }
