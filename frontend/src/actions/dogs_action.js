@@ -51,6 +51,12 @@ export const createADog = (data) => dispatch => (
       err => dispatch(receiveDogErrors(err.response.data)) )
 );
 
+export const updateADog = (data) => dispatch => (
+  DogAPIUtil.updateADog(data)
+    .then( dog => dispatch(receiveADog(dog)),
+      err => dispatch(receiveDogErrors(err.response.data)) )
+);
+
 export const deleteADog = (id) => dispatch => (
   DogAPIUtil.deleteADog(id)
     .then( dog => dispatch(receiveADog(dog)) )

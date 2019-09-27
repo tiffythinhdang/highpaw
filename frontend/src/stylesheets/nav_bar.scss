@@ -40,6 +40,10 @@
   z-index: 2;
 }
 
+#nav-bar-menu .link.inactive {
+  color: $dark_pink;
+}
+
 .login.link a:hover{
   cursor: pointer;
 }
