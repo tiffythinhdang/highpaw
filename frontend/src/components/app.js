@@ -18,28 +18,27 @@ import DogShowContainer from './dogs/dog_show_container';
 
 import WalksIndexContainer from '../components/walks/walks_index_container';
 import WalksFormContainer from '../components/walks/walks_form_container';
-import WalksShowContainer from '../components/walks/walks_show_container';
-
+import ChatContainer from '../components/chat/chat_container';
 // test
 import { setAuthToken, login } from '../util/session_api_util';
 import { getWalks, createWalk } from '../util/walk_api_util';
 
 
 const App = () => (
-  <div className="app">
+  <div>
     <NavBar />
     <Switch>
       <Route exact path="/" component={MainPage} />
       <AuthRoute exact path="/login" component={SignInContainer} />
       <AuthRoute exact path="/signup" component={SignUpContainer} />
       <ProtectedRoute path="/users/:id" component={UserShowContainer}/>
-
       <Route exact path="/walks/:id" component={WalksShowContainer} />
       <Route exact path="/walks" component={WalksIndexContainer} />
       <Route exact path="/walks/create" component={WalksFormContainer} />
 
       <Route path="/dogs/:id" component={DogShowContainer} />
       <Route path="/dogs" component={CreateDogContainer} />
+      <Route path="/chat" component={ChatContainer} />
     </Switch>
     <Footer />
   </div>
