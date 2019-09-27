@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const server = require('http').Server(app);
-const io = require('socket.io').listen(server);
+const io = require('socket.io')(server);
 const mongoose = require("mongoose");
 const db = process.env.mongoURI ? process.env.mongoURI : require('./config/keys').mongoURI;
 const path = require('path');
@@ -93,11 +93,13 @@ io
       socket.join(room)
       return socket.emit('success', "You have successfully joined " + room)
     })
+
     socket.on('sendLocation', location => {
       io
         .of('/walks')
         .in('testing').emit('sendLocation', location) 
     })
+    
     socket.on('sendMessage', message => {
       io
         .of('/walks')

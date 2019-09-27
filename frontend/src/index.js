@@ -29,7 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const io = require('socket.io-client');
   const port = process.env.PORT || 5000;
 
-
   let walks = io();
 
 
