@@ -1,8 +1,13 @@
 import React from 'react';
 const io = require('socket.io-client');
-const port = process.env.PORT || 5000;
 
+let socketURL;
 
+if (process.env.NODE_ENV === "production") {
+  console.log(`process.env: ${process.env}`);
+  socketURL =
+    process.env.REACT_APP_SOCKET_URL || "https://starfight.herokuapp.com/";
+}
 
 export default class Chat extends React.Component {
 
@@ -13,7 +18,7 @@ export default class Chat extends React.Component {
 
   componentDidMount() {
 
-    this.chat = io('https://highpaw.herokuapp.com/');
+    this.chat = io(socketURL);
 
     this.chat.emit('joinRoom', 'chattest')
 
