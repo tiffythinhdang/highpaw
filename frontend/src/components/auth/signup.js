@@ -1,6 +1,8 @@
 import React from 'react';
-import '../../stylesheets/user_auth.scss'
-import '../../stylesheets/index.scss'
+import '../../stylesheets/user_auth.scss';
+import '../../stylesheets/index.scss';
+import iconPaw from '../../assets/large_icon_pawprint.png';
+
 import { changeSelectorColor } from "../../util/css_util";
 
 export default class SignUp extends React.Component {
@@ -24,10 +26,51 @@ export default class SignUp extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleCancel = this.handleCancel.bind(this);
+    this.handleFile = this.handleFile.bind(this);
   }
 
   componentDidMount() {
     this.props.clearSessionErrors();
+  }
+
+  handleFile(e) {
+    const file = e.currentTarget.files[0];
+    if (file) {
+      this.getSignedRequest(file);
+    }
+  }
+
+  getSignedRequest(file) {
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', `/sign-s3?file-name=${file.name}&file-type=${file.type}`);
+    xhr.onreadystatechange = () => {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          const response = JSON.parse(xhr.responseText);
+          this.uploadFile(file, response.signedRequest, response.url);
+        }
+        else {
+          alert('Could not get signed URL.');
+        }
+      }
+    };
+    xhr.send();
+  }
+
+  uploadFile(file, signedRequest, url) {
+    const xhr = new XMLHttpRequest();
+    xhr.open('PUT', signedRequest);
+    xhr.onreadystatechange = () => {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          this.setState({ profilePhotoUrl: url })
+        }
+        else {
+          alert('Could not upload file.');
+        }
+      }
+    };
+    xhr.send(file);
   }
 
   update(field) {
@@ -55,6 +98,22 @@ export default class SignUp extends React.Component {
         <form onSubmit={ this.handleSubmit }>
           <div className="login-form">
             <h1 className="form main header">Sign Up!</h1>
+
+            <div className="photo-upload input">
+              <div className="profile-photo container">
+                {this.state.profilePhotoUrl ? <img src={this.state.profilePhotoUrl} /> : <img className="medium light icon dog" src={iconPaw} />}
+              </div>
+
+              <label className="small secondary button">
+                Upload
+              <input
+                  type="file"
+                  onChange={this.handleFile}
+                />
+              </label>
+              <div className="errors">{this.props.errors.profilePhotoUrl}</div>
+            </div>
+
             <input type="text"
                    value={ this.state.email }
                    onChange={ this.update('email') }
