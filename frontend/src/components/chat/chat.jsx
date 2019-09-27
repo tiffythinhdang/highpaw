@@ -10,7 +10,9 @@ export default class Chat extends React.Component {
   }
 
   componentDidMount() {
+
     this.chat = io();
+
 
     this.chat.emit('joinRoom', 'chattest')
 

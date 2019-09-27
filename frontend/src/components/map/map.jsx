@@ -40,7 +40,9 @@ export default class Map extends React.Component {
 
     const locationTag = document.getElementById('demo');
 
+
     let walks = io();
+
 
     walks.on('welcome', (msg) => {
       console.log('Received: ', msg)
