@@ -14,6 +14,7 @@ class DogShow extends React.Component {
     this.handleGoBack = this.handleGoBack.bind(this);
     this.handleAddPhoto = this.handleAddPhoto.bind(this);
     this.handleFile = this.handleFile.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   componentDidMount(){
@@ -33,6 +34,17 @@ class DogShow extends React.Component {
     }
   }
 
+  displayDeleteButton() {
+    if (this.props.dog.owner._id === this.props.currentUserId) {
+      return (
+        <button 
+          className="large main button"
+          onClick={this.handleDelete}
+          >Delete</button>
+      )
+    }
+  }
+
   displayAddPhoto(){
     if (this.props.dog.owner._id === this.props.currentUserId) {
       return (
@@ -46,6 +58,11 @@ class DogShow extends React.Component {
         </label>
       )
     }
+  }
+
+  handleDelete(){
+    this.props.deleteADog(this.props.dog._id)
+      .then(this.handleGoBack())
   }
 
   handleFile(e) {
@@ -106,8 +123,7 @@ class DogShow extends React.Component {
     
   // }
 
-  handleGoBack(e) {
-    e.preventDefault();
+  handleGoBack() {
     this.props.history.goBack();
   }
 
@@ -172,6 +188,7 @@ class DogShow extends React.Component {
               )
             }
           </div>
+          { this.displayDeleteButton() }
         </div>
         <button
           onClick={this.handleGoBack}
