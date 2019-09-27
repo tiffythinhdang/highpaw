@@ -3,6 +3,9 @@ import '../../stylesheets/walks_show.scss'
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 
+import ModifyRequestContainer from '../request/modify_request_container';
+import FulfillRequestContainer from '../request/fulfill_request_container';
+
 
 class WalksShow extends React.Component {
   constructor(props) {
@@ -42,7 +45,11 @@ class WalksShow extends React.Component {
             </div>
           </div>
         {/* </Link> */}
-        <button className="req-user-btn"></button>
+        <div className="req-user-btn">
+          {/* <ModifyRequestContainer request={this.props.request} /> */}
+          {this.props.request.status === "pending" ? <ModifyRequestContainer request={this.props.request}/> : ""}
+          {this.props.request.status === "approved" ? <FulfillRequestContainer request={this.props.request} /> : ""}
+        </div>
       </div> 
 
     )

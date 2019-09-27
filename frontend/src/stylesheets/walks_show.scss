@@ -15,9 +15,9 @@
   justify-content: space-between;
   align-items: center;
   height: 12%;
-  width: 95%;
+  width: 90%;
 
-  border: 1px green dotted;
+  // border: 1px green dotted;
 }
 
 .walks-show-back-btn {
@@ -54,7 +54,7 @@
   width: 95%;
   font-size: 40px;
 
-  border: 1px dotted red;
+  // border: 1px dotted red;
 }
 
 .walks-map-container {
@@ -65,7 +65,7 @@
   width: 95%;
   margin-bottom: 10px;
 
-  border: 1px dotted green
+  // border: 1px dotted green
 }
 
 .walks-req-container {
@@ -90,13 +90,14 @@
   flex-wrap: nowrap;
   overflow-y: auto;
 
-  border: 1px dotted purple
+  // border: 1px dotted purple
 }
 
 .walks-delete-button-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  width: 90%;
 }
 
 .walks-delete-btn {
@@ -106,7 +107,7 @@
   height: 40px;
   left: 216px;
   top: 170px;
-  background: red;
+  background: #F78888;
   border: 1px solid #3C3C3C;
   box-sizing: border-box;
   border-radius: 200px; 
@@ -142,17 +143,43 @@
 }
 
 .request-user-information-container {
-
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  height: 95%;
 }
 
 .req-user-icon {
+  height: 50px;
+  width: 50px;
 
+  margin: 0px 10px
 }
 
 .req-user-name-container {
-
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  white-space: nowrap;
+  height: 50px;
+  width: auto;
 }
 
 .req-user-name {
   
+}
+
+.modify-approve {
+  background-color: $main_blue;
+  margin-right: 5px;
+}
+
+.modify-deny {
+  background-color: $main_pink;
+  margin-right: 5px;
+}
+
+.pawed-btn {
+  background-color: $main_green;
+  margin-right: 5px;
 }
