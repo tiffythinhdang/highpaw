@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const server = require('http').Server(app);
-const io = require('socket.io').listen(server);
+const io = require('socket.io')(server);
 const mongoose = require("mongoose");
 const db = process.env.mongoURI ? process.env.mongoURI : require('./config/keys').mongoURI;
 const path = require('path');
@@ -112,4 +112,6 @@ io
 //   })
 // })
    
-server.listen( process.env.PORT || 5001)
+server.listen( 10001, () => {
+  console.log(`Server is listening on localhost: ${10001}`)
+})
