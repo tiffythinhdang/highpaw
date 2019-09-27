@@ -1,27 +1,6 @@
-
-import * as UserApiUtil from '../util/user_api_util';
-
-export const RECEIVE_USER = 'RECEIVE_USER';
-
-const receiveUser = (user) => ({
-  type: RECEIVE_USER,
-  user
-})
-
-export const fetchUserFromRequest = (requestId) => dispatch => {
-  // debugger
-  UserApiUtil.fetchUserFromRequest(requestId)
-    .then(
-      user => dispatch(receiveUser(user))
-
-    )
-}
-
-
 import * as UserAPIUtil from '../util/users_api_util';
 
 export const RECEIVE_A_USER = "RECEIVE_A_USER";
-
 export const RECEIVE_USER_ERRORS = "RECEIVE_USER_ERRORS";
 export const CLEAR_USER_ERRORS = "CLEAR_USER_ERRORS";
 
@@ -52,3 +31,12 @@ export const updateAUser = (data) => dispatch => (
     .then(user => dispatch(receiveAUser(user)),
       err => dispatch(receiveUserErrors(err.response.data)))
 );
+
+export const fetchUserFromRequest = (requestId) => dispatch => {
+  // debugger
+  UserAPIUtil.fetchUserFromRequest(requestId)
+    .then(
+      user => dispatch(receiveUser(user))
+
+    )
+}
