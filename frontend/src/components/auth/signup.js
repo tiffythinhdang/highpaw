@@ -1,5 +1,6 @@
 import React from 'react';
 import '../../stylesheets/user_auth.scss'
+import '../../stylesheets/index.scss'
 import { changeSelectorColor } from "../../util/css_util";
 
 export default class SignUp extends React.Component {
@@ -60,43 +61,43 @@ export default class SignUp extends React.Component {
                    placeholder={ "Email" }
                    className="form input"
             />
-            <h3 className="errors">{this.props.errors.email}</h3>
+            <div className="errors">{this.props.errors.email}</div>
             <input type="text"
                    value={ this.state.name }
                    onChange={ this.update('name') }
                    placeholder={ "Name" }
                    className="form input"
             />
-            <h3 className="errors">{this.props.errors.name}</h3>
+            <div className="errors">{this.props.errors.name}</div>
             <input type="password"
                    value={ this.state.password }
                    onChange={ this.update('password') }
                    placeholder={ "Password" }
                    className="form input"
             />
-            <h3 className="errors">{this.props.errors.password}</h3>
+            <div className="errors">{this.props.errors.password}</div>
             <input type="password"
                    value={ this.state.password2 }
                    onChange={ this.update('password2') }
                    placeholder={ "Confirm Password" }
                    className="form input"
             />
-            <h3 className="errors">{this.props.errors.password2}</h3>
+            <div className="errors">{this.props.errors.password2}</div>
             <select name="" id="" onChange={ this.update('gender') } defaultValue={ "" } className="form input">
               <option value=""
                       disabled={ true }>{ "Gender *not required" }</option>
               <option value="Male">Male</option>
               <option value="Female">Female</option>
             </select>
-            <h3 className="errors">{this.props.errors.gender}</h3>
+            <div className="errors">{this.props.errors.gender}</div>
             <input
               type="number"
               value={ this.state.age }
               onChange={ this.update('age') }
-              placeholder={ this.props.errors.age ? this.props.errors.age : "age" }
+              placeholder={ this.props.errors.age ? this.props.errors.age : "Age" }
               className="form input"
             />
-            <h3 className="errors">{this.props.errors.age}</h3>
+            <div className="errors">{this.props.errors.age}</div>
             <input type="submit" value="Submit" className="main large button"/>
             <button className="tertiary large button" onClick={this.handleCancel}>Cancel</button>
           </div>

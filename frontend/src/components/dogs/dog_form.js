@@ -74,25 +74,10 @@ class DogForm extends React.Component {
     this.props.clearDogErrors();
   }
 
-  renderErrors() {
-    return (
-      <ul className="errors">
-        {
-          Object.values(this.props.errors).map((err, i) => (
-            <li key={`error-${i}`}>
-              {err}
-            </li>
-          ))
-        }
-      </ul>
-    )
-  }
-
   render() {
     return (
       <div className="create-dog form-container">
         <h1 className="form main header">register your dog</h1>
-        {this.renderErrors()}
         <form 
           className="create-dog form"
           onSubmit={this.handleSubmit}>
@@ -108,6 +93,7 @@ class DogForm extends React.Component {
                 onChange={this.handleFile}
               />
             </label>
+            <div className="errors">{this.props.errors.profilePhotoUrl}</div>
           </div>
 
           <input
@@ -115,11 +101,14 @@ class DogForm extends React.Component {
             placeholder="Name"
             onChange={this.handleChange('name')}
           />
+          <div className="errors">{this.props.errors.name}</div>
+
           <input
             className="form input"
             placeholder="Age"
             onChange={this.handleChange('age')}
           />
+          <div className="errors">{this.props.errors.age}</div>
 
           <select
             className="form input"
@@ -130,12 +119,14 @@ class DogForm extends React.Component {
             <option value="female">Female</option>
             <option value="other">Other</option>
           </select>
+          <div className="errors">{this.props.errors.gender}</div>
 
           <input
             className="form input"
             placeholder="Breed"
             onChange={this.handleChange('breed')}
           />
+          <div className="errors">{this.props.errors.breed}</div>
 
           <button 
             className="main large button">
