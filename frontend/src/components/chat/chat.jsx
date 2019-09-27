@@ -2,6 +2,8 @@ import React from 'react';
 const io = require('socket.io-client');
 const port = process.env.PORT || 5000;
 
+
+
 export default class Chat extends React.Component {
 
   constructor(props) {
@@ -10,7 +12,8 @@ export default class Chat extends React.Component {
   }
 
   componentDidMount() {
-    this.chat = io.connect(window.location.href.includes("heroku") ? `https://highpaw.herokuapp.com:${10001}/walks` : `http://localhost:${10001}/walks`);
+
+    this.chat = io('https://highpaw.herokuapp.com/');
 
     this.chat.emit('joinRoom', 'chattest')
 
@@ -18,9 +21,6 @@ export default class Chat extends React.Component {
 
     this.chat.on('sendMessage', (message) => {
       const output = document.getElementById('chat-output');
-      // const msg = document.createElement('P');
-      // msg.innerText += message;
-      // debugger
       const bTag = document.createElement('br');
       output.append(message);
       output.append(bTag);
