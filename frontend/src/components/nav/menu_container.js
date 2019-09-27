@@ -5,7 +5,8 @@ import Menu from './menu';
 
 const mapStateToProps = state => {
   return {
-    loggedIn: state.session.isAuthenticated
+    loggedIn: state.session.isAuthenticated,
+    currentUserId: state.session.user.id
   }
 };
 

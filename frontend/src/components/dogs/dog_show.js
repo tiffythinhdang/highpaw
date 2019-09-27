@@ -141,8 +141,9 @@ class DogShow extends React.Component {
           <div className="dog-show pictures">
             {this.displayAddPhoto()}
             {
-              this.props.dog.photoURLs.map(url => 
+              this.props.dog.photoURLs.map((url, i) => 
                 <img
+                  key={i}
                   src={url}
                   alt="dog-pic"
                   className="dog-show pic"

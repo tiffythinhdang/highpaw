@@ -106,8 +106,8 @@
 }
 
 .dog-show.pictures > img, .dog-show.pictures > .update-photos {
-  width: 100px;
-  height: 100px;
+  width: 125px;
+  height: 125px;
   border-radius: 4px;
   margin: 5px;
   object-fit: cover;
@@ -122,4 +122,9 @@
   padding: 10px;
   text-align: center;
   color: $light_gray;
+}
+
+.dog-show.pictures > .update-photos:hover {
+  background-color: $medium_gray;
+  color: $white;
 }

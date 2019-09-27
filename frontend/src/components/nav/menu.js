@@ -18,8 +18,11 @@ class Menu extends React.Component {
     if (this.props.loggedIn) {
       return (
         <div className="session links">
-          <div className="link">
+          <div className="link inactive">
             <p>Welcome back!</p>
+          </div>
+          <div className="link">
+            <Link to={`/user/${this.props.currentUserId}`}>Profile</Link>
           </div>
           <div className="link">
             <button onClick={this.logoutUser}>Logout</button>
