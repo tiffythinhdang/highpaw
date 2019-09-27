@@ -13,6 +13,7 @@ const mapStateToProps = state => {
       profilePhotoUrl: ""
     },
     formType: "Register",
+    header: "register your dog",
     errors: state.errors.dog,
     currentUserId: state.session.user.id,
   }
@@ -20,7 +21,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    createADog: (data) => dispatch(createADog(data)),
+    action: (data) => dispatch(createADog(data)),
     fetchADog: (id) => dispatch(fetchADog(id)),
     clearDogErrors: () => dispatch(clearDogErrors())
   }
