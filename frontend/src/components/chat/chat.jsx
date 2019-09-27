@@ -1,12 +1,14 @@
 import React from 'react';
+import { stringify } from 'querystring';
 const io = require('socket.io-client');
 
 let socketURL;
 
 if (process.env.NODE_ENV === "production") {
-  console.log(`process.env: ${process.env}`);
+  
+  console.log(process.env.REACT_APP_SOCKET_URL)
   socketURL =
-    process.env.REACT_APP_SOCKET_URL || "https://starfight.herokuapp.com/";
+    process.env.REACT_APP_SOCKET_URL || "https://highpaw.herokuapp.com/";
 }
 
 export default class Chat extends React.Component {
