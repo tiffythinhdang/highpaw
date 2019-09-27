@@ -150,8 +150,9 @@ input[type="submit"] {
   color: $light_gray;
 }
 
-.form.input:focus, select option:focus {
+.form.input:focus, .form.input select:focus {
   border: 2px solid $main_pink;
+  outline: none;
 }
 
 select {
@@ -232,6 +233,12 @@ label {
 // Errors
 .errors {
   color: red;
+}
+
+// Links
+.field-input.active-link{
+  text-decoration: underline;
+  color: $main_pink;
 }
 
 .app {

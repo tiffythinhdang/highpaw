@@ -13,7 +13,8 @@ const mapStateToProps = state => {
       profilePhotoUrl: ""
     },
     formType: "Register",
-    errors: state.errors.dog
+    errors: state.errors.dog,
+    currentUserId: state.session.user.id,
   }
 };
 
