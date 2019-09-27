@@ -1,36 +1,45 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import '../../stylesheets/user_auth.scss';
 import '../../stylesheets/index.scss';
 import iconPaw from '../../assets/large_icon_pawprint.png';
 
 import { changeSelectorColor } from "../../util/css_util";
 
-export default class SignUp extends React.Component {
+class SignUp extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      name: '',
-      email: '',
-      password: '',
-      password2: '',
-      age: '',
-      gender: '',
-      active: {
-        name: false,
-        email: false,
-        password: false,
-        password2: false,
-        age: false,
-        gender: false,
-      }
-    };
+    this.state = this.props.form;
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleCancel = this.handleCancel.bind(this);
     this.handleFile = this.handleFile.bind(this);
   }
 
-  componentDidMount() {
+  componentDidMount(){
     this.props.clearSessionErrors();
+  }
+
+  displayPasswordField(){
+    if (!this.props.currentUser) {
+      return (
+        <div className="password-section">
+          <input type="password"
+            value={this.state.password}
+            onChange={this.update('password')}
+            placeholder={"Password"}
+            className="form input"
+          />
+          <div className="errors">{this.props.errors.password}</div>
+
+          <input type="password"
+            value={this.state.password2}
+            onChange={this.update('password2')}
+            placeholder={"Confirm Password"}
+            className="form input"
+          />
+        </div>
+      )
+    }
   }
 
   handleFile(e) {
@@ -84,7 +93,10 @@ export default class SignUp extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.signup(this.state);
+    this.props.action(this.state)
+      .then(payload => {
+        if (payload.user) this.props.history.push(`/users/${payload.user.data._id}`)
+      })
   }
 
   handleCancel(e) {
@@ -97,7 +109,7 @@ export default class SignUp extends React.Component {
       <div className="login-form-container">
         <form onSubmit={ this.handleSubmit }>
           <div className="login-form">
-            <h1 className="form main header">Sign Up!</h1>
+            <h1 className="form main header">{this.props.header}</h1>
 
             <div className="photo-upload input">
               <div className="profile-photo container">
@@ -121,6 +133,7 @@ export default class SignUp extends React.Component {
                    className="form input"
             />
             <div className="errors">{this.props.errors.email}</div>
+
             <input type="text"
                    value={ this.state.name }
                    onChange={ this.update('name') }
@@ -128,27 +141,19 @@ export default class SignUp extends React.Component {
                    className="form input"
             />
             <div className="errors">{this.props.errors.name}</div>
-            <input type="password"
-                   value={ this.state.password }
-                   onChange={ this.update('password') }
-                   placeholder={ "Password" }
-                   className="form input"
-            />
-            <div className="errors">{this.props.errors.password}</div>
-            <input type="password"
-                   value={ this.state.password2 }
-                   onChange={ this.update('password2') }
-                   placeholder={ "Confirm Password" }
-                   className="form input"
-            />
+
+            {this.displayPasswordField() }
+
             <div className="errors">{this.props.errors.password2}</div>
-            <select name="" id="" onChange={ this.update('gender') } defaultValue={ "" } className="form input">
+
+            <select name="" id="" onChange={this.update('gender')} value={this.state.gender} className="form input">
               <option value=""
                       disabled={ true }>{ "Gender *not required" }</option>
               <option value="Male">Male</option>
               <option value="Female">Female</option>
             </select>
             <div className="errors">{this.props.errors.gender}</div>
+
             <input
               type="number"
               value={ this.state.age }
@@ -157,7 +162,8 @@ export default class SignUp extends React.Component {
               className="form input"
             />
             <div className="errors">{this.props.errors.age}</div>
-            <input type="submit" value="Submit" className="main large button"/>
+
+            <input type="submit" value={this.props.formType} className="main large button"/>
             <button className="tertiary large button" onClick={this.handleCancel}>Cancel</button>
           </div>
         </form>
@@ -165,3 +171,5 @@ export default class SignUp extends React.Component {
     );
   }
 }
+
+export default withRouter(SignUp);

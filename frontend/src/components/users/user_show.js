@@ -17,10 +17,12 @@ class UserShow extends React.Component {x
   displayEditButton(){
     if (this.props.user._id === this.props.currentUserId) {
       return (
-        <button
-          className="tertiary small button">
-          Edit
-        </button>
+        <Link to={`/users/${this.props.user._id}/edit`}>
+          <button
+            className="tertiary small button">
+            Edit
+          </button>
+        </Link>
       )
     }
   }
@@ -91,7 +93,6 @@ class UserShow extends React.Component {x
           <div className="user-show dogs-container">
             { this.displayDogs() }
           </div>
-
         </div>
       
         <button
