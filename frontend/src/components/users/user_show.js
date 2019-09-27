@@ -7,6 +7,8 @@ import '../../stylesheets/user_show.scss';
 class UserShow extends React.Component {x
   constructor(props){
     super(props)
+
+    this.handleGoBack = this.handleGoBack.bind(this);
   }
 
   componentDidMount(){
@@ -17,12 +19,34 @@ class UserShow extends React.Component {x
   displayEditButton(){
     if (this.props.user._id === this.props.currentUserId) {
       return (
-        <button
-          className="tertiary small button">
-          Edit
-        </button>
+        <Link to={`/users/${this.props.user._id}/edit`}>
+          <button
+            className="tertiary small button">
+            Edit
+          </button>
+        </Link>
       )
     }
+  }
+
+  displayAddDogButton(){
+    if (this.props.user._id === this.props.currentUserId) {
+      return (
+        <div className="add-dog button-container">
+          <Link to={`/dogs`}>
+            <button
+              className="secondary small button">
+              <span>&#43;</span> Dog
+            </button>
+          </Link>
+        </div>
+      )
+    }
+  }
+
+  handleGoBack(e) {
+    e.preventDefault();
+    this.props.history.goBack();
   }
 
   getUserDogs(){
@@ -92,6 +116,7 @@ class UserShow extends React.Component {x
             { this.displayDogs() }
           </div>
 
+          {this.displayAddDogButton() }
         </div>
       
         <button

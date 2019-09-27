@@ -8,6 +8,7 @@ import { Switch , Route} from 'react-router-dom';
 import SignUpContainer from "./auth/signup_container";
 import SignInContainer from "./auth/signin_container";
 import UserShowContainer from "./users/user_show_container";
+import EditUserContainer from "./users/edit_user_container";
 
 import NavBar from './nav/navbar';
 import MainPage from './main/main_page';
@@ -34,10 +35,13 @@ const App = () => (
       <AuthRoute exact path="/login" component={SignInContainer} />
       <AuthRoute exact path="/signup" component={SignUpContainer} />
 
+      <ProtectedRoute path="/users/:id/edit" component={EditUserContainer}/>
       <ProtectedRoute path="/users/:id" component={UserShowContainer}/>
+
       <Route exact path="/walks/create" component={WalksFormContainer} />
       <Route exact path="/walks/:id" component={WalksShowContainer} />
       <Route exact path="/walks" component={WalksIndexContainer} />
+
       <Route path="/dogs/:id/edit" component={EditDogContainer} />
       <Route path="/dogs/:id" component={DogShowContainer} />
       <Route path="/dogs" component={CreateDogContainer} />

@@ -103,16 +103,28 @@ router.patch("/:id", passport.authenticate('jwt', {session: false}), (req, res) 
     return res.status(400).json(errors);
   }
   let filter = { _id: req.user._id};
-  let update = {};
-  Object.keys(req.body).forEach(key => {
-    if (req.body[key].length > 0) {
-      update[key] = req.body[key];
-    }
-  });
+  let update = req.body;
+  // Object.keys(req.body).forEach(key => {
+  //   if (req.body[key].length > 0) {
+  //     update[key] = req.body[key];
+  //   }
+  // });
 
-  User.findOneAndUpdate(filter, update, {new: true}).then(response => {
-    res.json(response)
-  });
+  User.findOneAndUpdate(filter, update, {new: true})
+    .then(user => {
+      let returnedUser = {
+        _id: user._id,
+        name: user.name,
+        age: user.age,
+        email: user.email,
+        gender: user.gender,
+        profilePhotoUrl: user.profilePhotoUrl
+      }
+      res.json(returnedUser)
+    })
+    .catch(err =>
+      res.status(404).json({ notweetfound: 'No user found' })
+  );
 });
 
 // Show a user
@@ -121,7 +133,17 @@ router.get("/:id",
   {session: false}), 
   (req, res) => {
     User.findById(req.params.id)
-      .then(user => res.json(user))
+      .then(user => {
+        let returnedUser = {
+          _id: user._id,
+          name: user.name,
+          age: user.age,
+          email: user.email,
+          gender: user.gender,
+          profilePhotoUrl: user.profilePhotoUrl
+        }
+        res.json(returnedUser)
+      })
       .catch(err =>
         res.status(404).json({ notweetfound: 'No user found' })
       );
