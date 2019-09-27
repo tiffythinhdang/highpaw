@@ -44,6 +44,7 @@ class WalksIndex extends React.Component {
 
   render() {
     // debugger
+    if (!this.props.currentUser) return null;
     if (!this.props.walks) return null;
     // debugger
     let walks = this.props.walks.map(walk => {
@@ -62,7 +63,7 @@ class WalksIndex extends React.Component {
           </Link>
         </div> */}
         <div className="walks-head">
-          <p className="walks-head-text">active walks</p>
+          <p className="walks-head-text">Active walks</p>
         </div>
         <div className="walks-items-container">
           {walks}

@@ -47,7 +47,7 @@ router.get('/walks/:walkId',
 router.get('/user/:user_id',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
-  Dog.find({ owner: req.params.user_id })
+  Dog.find({ owner: req.user._id })
     .then(dogs => res.json(dogs))
     .catch(err =>
       res.status(404).json({ nodogfound: 'No dog found from that user' }

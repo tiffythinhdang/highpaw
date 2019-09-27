@@ -19,3 +19,64 @@
 
   border: 1px green dotted;
 }
+
+.walks-show-back-btn {
+  display: flex;
+  justify-content: center;
+  width: 78px;
+  height: 33.88px;
+  right: 20px;
+  background: #FAFAFA;
+  border: 1px solid #3C3C3C;
+  box-sizing: border-box;
+  background: white;
+  border-radius: 150px;
+}
+
+.walks-show-chat-btn {
+  display: flex;
+  justify-content: center;
+  width: 78px;
+  height: 33.88px;
+  right: 20px;
+  background: #FAFAFA;
+  border: 1px solid #3C3C3C;
+  box-sizing: border-box;
+  background: white;
+  border-radius: 150px;
+}
+
+.walks-head-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 12%;
+  width: 95%;
+  font-size: 40px;
+
+  border: 1px dotted red;
+}
+
+.walks-map-container {
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+  height: 68%; 
+  width: 95%;
+  margin-bottom: 10px;
+
+  border: 1px dotted green
+}
+
+.walks-delete-btn {
+  display: flex;
+  justify-content: center;
+  width: 144px;
+  height: 40px;
+  left: 216px;
+  top: 170px;
+  background: #FAFAFA;
+  border: 1px solid #3C3C3C;
+  box-sizing: border-box;
+  border-radius: 200px; 
+}

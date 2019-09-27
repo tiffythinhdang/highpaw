@@ -10,7 +10,8 @@ class WalksIndexItem extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchDogsFromWalk(this.props.walk._id)
+    this.props.fetchDogsFromWalk(this.props.walk._id);
+    this.props.fetchRequests(this.props.walk._id)
   }
 
   renderDogs(dog) {
@@ -33,8 +34,29 @@ class WalksIndexItem extends React.Component {
     )
   }
 
+  renderReqBtn() {
+    let walk = this.props.walk
+    // debugger
+    if (walk.user == this.props.currentUser.id) {
+      return <button className="your-dog-button">Your dog</button>
+    }
+    // for (let i = 0; i < requesters.length; i++) {
+    //   let requester = requesters[i];
+    //   if (requester === walk.user) {
+
+    // }
+    // }
+    let requesters = this.props.requests.map(request => request.requester)
+    if (requesters.includes(this.props.currentUser.id)) {
+      return <SendRequestContainer walk={walk} requester={true} />
+    } else {
+      return <SendRequestContainer walk={walk} requester={false} />
+    }
+  }
+
   render() {
     // debugger;
+    if (!this.props.currentUser) return null;
     let walk = this.props.walk
 
     let dogs = this.props.dogs.map(dog => {
@@ -44,6 +66,8 @@ class WalksIndexItem extends React.Component {
         )
       }
     })
+    if (!this.props.requests) return null;
+
 
 
     return (
@@ -52,7 +76,7 @@ class WalksIndexItem extends React.Component {
           {dogs}
         </div>
         <div className="walks-request-container">
-          <SendRequestContainer walk={walk} />
+          {this.renderReqBtn()}
         </div>
       </div>
     )

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { createWalk, fetchWalks } from '../../actions/walk_actions';
+import { deleteWalk } from '../../actions/walk_actions';
 import { fetchDogsFromWalk } from '../../actions/dogs_action';
 import WalksShow from './walks_show';
 
@@ -14,8 +14,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    createWalk: () => dispatch(createWalk()),
-    fetchWalks: () => dispatch(fetchWalks()),
+    deleteWalk: walkId => dispatch(deleteWalk(walkId)),
     fetchDogsFromWalk: id => dispatch(fetchDogsFromWalk(id))
     // fetchDog: id => dispatch(fetchDog(id))
   };

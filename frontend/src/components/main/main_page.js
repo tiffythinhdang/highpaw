@@ -8,7 +8,7 @@ class MainPage extends React.Component {
     return (
       <div>
         <Link to="/walks" >
-          <h1>Splash Page</h1>
+          <h1>Splash Page</h1><br></br><br></br>
         </Link>
         <Map />
       </div>

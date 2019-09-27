@@ -24,5 +24,6 @@ export default class FulfillRequest extends React.Component {
 }
 
 /*
-import the container of this in your walk show page which has all the requests from that walk. in each of those request item. do {request.status === "approved" ? <FulfillRequestComponent /> : "" } and pass in the review as props
+import the container of this in your walk show page which has all the requests from that walk. 
+in each of those request item. do {request.status === "approved" ? <FulfillRequestComponent /> : "" } and pass in the review as props
 */

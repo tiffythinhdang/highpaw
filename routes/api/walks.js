@@ -8,6 +8,7 @@ const Walk = require('../../models/Walk');
 const Dog = require('../../models/Dog');
 // const User = require('../../models/User');
 const validateWalkInput = require('../../validation/walks');
+const Request = require('../../models/Request');
 
 // get all walks
 router.get('/', (req, res) => {
