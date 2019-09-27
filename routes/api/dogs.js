@@ -90,6 +90,28 @@ router.post('/',
   }
 );
 
+// Update a dog
+router.patch('/:id',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    const { errors, isValid } = validateDogInput(req.body);
+    
+    if (!isValid) {
+      return res.status(400).json(errors);
+    }
+
+    Dog.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true },
+      (err, dog) => {
+        if (err) return res.status(400).json(err);
+        return res.json(dog)
+      }
+    )
+  }
+);
+
 // Delete a dog
 router.delete('/:id',
   passport.authenticate('jwt', { session: false }),

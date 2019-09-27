@@ -30,6 +30,10 @@ const UserSchema = new Schema({
     type: Number,
     required: true
   },
+  profilePhotoUrl: {
+    type: String,
+    required: true
+  },
   location: {
     type: String,
     default: undefined

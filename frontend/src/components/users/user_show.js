@@ -39,10 +39,9 @@ class UserShow extends React.Component {x
 
   displayDogs(){
     return this.getUserDogs().map(dog =>
-      <Link to={`/dogs/${dog._id}`}
+      <Link to={`/dogs/${dog._id}`} key={dog._id}
         className="user-show dog-container">
         <img
-          key={dog._id}
           src={dog.profilePhotoUrl}
           alt="dog-pic"
         />
