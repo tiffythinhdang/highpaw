@@ -129,8 +129,6 @@ router.get('/requests/:requestId', passport.authenticate('jwt', {session: false}
       res.json(user)
     })
     // console.log(user + 'test')
-
-
 })
 
 module.exports = router;
