@@ -2,10 +2,14 @@ const express = require("express");
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const keys = require('../../config/keys');
+const keys = process.env.secretOrKey ? { secretOrKey: process.env.secretOrKey } : require('../../config/keys');
 const passport = require('passport');
 const User = require('../../models/User');
-const validateRegisterInput = require('../../validation/register');
+const Request = require('../../models/Request');
+
+const validateRegisterInput = require('../../validation/users/register');
+const validateLoginInput = require('../../validation/users/login');
+const validateUpdateInput = require('../../validation/users/update');
 
 // Register Route
 router.post("/register", (req, res) => {
@@ -15,7 +19,7 @@ router.post("/register", (req, res) => {
     return res.status(400).json(errors);
   }
 
-  User.findOne({ name: req.body.name }).then(user => {
+  User.findOne({ email: req.body.email }).then(user => {
     if (user) {
       errors.name = "User already exists";
       return res.status(400).json(errors);
@@ -24,7 +28,9 @@ router.post("/register", (req, res) => {
         name: req.body.name,
         email: req.body.email,
         password: req.body.password,
-        // age: req.body.age,
+        age: req.body.age,
+        gender: req.body.gender,
+        profilePhotoUrl: req.body.profilePhotoUrl,
         // location: req.body.location
       });
 
@@ -59,12 +65,12 @@ router.post("/login", (req, res) => {
     return res.status(400).json(errors);
   }
 
-  const name = req.body.name;
+  const email = req.body.email;
   const password = req.body.password;
 
-  User.findOne({ name }).then(user => {
+  User.findOne({ email }).then(user => {
     if (!user) {
-      errors.name = "This user does not exist";
+      errors.email = "This user does not exist";
       return res.status(400).json(errors);
     }
 
@@ -72,7 +78,11 @@ router.post("/login", (req, res) => {
       if (isMatch) {
         const payload = { id: user.id, name: user.name };
 
-        jwt.sign(payload, keys.secretOrKeys, { expiresIn: 3600 }, (err, token) => {
+        jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {
+          if (err) {
+            errors.email = err;
+            return res.status(400).json(errors)
+          }
           res.json({
             success: true,
             token: "Bearer " + token
@@ -85,5 +95,50 @@ router.post("/login", (req, res) => {
     });
   });
 });
+
+// Update current user
+router.patch("/:id", passport.authenticate('jwt', {session: false}), (req, res) => {
+  const { errors, isValid } = validateUpdateInput(req.body);
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
+  let filter = { _id: req.user._id};
+  let update = {};
+  Object.keys(req.body).forEach(key => {
+    if (req.body[key].length > 0) {
+      update[key] = req.body[key];
+    }
+  });
+
+  User.findOneAndUpdate(filter, update, {new: true}).then(response => {
+    res.json(response)
+  });
+});
+
+// Show a user
+router.get("/:id", 
+  passport.authenticate('jwt', 
+  {session: false}), 
+  (req, res) => {
+    User.findById(req.params.id)
+      .then(user => res.json(user))
+      .catch(err =>
+        res.status(404).json({ notweetfound: 'No user found' })
+      );
+});
+
+router.get('/requests/:requestId', passport.authenticate('jwt', {session: false}),
+  (req, res) => {
+    // console.log(req)
+    // // console.log(req.body)
+    // Request.findOne({ requester: req.user._id}).then(requester => console.log(requester))
+    // // console.log(requester + 'test2')
+    // console.log(requester)
+    // console.log(req.params.requestId)
+    User.findOne({ _id: req.params.requestId }).then(user => {
+      res.json(user)
+    })
+    // console.log(user + 'test')
+})
 
 module.exports = router;

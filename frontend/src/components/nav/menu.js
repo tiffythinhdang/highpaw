@@ -17,18 +17,25 @@ class Menu extends React.Component {
   getLinks() {
     if (this.props.loggedIn) {
       return (
-        <div className="personal greeting">
-          <p>Welcome back!</p>
-          <button onClick={this.logoutUser}>Logout</button>
+        <div className="session links">
+          <div className="link inactive">
+            <p>Welcome back!</p>
+          </div>
+          <div className="link" onClick={this.props.toggleMenu}>
+            <Link to={`/users/${this.props.currentUserId}`}>Profile</Link>
+          </div>
+          <div className="link" onClick={this.props.toggleMenu}>
+            <button onClick={this.logoutUser}>Logout</button>
+          </div>
         </div>
       );
     } else {
       return (
         <div className="session links">
           <div className="singup link">
-            <Link to={'/signup'}>Signup</Link>
+            <Link to={'/signup'} onClick={this.props.toggleMenu}>Signup</Link>
           </div>
-          <div className="login link">
+          <div className="login link" onClick={this.props.toggleMenu}>
             <Link to={'/login'}>Login</Link>
           </div>
         </div>

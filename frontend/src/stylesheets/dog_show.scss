@@ -1,0 +1,146 @@
+@import './util.scss';
+
+.dog-show.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0 20px 0;
+}
+
+.dog-show.main-infor.container {
+  width: 340px;
+  padding: 10px 0 10px 0;
+  // height: 437px;
+  background: $white;
+  box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.dog-show.header-container {
+  width: 100%;
+  height: 72px;
+  padding: 0 15px 0 15px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.profile-img.container {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+}
+
+.profile-img.container > img {
+  border-radius: 4px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.dog-show.header.infor {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: row;
+}
+
+.dog-show.name-age {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 15px;
+}
+
+.dog-name {
+  font-size: 28px;
+  padding-bottom: 10px;
+  font-weight: bold;
+  color: $main_pink;
+}
+
+.dog-age {
+  font-size: 16px;
+  color: $dark_gray;
+}
+
+.dog-show.bgo-infor-container {
+  width: 100%;
+  position: relative;
+}
+
+.dog-show.bgo-infor {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0px 15px 0px 15px;
+  box-sizing: border-box;
+}
+
+.dog-show.name, .dog-show.age, .dog-show.dogs {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: 5px 0px 5px 0px;
+}
+
+.field-name {
+  width: 30%;
+  color: $light_gray;
+  font-size: 14px;
+  line-height: 24px;
+  text-align: left;
+}
+
+.field-input {
+  width: 50%;
+  color: $black_gray;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.dog-show.pictures {
+  width: 100%;
+  min-height: 130px;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.dog-show.pictures > img, .dog-show.pictures > .update-photos {
+  width: 125px;
+  height: 125px;
+  border-radius: 4px;
+  margin: 5px;
+  object-fit: cover;
+  flex: 0 0 auto;
+  background-color: $lightest_gray;
+}
+
+.dog-show.pictures > .update-photos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  text-align: center;
+  color: $light_gray;
+}
+
+.dog-show.pictures > .update-photos:hover {
+  background-color: $medium_gray;
+  color: $white;
+}
