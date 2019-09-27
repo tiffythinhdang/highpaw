@@ -70,7 +70,7 @@ export default class Map extends React.Component {
         let marker = new google.maps.Marker({
           position: location,
           map: this.map,
-          label: user
+          label: data.name
         })
 
         this.state.markers[user] = marker;
@@ -85,7 +85,7 @@ export default class Map extends React.Component {
         navigator.geolocation.getCurrentPosition((position) => {
           let latLng = { lat: position.coords.latitude, lng: position.coords.longitude }
 
-          let data = { currentUser: this.props.currentUser , latLng}
+          let data = { currentUser: this.props.currentUser , name: this.props.userName, latLng}
           console.log(latLng);
           walks.emit('sendLocation', data)
           // debugger;
