@@ -101,7 +101,11 @@ class SignUp extends React.Component {
 
   handleCancel(e) {
     e.preventDefault();
-    this.props.history.push('/')
+    if (!this.props.currentUser) {
+      this.props.history.push('/');
+    } else {
+      this.props.history.goBack();
+    }
   }
 
   render() {
