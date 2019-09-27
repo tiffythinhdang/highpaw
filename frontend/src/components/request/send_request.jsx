@@ -5,7 +5,7 @@ export default class SendRequest extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      walk: this.props.walk,
+      // walk: this.props.walk,
       requester: this.props.requester
     }
 
@@ -20,7 +20,7 @@ export default class SendRequest extends React.Component {
     // const paw = document.getElementById(`paw-button${this.props.walk}`);
     // pending.classList.toggle('hidden');
     // paw.classList.toggle('hidden')
-    this.props.paw(this.state.walk._id)
+    this.props.paw(this.props.walk._id)
   }
 
   handlePending(e) {
@@ -33,16 +33,17 @@ export default class SendRequest extends React.Component {
   }
 
   render() {
+    // if (!this.props.request) return null;
     return (
       <form>
         <input type="hidden" value={this.props.requester} />
         <input type="hidden" value={this.state.walk} />
-        <button className={this.props.requested ? "small main button hidden" : "small main button"}
+        <button className={this.props.request ? "hidden" : "small main button"}
           id={`paw-button${this.props.walk}`}
           onClick={this.handleSubmit}>
           Paw!
         </button>
-        <button className={this.props.requested ? "small main button" : "small main button hidden"}
+        <button className={this.props.request ? "small main button" : "hidden"}
           id={`pending-button${this.props.walk}`}
           onClick={this.handlePending}>
           Pending
