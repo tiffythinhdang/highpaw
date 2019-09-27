@@ -1,5 +1,5 @@
 import React from 'react';
-import Map from '../map/map';
+import MapContainer from '../map/map_container';
 
 class MainPage extends React.Component {
 
@@ -7,7 +7,7 @@ class MainPage extends React.Component {
     return (
       <div>
         <h1>Splash Page</h1>
-        <Map />
+        <MapContainer />
       </div>
     );
   }
