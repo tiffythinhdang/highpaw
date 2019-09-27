@@ -21,10 +21,10 @@ class Menu extends React.Component {
           <div className="link inactive">
             <p>Welcome back!</p>
           </div>
-          <div className="link">
-            <Link to={`/user/${this.props.currentUserId}`}>Profile</Link>
+          <div className="link" onClick={this.props.toggleMenu}>
+            <Link to={`/users/${this.props.currentUserId}`}>Profile</Link>
           </div>
-          <div className="link">
+          <div className="link" onClick={this.props.toggleMenu}>
             <button onClick={this.logoutUser}>Logout</button>
           </div>
         </div>
@@ -33,9 +33,9 @@ class Menu extends React.Component {
       return (
         <div className="session links">
           <div className="singup link">
-            <Link to={'/signup'}>Signup</Link>
+            <Link to={'/signup'} onClick={this.props.toggleMenu}>Signup</Link>
           </div>
-          <div className="login link">
+          <div className="login link" onClick={this.props.toggleMenu}>
             <Link to={'/login'}>Login</Link>
           </div>
         </div>

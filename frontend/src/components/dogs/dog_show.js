@@ -35,7 +35,6 @@ class DogShow extends React.Component {
   }
 
   handleFile(e) {
-    // debugger
     const file = e.currentTarget.files[0];
     if (file) {
       this.getSignedRequest(file);
