@@ -15,7 +15,7 @@ class WalksForm extends React.Component {
 
 
   componentDidMount() {
-// debugger
+    // debugger
     this.props.fetchDogsFromUser(this.props.currentUser.id)
   }
 
@@ -75,7 +75,9 @@ class WalksForm extends React.Component {
     if (!this.props.currentUser) return null;
 
     let dogs = this.props.dogs.map(dog => {
-      return this.showDogs(dog)
+      if (dog.owner === this.props.currentUser.id) {
+        return this.showDogs(dog)
+      }
     })
 
     return (
