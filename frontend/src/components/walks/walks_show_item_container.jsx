@@ -5,11 +5,14 @@ import { fetchRequests } from '../../actions/request_actions';
 import { fetchUserFromRequest } from '../../actions/user_actions';
 import WalksShowItem from './walks_show_item';
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
+// debugger;
+  // let users = Object.values(state.entities.users)
+
   // debugger;
   return {
     currentUser: state.session.user,
-    user: Object.values(state.entities.users)
+    users: Object.values(state.entities.users)
     // walks: state.entities.walks
   };
 };

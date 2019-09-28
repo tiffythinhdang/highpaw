@@ -6,20 +6,33 @@ import { Link } from 'react-router-dom';
 class WalksIndex extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      loaded: false
+    }
   }
 
   componentDidMount() {
     this.props.fetchWalks();
   }
 
+  componentWillUnmount() {
+    
+  }
+
+  // shouldComponentUpdate(prevState) {
+  //   return this.state.loaded != prevState.loaded
+  // }
+
   renderButtons() {
     // debugger
+    // this.setState({ loaded: true })
     let walks = this.props.walks;
     let currentUser = this.props.currentUser;
 
     for (let i = 0; i < walks.length; i++) {
       let walk = walks[i]
       if (walk.user === currentUser.id) {
+        
         return (
           <div className="walks-index-top-buttons-container">
             <Link to={`/walks/${walk._id}`} >
@@ -32,6 +45,8 @@ class WalksIndex extends React.Component {
         )
       }
     }
+
+
     return (
       <div className="walks-index-top-buttons-container">
         <button className="walks-index-map-btn inactive">Your walk</button>
@@ -56,12 +71,10 @@ class WalksIndex extends React.Component {
     return (
       <div className="walks-index-main">
         {this.renderButtons()}
-        {/* <div className="walks-index-top-buttons-container">
-          <button className="walks-index-map-btn">Your walk</button>
-          <Link to="/walks/create" className="walks-index-form-btn">
-            <button className="">Start a walk!</button>
-          </Link>
-        </div> */}
+
+
+
+
         <div className="walks-head">
           <p className="walks-head-text">Active walks</p>
         </div>

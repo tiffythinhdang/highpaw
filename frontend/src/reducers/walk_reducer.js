@@ -6,8 +6,13 @@ const walkReducer = (state={}, action) => {
 
   switch(action.type) {
     case RECEIVE_ALL_WALKS:
-      action.walks.data.forEach(walk => newState[walk._id] = walk);
-      return newState;
+      let obj = {}
+      action.walks.data.forEach(walk =>{
+        // if (obj[walk._id] === undefined) {
+         obj[walk._id] = walk
+        // }
+         });
+      return obj;
       // return action.walks.data;
     case RECEIVE_WALK:
       return Object.assign({}, state, { [action.walk.id]: action.walk.data });

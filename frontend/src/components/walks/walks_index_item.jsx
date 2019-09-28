@@ -14,6 +14,10 @@ class WalksIndexItem extends React.Component {
     this.props.fetchRequests(this.props.walk._id)
   }
 
+  // shouldComponentUpdate(prevProps) {
+    // return this.props.dogs !== prevProps.dogs
+  // }
+
   renderDogs(dog) {
     return (
       <Link to={`/dogs/${dog._id}`} key={dog._id} >
@@ -60,6 +64,9 @@ class WalksIndexItem extends React.Component {
   render() {
     // debugger;
     if (!this.props.currentUser) return null;
+    if (!this.props.dogs) return null;
+    if (!this.props.requests) return null;
+
     let walk = this.props.walk
 
     let dogs = this.props.dogs.map(dog => {

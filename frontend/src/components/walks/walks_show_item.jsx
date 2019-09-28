@@ -7,14 +7,14 @@ import ModifyRequestContainer from '../request/modify_request_container';
 import FulfillRequestContainer from '../request/fulfill_request_container';
 
 
-class WalksShow extends React.Component {
+class WalksShowItem extends React.Component {
   constructor(props) {
     super(props);
    
   }
 
   componentDidMount() {
-    console.log(this.props.request)
+    // console.log(this.props.request)
     this.props.fetchUserFromRequest(this.props.request.requester)
   }
 
@@ -26,8 +26,8 @@ class WalksShow extends React.Component {
   render() {
     // debugger;
     let reqUser;
-    this.props.user.forEach(user => {
-      if (this.props.request.requester == user._id) {
+    this.props.users.forEach(user => {
+      if (this.props.request.requester == user._id && user._id !== this.props.currentUser.id) {
         reqUser = user
       }
     })
@@ -56,4 +56,4 @@ class WalksShow extends React.Component {
   }
 }
 
-export default withRouter(WalksShow);
+export default withRouter(WalksShowItem);

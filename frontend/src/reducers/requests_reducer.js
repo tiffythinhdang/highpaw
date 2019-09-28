@@ -11,6 +11,7 @@ export const requestsReducer = (state = {}, action) => {
       action.requests.data.forEach(data => {
         obj[data._id] = data
       })
+      // return newState
       return obj;
     case RECEIVE_REQUEST:
       newState[action.request.data._id] = action.request.data;

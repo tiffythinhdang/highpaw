@@ -34,6 +34,7 @@ export default class SendRequest extends React.Component {
 
   render() {
     // if (!this.props.request) return null;
+    if (!this.props) return null;
     return (
       <form>
         <input type="hidden" value={this.props.requester} />

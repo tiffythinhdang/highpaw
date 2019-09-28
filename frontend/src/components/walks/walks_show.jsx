@@ -21,6 +21,13 @@ class WalksShow extends React.Component {
     this.props.fetchRequests(this.props.match.params.id)
   }
 
+  // componentDidUpdate(prevProps) {
+  //   // debugger
+  //   if (prevProps.match.params.walkId != this.props.match.params.walkId) {
+  //     this.props.fetchRequests(this.props.match.params.walkId)
+  //   }
+  // }
+
   handleDelete() {
     this.props.deleteWalk(this.props.match.params.id)
       .then(this.props.history.push('/walks'))
@@ -101,4 +108,5 @@ class WalksShow extends React.Component {
   }
 }
 
+// export default WalksShow
 export default withRouter(WalksShow);
