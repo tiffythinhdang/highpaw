@@ -72,13 +72,13 @@ class Menu extends React.Component {
 
     return (
       <div id="nav-bar-menu" className="nav-bar menu hidden">
-        <a className="nav-bar menu-icon">
+        <button className="nav-bar menu-icon">
           <img
             className="small icon menu"
             onClick={this.props.toggleMenu}
             src={iconMenuWhite}
             alt="menu-icon" />
-        </a>
+        </button>
         {this.getLinks()}
       </div>
     );

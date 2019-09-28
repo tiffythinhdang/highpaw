@@ -22,10 +22,6 @@ import WalksIndexContainer from '../components/walks/walks_index_container';
 import WalksFormContainer from '../components/walks/walks_form_container';
 import WalksShowContainer from '../components/walks/walks_show_container';
 import ChatContainer from '../components/chat/chat_container';
-// test
-import { setAuthToken, login } from '../util/session_api_util';
-import { getWalks, createWalk } from '../util/walk_api_util';
-
 
 const App = () => (
   <div>

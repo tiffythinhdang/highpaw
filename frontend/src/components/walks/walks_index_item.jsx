@@ -5,15 +5,12 @@ import { Link, withRouter } from 'react-router-dom';
 import SendRequestContainer from '../request/send_request_container';
 
 class WalksIndexItem extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   componentDidMount() {
     this.props.fetchRequests(this.props.walk._id)
     this.props.fetchDogsFromWalk(this.props.walk._id);
   }
-  
+
   renderDogs(dog) {
     return (
       <Link to={`/dogs/${dog._id}`} key={dog._id} >
@@ -36,8 +33,8 @@ class WalksIndexItem extends React.Component {
 
   renderReqBtn() {
     let walk = this.props.walk
-    // debugger
-    if (walk.user == this.props.currentUser.id) {
+
+    if (walk.user === this.props.currentUser.id) {
       return <button className="your-dog-button">Your dog</button>
     }
 
@@ -52,7 +49,7 @@ class WalksIndexItem extends React.Component {
         return <SendRequestContainer walk={walk} request={request} requested={false} />
       }
     } else {
-      return <SendRequestContainer walk={walk} requested={true} /> 
+      return <SendRequestContainer walk={walk} requested={true} />
     }
   }
 
@@ -62,12 +59,10 @@ class WalksIndexItem extends React.Component {
     if (!this.props.dogs) return null;
     if (!this.props.requests) return null;
 
-    let walk = this.props.walk
-
     let dogs = this.props.dogs.map(dog => {
       if (this.props.walk.dogs.includes(dog._id)) {
         return (
-          this.renderDogs(dog)
+           this.renderDogs(dog)
         )
       }
     })
