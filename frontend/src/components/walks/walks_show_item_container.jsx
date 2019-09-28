@@ -1,16 +1,12 @@
 import { connect } from 'react-redux';
-import { deleteWalk } from '../../actions/walk_actions';
-import { fetchDogsFromWalk } from '../../actions/dogs_action';
-import { fetchRequests } from '../../actions/request_actions';
 import { fetchUserFromRequest } from '../../actions/user_actions';
 import WalksShowItem from './walks_show_item';
 
-const mapStateToProps = state => {
-  // debugger;
+const mapStateToProps = (state, ownProps) => {
+
   return {
     currentUser: state.session.user,
-    user: Object.values(state.entities.users)
-    // walks: state.entities.walks
+    users: Object.values(state.entities.users)
   };
 };
 

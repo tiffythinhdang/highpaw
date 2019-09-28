@@ -1,28 +1,24 @@
 import '../../stylesheets/walks_index.scss'
 
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import SendRequestContainer from '../request/send_request_container';
 
 class WalksIndexItem extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   componentDidMount() {
-    this.props.fetchDogsFromWalk(this.props.walk._id);
     this.props.fetchRequests(this.props.walk._id)
+    this.props.fetchDogsFromWalk(this.props.walk._id);
   }
 
   renderDogs(dog) {
     return (
       <Link to={`/dogs/${dog._id}`} key={dog._id} >
         <div className="walks-dog-information-container">
-          <div className="walks-dog-icon">
+          <div className="profile-photo container">
             <img
-              src="https://www.thesprucepets.com/thmb/KEkwV1YeL3obCMo0YSPDXTCxjRA=/450x0/filters:no_upscale():max_bytes(150000):strip_icc()/19933184_104417643500613_5541725731421159424_n-5ba0548546e0fb0050edecc0.jpg"
+              src={dog.profilePhotoUrl}
               alt="dog-pic"
-              className="profile-img"
             />
           </div>
           <div className="walks-dog-name-container">
@@ -36,31 +32,31 @@ class WalksIndexItem extends React.Component {
 
   renderReqBtn() {
     let walk = this.props.walk
-    // debugger
-    if (walk.user == this.props.currentUser.id) {
+
+    if (walk.user === this.props.currentUser.id) {
       return <button className="your-dog-button">Your dog</button>
     }
-    // for (let i = 0; i < requesters.length; i++) {
-    //   let requester = requesters[i];
-    //   if (requester === walk.user) {
 
-    // }
-    // }
-    // let requesters = this.props.requests.map(request => request.requester)
-    // if (requesters.includes(this.props.currentUser.id)) {
+    // if error, check if at least one dummy request is in this.props.requests array in mongoDB or get rid of requests.length if statement.
+
+    if (this.props.requests.length !== 0) {
       let request = this.props.requests.find(request => this.props.requests.includes(request) && request.walk === this.props.walk._id)
       // debugger
       if (request) {
         return <SendRequestContainer walk={walk} request={request} requested={true} />
       } else {
         return <SendRequestContainer walk={walk} request={request} requested={false} />
+      }
+    } else {
+      return <SendRequestContainer walk={walk} requested={true} />
     }
   }
 
   render() {
-    // debugger;
+
     if (!this.props.currentUser) return null;
-    let walk = this.props.walk
+    if (!this.props.dogs) return null;
+    if (!this.props.requests) return null;
 
     let dogs = this.props.dogs.map(dog => {
       if (this.props.walk.dogs.includes(dog._id)) {
@@ -69,7 +65,6 @@ class WalksIndexItem extends React.Component {
         )
       }
     })
-    // if (!this.props.requests) return null;
 
     return (
       <div className="walk-item-container">
@@ -84,4 +79,4 @@ class WalksIndexItem extends React.Component {
   }
 }
 
-export default WalksIndexItem;
+export default withRouter(WalksIndexItem);

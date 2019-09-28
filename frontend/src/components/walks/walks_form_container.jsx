@@ -6,7 +6,6 @@ import WalksForm from './walks_form';
 const mapStateToProps = state => {
   let currentUser = state.session.user;
   let dogs = Object.values(state.entities.dogs)
-  // dogs = dogs.map(dog => dog.user === currentUser.id) 
   return {
     currentUser,
     dogs
@@ -17,7 +16,6 @@ const mapDispatchToProps = dispatch => {
   return {
     createWalk: (walk) => dispatch(createWalk(walk)),
     fetchDogsFromUser: userId => dispatch(fetchDogsFromUser(userId)),
-    // fetchDog: id => dispatch(fetchDog(id))
   }
 }
 

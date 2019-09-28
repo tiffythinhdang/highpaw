@@ -86,7 +86,7 @@ export default class Map extends React.Component {
           let latLng = { lat: position.coords.latitude, lng: position.coords.longitude }
 
           let data = { currentUser: this.props.currentUser , name: this.props.userName, latLng}
-          console.log(latLng);
+          // console.log(latLng);
           walks.emit('sendLocation', data)
           // debugger;
         })

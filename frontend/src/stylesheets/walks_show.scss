@@ -46,7 +46,7 @@
   border-radius: 150px;
 }
 
-.walks-head-container {
+.form.main.header {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -108,9 +108,9 @@
   left: 216px;
   top: 170px;
   background: #F78888;
-  border: 1px solid #3C3C3C;
   box-sizing: border-box;
   border-radius: 200px; 
+  color: white;
 }
 
 .walks-show-map-btn {
@@ -132,7 +132,7 @@
   justify-content: space-between;
   align-items: center;
 
-  height: 15%;
+  height: 22%;
   width: 100%;
   margin-bottom: 10px;
 
@@ -149,10 +149,7 @@
   height: 95%;
 }
 
-.req-user-icon {
-  height: 50px;
-  width: 50px;
-
+.profile-photo.container {
   margin: 0px 10px
 }
 
@@ -166,20 +163,24 @@
 }
 
 .req-user-name {
-  
+  font-size: 18px;
+  color: $hover_blue;
 }
 
 .modify-approve {
   background-color: $main_blue;
   margin-right: 5px;
+  color: white;
 }
 
 .modify-deny {
   background-color: $main_pink;
   margin-right: 5px;
+  color: white;
 }
 
 .pawed-btn {
   background-color: $main_green;
   margin-right: 5px;
+  color: white;
 }
