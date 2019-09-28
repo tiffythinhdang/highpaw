@@ -1,4 +1,7 @@
 import React from 'react';
+import '../../stylesheets/chat.scss';
+import iconArrow from '../../assets/small_icon_back_arrow_white.png';
+
 const io = require('socket.io-client');
 
 
@@ -10,6 +13,7 @@ export default class Chat extends React.Component {
       chat: [],
     }
     this.handleSend = this.handleSend.bind(this);
+    this.handleGoBack = this.handleGoBack.bind(this);
   }
 
   componentDidMount() {
@@ -79,13 +83,34 @@ export default class Chat extends React.Component {
     // this.chat.emit('sendMessage', messageInfo)
   }
 
+  /* Tiffany's code starts*/
+  handleGoBack(e) {
+    e.preventDefault();
+    this.props.history.goBack();
+  }
+  /* Tiffany's code ends*/
+
   render() {
     return (
       <div className="chat-container">
+
+        {/* Tiffany's code starts*/}
+        <div className="chat-header container">
+          <img
+            className="small icon"
+            src={iconArrow}
+            alt="back-arrow"
+            onCLick={this.handleGoBack}
+          />
+          <p className="chat-header requester-name">Requester's Name</p>
+        </div>
+        {/* Tiffany's code ends*/}
+
         <div id="chat-output">
           {this.state.chat}
         </div>
-        <form>
+
+        <form className="chat-type-box container">
 
           <input type="text" id="chat-input" placeholder="Message"/>
           <button className="small main button" onClick={this.handleSend}>Send</button>
