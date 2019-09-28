@@ -82,6 +82,17 @@ export default class Chat extends React.Component {
   render() {
     return (
       <div className="chat-container">
+        {/* Tiffany's code starts*/}
+        <div className="chat-header container">
+          <img
+            className="small icon"
+            src={iconArrow}
+            alt="back-arrow"
+            onCLick={this.handleGoBack}
+          />
+          <p className="chat-header requester-name">{this.props.currentUserName}</p>
+        </div>
+        {/* Tiffany's code ends*/}
         <div id="chat-output">
           {this.state.chat}
         </div>
