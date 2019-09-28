@@ -17,7 +17,6 @@ class WalksShow extends React.Component {
   }
 
   componentDidMount() {
-
     this.props.fetchRequests(this.props.match.params.id)
   }
 
