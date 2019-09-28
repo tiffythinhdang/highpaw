@@ -59,7 +59,7 @@ class WalksIndex extends React.Component {
         {this.renderButtons()}
 
         <div className="walks-head">
-          <p className="walks-head-text">Active walks</p>
+          <p className="form main header">Active walks</p>
         </div>
         <div className="walks-items-container">
           {walks}

@@ -76,7 +76,7 @@ class WalksShow extends React.Component {
           </Link>
           <button className="walks-show-chat-btn">Chat</button>
         </div>
-        <div className="walks-head-container">Your walk</div>
+        <div className="form main header">Your walk</div>
         {this.renderMap(requests)}
         <div className="walks-delete-button-container">
           <button className="walks-delete-btn" onClick={this.handleDelete}>Delete walk</button>
