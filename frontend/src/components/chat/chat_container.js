@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import Chat from './chat';
 import {receiveListener, receiveRoom, receiveEmit, receiveLeaveRoom} from '../../actions/socket_actions'
+
 const mapStateToProps = state => {
   return {
     currentUser: state.session.user,

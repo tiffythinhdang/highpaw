@@ -13,6 +13,7 @@ export default class Chat extends React.Component {
       chat: [],
     }
     this.handleSend = this.handleSend.bind(this);
+    this.handleGoBack = this.handleGoBack.bind(this);
   }
 
   componentDidMount() {
@@ -82,9 +83,17 @@ export default class Chat extends React.Component {
     // this.chat.emit('sendMessage', messageInfo)
   }
 
+  /* Tiffany's code starts*/
+  handleGoBack(e) {
+    e.preventDefault();
+    this.props.history.goBack();
+  }
+  /* Tiffany's code ends*/
+
   render() {
     return (
       <div className="chat-container">
+
         {/* Tiffany's code starts*/}
         <div className="chat-header container">
           <img
@@ -93,19 +102,14 @@ export default class Chat extends React.Component {
             alt="back-arrow"
             onCLick={this.handleGoBack}
           />
-          <p className="chat-header requester-name">Requester's name</p>
+          <p className="chat-header requester-name">Requester's Name</p>
         </div>
         {/* Tiffany's code ends*/}
 
         <div id="chat-output">
-          <div className="other">
-            <img 
-              src="https://res.cloudinary.com/teepublic/image/private/s--xtk3UD3P--/t_Preview/b_rgb:c8e0ec,c_limit,f_auto,h_313,q_90,w_313/v1523947371/production/designs/2598025_0"
-            />
-            <p>yrggjsdjghfjdsghjsdhgjksdhfgjkdshgjkdhsgkjhdgkjdhsgdsh</p>
-          </div>
           {this.state.chat}
         </div>
+
         <form className="chat-type-box container">
 
           <input type="text" id="chat-input" placeholder="Message"/>
