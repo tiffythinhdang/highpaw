@@ -15,11 +15,10 @@ class WalksIndexItem extends React.Component {
     return (
       <Link to={`/dogs/${dog._id}`} key={dog._id} >
         <div className="walks-dog-information-container">
-          <div className="walks-dog-icon">
+          <div className="profile-photo container">
             <img
-              src="https://www.thesprucepets.com/thmb/KEkwV1YeL3obCMo0YSPDXTCxjRA=/450x0/filters:no_upscale():max_bytes(150000):strip_icc()/19933184_104417643500613_5541725731421159424_n-5ba0548546e0fb0050edecc0.jpg"
+              src={dog.profilePhotoUrl}
               alt="dog-pic"
-              className="profile-img"
             />
           </div>
           <div className="walks-dog-name-container">
@@ -62,7 +61,7 @@ class WalksIndexItem extends React.Component {
     let dogs = this.props.dogs.map(dog => {
       if (this.props.walk.dogs.includes(dog._id)) {
         return (
-           this.renderDogs(dog)
+          this.renderDogs(dog)
         )
       }
     })

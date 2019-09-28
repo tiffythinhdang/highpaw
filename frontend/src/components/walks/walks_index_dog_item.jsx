@@ -14,7 +14,8 @@ class WalksIndexDogItem extends React.Component {
   renderDogs(dog) {
     return (
       <div className="walks-dog-information-container">
-        <div className="walks-dog-icon"></div>
+        <div className="walks-dog-icon">
+        </div>
         <div className="walks-dog-name-container">
           <p className="walks-dog-name">{dog.name}</p>
           <p className="walks-dog-age">{dog.age}</p>

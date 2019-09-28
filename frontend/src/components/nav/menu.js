@@ -60,7 +60,8 @@ class Menu extends React.Component {
       const menuIcon = document.getElementById('menu-icon');
       if (navBar) {
         let clickedInsideNavBar = navBar.contains(e.target)
-        if (!clickedInsideNavBar || !menuIcon) {
+        let clickedMenuIcon = menuIcon.contains(e.target);
+        if (!clickedInsideNavBar && !clickedMenuIcon) {
           navBar.classList.add("hidden");
         }
       }

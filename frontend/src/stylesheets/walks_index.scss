@@ -92,7 +92,7 @@
   justify-content: space-between;
   align-items: center;
 
-  height: 15%;
+  height: 18%;
   width: 100%;
   margin-bottom: 10px;
 
@@ -124,10 +124,7 @@
   // border: 1px dotted red;
 }
 
-.walks-dog-icon {
-  height: 50px;
-  width: 50px;
-
+.profile-photo.container {
   margin: 0px 10px;
 
   // border: 1px dotted green
@@ -164,4 +161,9 @@
   border-radius: 150px;
   background-color: $main_pink;
   color: $white;
+}
+
+.walks-dog-name {
+  font-size: 18px;
+  color: $hover_pink;
 }

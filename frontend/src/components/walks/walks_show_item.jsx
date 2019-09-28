@@ -1,7 +1,7 @@
 import '../../stylesheets/walks_show.scss'
 
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 import ModifyRequestContainer from '../request/modify_request_container';
 import FulfillRequestContainer from '../request/fulfill_request_container';
@@ -30,13 +30,20 @@ class WalksShowItem extends React.Component {
     return (
 
       <div className="request-item-main">
-        <div className="request-user-information-container">
-          <div className="req-user-icon"></div>
-          <div className="req-user-name-container">
-            <p className="req-user-name">{reqUser.name}</p>
-            <p className="req user-age">{reqUser.age} {reqUser.age > 1 ? "yrs old" : "yr old"}</p>
+        <Link to={`/users/${reqUser._id}`} key={reqUser._id} >
+          <div className="request-user-information-container">
+            <div className="profile-photo container">
+            <img
+                src={reqUser.profilePhotoUrl}
+                alt="user-pic"
+              />
+            </div>
+            <div className="req-user-name-container">
+              <p className="req-user-name">{reqUser.name}</p>
+              <p className="req user-age">{reqUser.age} {reqUser.age > 1 ? "yrs old" : "yr old"}</p>
+            </div>
           </div>
-        </div>
+        </Link>
         <div className="req-user-btn">
           {this.props.request.status === "pending" ? <ModifyRequestContainer request={this.props.request} /> : ""}
           {this.props.request.status === "approved" ? <FulfillRequestContainer request={this.props.request} /> : ""}
