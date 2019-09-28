@@ -4,6 +4,7 @@ const passport = require('passport');
 const Request = require('../../models/Request');
 const validateRequestStatus = require('../../validation/requests');
 
+
 //Makes a request to pet dog
 router.post('/walks/:walkId',
   passport.authenticate("jwt", { session: false }),

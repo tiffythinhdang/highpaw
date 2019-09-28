@@ -1,5 +1,7 @@
 import React from 'react';
 import '../../stylesheets/index.scss';
+const io = require('socket.io-client');
+
 
 export default class SendRequest extends React.Component {
   constructor(props) {
@@ -8,23 +10,37 @@ export default class SendRequest extends React.Component {
       // walk: this.props.walk,
       requester: this.props.requester
     }
-
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handlePending = this.handlePending.bind(this)
   }
 
+  componentDidMount() {
+    this.socket = io();
+  }
+
   handleSubmit(e) {
     // debugger
-    // e.preventDefault();
+    e.preventDefault();
     // const pending = document.getElementById(`pending-button${this.props.walk}`);
     // const paw = document.getElementById(`paw-button${this.props.walk}`);
     // pending.classList.toggle('hidden');
     // paw.classList.toggle('hidden')
+    // debugger
+    this.props.receiveRoom(this.props.walk.user);
+    this.props.receiveRoom(this.props.requester);
+    let requestInfo = { action: 'sendRequest', value: { approvalRoom: this.props.walk.user, requster: this.props.requester } }
+    this.props.receiveEmit(requestInfo);
+
+    // this.socket.emit('joinRoom', this.props.walk.user)
+    // this.socket.emit('joinRoom', this.props.requester)
+    // let requestInfo = { approvalRoom: this.props.walk.user, requster: this.props.requester}
+    // this.socket.emit('sendRequest', requestInfo)
+    // this.socket.on('success', (res) => console.log(res))
     this.props.paw(this.props.walk._id)
   }
 
   handlePending(e) {
-    // e.preventDefault();
+    e.preventDefault();
     // const pending = document.getElementById(`pending-button${this.props.walk}`);
     // const paw = document.getElementById(`paw-button${this.props.walk}`);
     // pending.classList.toggle('hidden');
