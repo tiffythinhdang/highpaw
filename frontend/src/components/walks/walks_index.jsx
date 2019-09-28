@@ -25,9 +25,9 @@ class WalksIndex extends React.Component {
             <Link to={`/walks/${walk._id}`} >
               <button className="walks-index-map-btn">Your walk</button>
             </Link>
-            <Link to="/walks/create" className="walks-index-form-btn">
+            {/* <Link to="/walks/create" className="walks-index-form-btn"> */}
             <button className="walks-index-form-btn inactive">Start a walk!</button>
-            </Link>
+            {/* </Link> */}
           </div>
         )
       }

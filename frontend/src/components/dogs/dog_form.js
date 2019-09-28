@@ -141,6 +141,7 @@ class DogForm extends React.Component {
             className="main large button">
             {this.props.formType}
           </button>
+
           <button 
             className="tertiary large button"
             onClick={this.handleGoBack}>
