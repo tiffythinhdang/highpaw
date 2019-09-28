@@ -1,4 +1,7 @@
 import React from 'react';
+import '../../stylesheets/chat.scss';
+import iconArrow from '../../assets/small_icon_back_arrow_white.png';
+
 const io = require('socket.io-client');
 
 
@@ -90,13 +93,20 @@ export default class Chat extends React.Component {
             alt="back-arrow"
             onCLick={this.handleGoBack}
           />
-          <p className="chat-header requester-name">{this.props.currentUserName}</p>
+          <p className="chat-header requester-name">Requester's name</p>
         </div>
         {/* Tiffany's code ends*/}
+
         <div id="chat-output">
+          <div className="other">
+            <img 
+              src="https://res.cloudinary.com/teepublic/image/private/s--xtk3UD3P--/t_Preview/b_rgb:c8e0ec,c_limit,f_auto,h_313,q_90,w_313/v1523947371/production/designs/2598025_0"
+            />
+            <p>yrggjsdjghfjdsghjsdhgjksdhfgjkdshgjkdhsgkjhdgkjdhsgdsh</p>
+          </div>
           {this.state.chat}
         </div>
-        <form>
+        <form className="chat-type-box container">
 
           <input type="text" id="chat-input" placeholder="Message"/>
           <button className="small main button" onClick={this.handleSend}>Send</button>
