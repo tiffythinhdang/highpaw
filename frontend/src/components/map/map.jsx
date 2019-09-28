@@ -31,7 +31,7 @@ export default class Map extends React.Component {
   componentDidMount() {
     
     const mapOptions = {
-      center: { lat: 37.7758, lng: -122.435 }, // this is SF
+      center: { lat: 37.798887, lng: -122.401373 }, // this is SF
       zoom: 17
     };
 
@@ -40,7 +40,9 @@ export default class Map extends React.Component {
 
     const locationTag = document.getElementById('demo');
 
-    let walks = io.connect(process.env.PORT ? `http://highpaw.herokuapp.com:${process.env.PORT + 1}` : `http://localhost:${port + 1}/walks`)
+
+    let walks = io();
+
 
     walks.on('welcome', (msg) => {
       console.log('Received: ', msg)
@@ -67,7 +69,8 @@ export default class Map extends React.Component {
 
         let marker = new google.maps.Marker({
           position: location,
-          map: this.map
+          map: this.map,
+          label: data.name
         })
 
         this.state.markers[user] = marker;
@@ -82,12 +85,12 @@ export default class Map extends React.Component {
         navigator.geolocation.getCurrentPosition((position) => {
           let latLng = { lat: position.coords.latitude, lng: position.coords.longitude }
 
-          let data = { currentUser: this.props.currentUser , latLng}
-          
+          let data = { currentUser: this.props.currentUser , name: this.props.userName, latLng}
+          console.log(latLng);
           walks.emit('sendLocation', data)
           // debugger;
         })
-      }, 1000)
+      }, 4000)
     } else {
       locationTag.innerHTML = "Geolocation isn't supported by your browser."
     }
@@ -105,7 +108,6 @@ export default class Map extends React.Component {
       <div>
 
         <div id="map-container" ref={map => this.mapNode = map}>
-
         </div>
         <p id="demo"></p>
       </div>
