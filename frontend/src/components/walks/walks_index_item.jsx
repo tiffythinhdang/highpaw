@@ -1,7 +1,7 @@
 import '../../stylesheets/walks_index.scss'
 
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import SendRequestContainer from '../request/send_request_container';
 
 class WalksIndexItem extends React.Component {
@@ -13,6 +13,15 @@ class WalksIndexItem extends React.Component {
     this.props.fetchDogsFromWalk(this.props.walk._id);
     this.props.fetchRequests(this.props.walk._id)
   }
+
+  // componentDidUpdate(prevProps) {
+  
+  // }
+
+  // shouldComponentUpdate(prevProps) {
+  //   // debugger
+  //   return (prevProps.match.requests == this.props.match.requests) 
+  // }
 
   // shouldComponentUpdate(prevProps) {
     // return this.props.dogs !== prevProps.dogs
@@ -54,10 +63,11 @@ class WalksIndexItem extends React.Component {
     // if (requesters.includes(this.props.currentUser.id)) {
       let request = this.props.requests.find(request => this.props.requests.includes(request) && request.walk === this.props.walk._id)
       // debugger
-      if (request) {
-        return <SendRequestContainer walk={walk} request={request} requested={true} />
-      } else {
-        return <SendRequestContainer walk={walk} request={request} requested={false} />
+        if (request) {
+          return <SendRequestContainer walk={walk} request={request} requested={true} />
+        } else {
+          return <SendRequestContainer walk={walk} request={request} requested={false} />
+        
     }
   }
 
@@ -91,4 +101,4 @@ class WalksIndexItem extends React.Component {
   }
 }
 
-export default WalksIndexItem;
+export default withRouter(WalksIndexItem);
