@@ -22,6 +22,7 @@ export default class Chat extends React.Component {
     this.chat.on('sendMessage', (message) => {
       const output = document.getElementById('chat-output');
       const bTag = document.createElement('br');
+      
       output.append(message);
       output.append(bTag);
     })
