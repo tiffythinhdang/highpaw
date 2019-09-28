@@ -15,17 +15,8 @@ class WalksIndex extends React.Component {
     this.props.fetchWalks();
   }
 
-  componentWillUnmount() {
-    
-  }
-
-  // shouldComponentUpdate(prevState) {
-  //   return this.state.loaded != prevState.loaded
-  // }
-
   renderButtons() {
-    // debugger
-    // this.setState({ loaded: true })
+
     let walks = this.props.walks;
     let currentUser = this.props.currentUser;
 
@@ -38,14 +29,11 @@ class WalksIndex extends React.Component {
             <Link to={`/walks/${walk._id}`} >
               <button className="walks-index-map-btn">Your walk</button>
             </Link>
-            {/* <Link to="/walks/create" className="walks-index-form-btn"> */}
             <button className="walks-index-form-btn inactive">Start a walk!</button>
-            {/* </Link> */}
           </div>
         )
       }
     }
-
 
     return (
       <div className="walks-index-top-buttons-container">
@@ -58,10 +46,8 @@ class WalksIndex extends React.Component {
   }
 
   render() {
-    // debugger
     if (!this.props.currentUser) return null;
     if (!this.props.walks) return null;
-    // debugger
     let walks = this.props.walks.map(walk => {
       return (
         <WalksIndexItemContainer key={walk._id} walk={walk} />
@@ -71,9 +57,6 @@ class WalksIndex extends React.Component {
     return (
       <div className="walks-index-main">
         {this.renderButtons()}
-
-
-
 
         <div className="walks-head">
           <p className="walks-head-text">Active walks</p>

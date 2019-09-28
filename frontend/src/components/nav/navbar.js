@@ -25,6 +25,7 @@ class NavBar extends React.Component {
           <a className="nav-bar menu-icon">
             <img 
               className="small icon menu"
+              id="menu-icon"
               onClick={this.toggleMenu}
               src={iconMenu} 
               alt="menu-icon"/>

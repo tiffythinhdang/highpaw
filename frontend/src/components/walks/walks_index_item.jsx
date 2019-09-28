@@ -10,23 +10,10 @@ class WalksIndexItem extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchDogsFromWalk(this.props.walk._id);
     this.props.fetchRequests(this.props.walk._id)
+    this.props.fetchDogsFromWalk(this.props.walk._id);
   }
-
-  // componentDidUpdate(prevProps) {
   
-  // }
-
-  // shouldComponentUpdate(prevProps) {
-  //   // debugger
-  //   return (prevProps.match.requests == this.props.match.requests) 
-  // }
-
-  // shouldComponentUpdate(prevProps) {
-    // return this.props.dogs !== prevProps.dogs
-  // }
-
   renderDogs(dog) {
     return (
       <Link to={`/dogs/${dog._id}`} key={dog._id} >
@@ -53,26 +40,24 @@ class WalksIndexItem extends React.Component {
     if (walk.user == this.props.currentUser.id) {
       return <button className="your-dog-button">Your dog</button>
     }
-    // for (let i = 0; i < requesters.length; i++) {
-    //   let requester = requesters[i];
-    //   if (requester === walk.user) {
 
-    // }
-    // }
-    // let requesters = this.props.requests.map(request => request.requester)
-    // if (requesters.includes(this.props.currentUser.id)) {
+    // if error, check if at least one dummy request is in this.props.requests array in mongoDB or get rid of requests.length if statement.
+
+    if (this.props.requests.length !== 0) {
       let request = this.props.requests.find(request => this.props.requests.includes(request) && request.walk === this.props.walk._id)
       // debugger
-        if (request) {
-          return <SendRequestContainer walk={walk} request={request} requested={true} />
-        } else {
-          return <SendRequestContainer walk={walk} request={request} requested={false} />
-        
+      if (request) {
+        return <SendRequestContainer walk={walk} request={request} requested={true} />
+      } else {
+        return <SendRequestContainer walk={walk} request={request} requested={false} />
+      }
+    } else {
+      return <SendRequestContainer walk={walk} requested={true} /> 
     }
   }
 
   render() {
-    // debugger;
+
     if (!this.props.currentUser) return null;
     if (!this.props.dogs) return null;
     if (!this.props.requests) return null;
@@ -86,7 +71,6 @@ class WalksIndexItem extends React.Component {
         )
       }
     })
-    // if (!this.props.requests) return null;
 
     return (
       <div className="walk-item-container">

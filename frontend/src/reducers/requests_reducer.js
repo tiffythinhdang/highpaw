@@ -1,18 +1,21 @@
-import { RECEIVE_REQUEST, RECEIVE_REQUESTS, REMOVE_REQUEST  } from '../actions/request_actions';
+import { RECEIVE_REQUEST, RECEIVE_REQUESTS, REMOVE_REQUEST } from '../actions/request_actions';
 
 
 export const requestsReducer = (state = {}, action) => {
   Object.freeze(state);
   let newState = Object.assign({}, state);
 
-  switch(action.type) {
+  switch (action.type) {
     case RECEIVE_REQUESTS:
-      let obj = {};
-      action.requests.data.forEach(data => {
-        obj[data._id] = data
-      })
-      // return newState
-      return obj;
+        action.requests.data.forEach(data => {
+          newState[data._id] = data
+        })
+        return newState
+      // let obj = {};
+      // actions.requests.data.forEach(data => {
+      // obj[data._id] = data
+      // })
+      // return obj
     case RECEIVE_REQUEST:
       newState[action.request.data._id] = action.request.data;
       return newState;

@@ -57,10 +57,10 @@ class Menu extends React.Component {
   closeSidebar() {
     document.addEventListener('click', function(e) {
       const navBar = document.getElementById('nav-bar-menu');
-      let clickedInsideNavBar;
+      const menuIcon = document.getElementById('menu-icon');
       if (navBar) {
         let clickedInsideNavBar = navBar.contains(e.target)
-        if (!clickedInsideNavBar) {
+        if (!clickedInsideNavBar || !menuIcon) {
           navBar.classList.add("hidden");
         }
       }
