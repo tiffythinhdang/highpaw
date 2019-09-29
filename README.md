@@ -45,9 +45,9 @@ highpaw
 - [ ] Live chat between users
 
 ### Group Members and Responsibilities
-- User CRUD Feature: Aaron, Tiffany
-- Dog CRUD Feature: Tiffany
-- Walk Feature: Brian
-- Request Feature: Jason
-- Socket.io, Google Map Api: Jason, Aaron
-- AWS S3: Tiffany
+- **User Feature**: Aaron, Tiffany
+- **Dog Feature**: Tiffany
+- **Walk Feature**: Brian
+- **Request Feature**: Jason
+- **Socket.io, Google Map Api**: Jason, Aaron
+- **AWS S3 & Direct Uploading**: Tiffany
