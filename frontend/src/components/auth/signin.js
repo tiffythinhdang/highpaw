@@ -29,8 +29,7 @@ export default class SignIn extends React.Component {
     e.preventDefault();
     this.props.clearSessionErrors();
     this.props.login(this.state).then(() => {
-      console.log('redirecting...');
-      // this.props.history.push('/')
+      this.props.history.push('/walks');
     });
   }
 
@@ -96,8 +95,8 @@ export default class SignIn extends React.Component {
             />
             <div className="errors">{this.props.errors.password}</div>
             <input type="submit" value="Submit" className="main large button" />
-            <button className="tertiary large button" onClick={this.handleCancel}>Cancel</button>
             <button className="secondary large button" onClick={this.demoClickHandler}>Demo user</button>
+            <button className="tertiary large button" onClick={this.handleCancel}>Cancel</button>
           </div>
         </form>
       </div>

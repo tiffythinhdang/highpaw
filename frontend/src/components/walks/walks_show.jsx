@@ -21,6 +21,7 @@ class WalksShow extends React.Component {
   }
 
   handleDelete() {
+    // debugger
     this.props.deleteWalk(this.props.match.params.id)
       .then(this.props.history.push('/walks'))
   }
@@ -38,7 +39,7 @@ class WalksShow extends React.Component {
     } else {
       return (
         <div className="walks-map-container">
-          <Map />
+          {/* <Map /> */}
         </div> 
       )
     }
@@ -61,10 +62,15 @@ class WalksShow extends React.Component {
   }
 
   render() {
+    // debugger
+    let walkId = this.props.match.params.id;
+
     let requests = this.props.requests.map(request => {
-      return (
-        <WalkShowItemContainer request={request} />
-      )
+      if (request.walk === walkId) {
+        return (
+          <WalkShowItemContainer request={request} />
+        )
+      }
     })
 
     return (
@@ -74,13 +80,14 @@ class WalksShow extends React.Component {
           <Link to="/walks" >
             <button className="walks-show-back-btn">Back</button>
           </Link>
-          <button className="walks-show-chat-btn" >Chat</button>
+          {/* <button className="walks-show-chat-btn" >Chat</button> */}
         </div>
         <div className="form main header">Your walk</div>
         {this.renderMap(requests)}
         <div className="walks-delete-button-container">
-          <button className="walks-delete-btn" onClick={this.handleDelete}>Delete walk</button>
-          {this.renderButtons()}
+          <button className="main large button walks-delete-btn" onClick={this.handleDelete}>Delete walk</button>
+          {/* comment back in if needed. and change back to space-between css */}
+          {/* {this.renderButtons()} */}
         </div>
       </div>
 

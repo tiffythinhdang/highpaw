@@ -15,7 +15,7 @@ const mapStateToProps = state => {
     formType: "Register",
     header: "register your dog",
     errors: state.errors.dog,
-    currentUserId: state.session.user.id,
+    currentUserId: state.session.user.id
   }
 };
 

@@ -6,7 +6,7 @@ import WalksShow from './walks_show';
 const mapStateToProps = (state, ownProps) => {
   return {
     currentUser: state.session.user,
-    walks: Object.values(state.entities.walks),
+    // walks: Object.values(state.entities.walks),
     requests: Object.values(state.entities.requests)
   };
 };

@@ -7,7 +7,7 @@
   align-items: center;
 
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 54px - 10px);
 }
 
 .walks-show-buttons-container {
@@ -50,7 +50,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 12%;
+  height: 10%;
   width: 95%;
   font-size: 40px;
 
@@ -71,10 +71,12 @@
 .walks-req-container {
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   align-items:center;
   height: 68%; 
   width: 100%;
-  margin-bottom: 10px;
+  // margin-bottom: 10px;
+  // border: 1px dotted yellow;
 }
 
 .walks-req-head {
@@ -85,7 +87,7 @@
 .walks-req-index {
   display: flex;
   flex-direction: column;
-  height: 90%;
+  height: 85%;
   width: 95%;
   flex-wrap: nowrap;
   overflow-y: auto;
@@ -96,22 +98,26 @@
 .walks-delete-button-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  // justify-content: space-between;
+  justify-content: center;
   width: 90%;
+  height: 10%;
+
+  // border: 1px dotted green;
 }
 
-.walks-delete-btn {
-  display: flex;
-  justify-content: center;
-  width: 144px;
-  height: 40px;
-  left: 216px;
-  top: 170px;
-  background: #F78888;
-  box-sizing: border-box;
-  border-radius: 200px; 
-  color: white;
-}
+// .walks-delete-btn {
+//   display: flex;
+//   justify-content: center;
+//   width: 300px;
+//   height: 45px;
+//   left: 216px;
+//   top: 170px;
+//   background: #F78888;
+//   box-sizing: border-box;
+//   border-radius: 200px; 
+//   color: white;
+// }
 
 .walks-show-map-btn {
   display: flex;
@@ -132,9 +138,12 @@
   justify-content: space-between;
   align-items: center;
 
-  height: 22%;
+  height: 26%;
   width: 100%;
-  margin-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
 
   background: white;
   box-shadow: 0px 3px 11px
@@ -150,7 +159,7 @@
 }
 
 .profile-photo.container {
-  margin: 0px 10px
+  margin-right: 10px;
 }
 
 .req-user-name-container {
@@ -175,7 +184,6 @@
 
 .modify-deny {
   background-color: $main_pink;
-  margin-right: 5px;
   color: white;
 }
 
@@ -183,4 +191,16 @@
   background-color: $main_green;
   margin-right: 5px;
   color: white;
+}
+
+.show-map-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items:center;
+  height: 68%; 
+  width: 100%;
+  margin-bottom: 10px;
+
+  border: 1px dotted green 
 }

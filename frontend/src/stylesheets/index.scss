@@ -58,7 +58,7 @@ input[type="submit"] {
 }
 
 // General Setting
-#root {
+#root, .app {
   position: relative;
   min-height: 100vh;
   clear: both;
@@ -115,6 +115,10 @@ input[type="submit"] {
 .disabled.button {
   background-color: $medium_gray;
   color: $white;
+}
+
+.pending.button {
+  background-color: $main_yellow;
 }
 
 // Form Input settings

@@ -69,7 +69,7 @@ class Chat extends React.Component {
 
   componentWillUnmount() {
     console.log('chat has unmounted')
-    this.props.receiveLeaveRoom(this.props.currentUser.id)
+    this.props.receiveLeaveRoom(this.props.params.match.requestId)
   }
 
   handleSend(e) {

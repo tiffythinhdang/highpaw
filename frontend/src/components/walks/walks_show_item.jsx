@@ -25,6 +25,7 @@ class WalksShowItem extends React.Component {
         reqUser = user
       }
     })
+
     if (!reqUser) return null
 
     return (
