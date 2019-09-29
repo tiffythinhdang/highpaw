@@ -29,8 +29,7 @@ export default class SignIn extends React.Component {
     e.preventDefault();
     this.props.clearSessionErrors();
     this.props.login(this.state).then(() => {
-      console.log('redirecting...');
-      // this.props.history.push('/')
+      this.props.history.push('/walks');
     });
   }
 

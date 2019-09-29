@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import iconMenuWhite from '../../assets/small_icon_menu_white.png';
 import '../../stylesheets/index.scss';
 
@@ -12,7 +12,8 @@ class Menu extends React.Component {
 
   logoutUser(e) {
     e.preventDefault();
-    this.props.logout();
+    this.props.logout()
+    this.props.history.push('/');
   }
 
   getLinks() {
@@ -86,4 +87,4 @@ class Menu extends React.Component {
   }
 }
 
-export default Menu;
+export default withRouter(Menu);
