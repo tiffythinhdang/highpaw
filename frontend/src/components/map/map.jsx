@@ -13,10 +13,6 @@ class Map extends React.Component {
 
   componentDidMount() {
     
-    if (this.props.location.pathname.includes('walks')) {
-      
-    }
-
     const mapOptions = {
       center: { lat: 37.798887, lng: -122.401373 }, 
       zoom: 17
@@ -25,7 +21,10 @@ class Map extends React.Component {
     this.map = new google.maps.Map(this.mapNode, mapOptions);
     
     if (this.props.location.pathname.includes('walks')) {
-
+      this.props.approved.forEach((room) => {
+        this.props.receiveRoom(room)
+      })
+      this.sendLocation(this.props.approved)
     } else {
       this.props.receiveRoom(this.props.match.params.requestId)
       let rooms = [this.props.match.params.requestId];
@@ -59,7 +58,7 @@ class Map extends React.Component {
   sendLocation(rooms) {
     const locationTag = document.getElementById('unsupported');
     if (navigator.geolocation) {
-      setInterval(() => {
+      this.locationInterval = setInterval(() => {
         rooms.forEach(room => {
           navigator.geolocation.getCurrentPosition((position) => {
             let latLng = { lat: position.coords.latitude, lng: position.coords.longitude }
@@ -74,15 +73,28 @@ class Map extends React.Component {
     }
   }
 
+  componentWillUnmount() {
+    
+    clearInterval(this.locationInterval)
+    if (this.props.location.pathname.includes('walks')) {
+      this.props.approved.forEach((room) => {
+        this.props.receiveLeaveRoom(room)
+      })
+      
+    } else {
+      this.props.receiveLeaveRoom(this.props.match.params.requestId)
+    }
+  }
+
 
   render() {
     return (
-      <div>
+      
 
         <div id="map-container" ref={map => this.mapNode = map}>
         </div>
-        <p id="unsupported"></p>
-      </div>
+        
+    
     )
   }
 }
