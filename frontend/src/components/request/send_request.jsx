@@ -1,7 +1,6 @@
 import React from 'react';
 import '../../stylesheets/index.scss';
 
-
 export default class SendRequest extends React.Component {
   constructor(props) {
     super(props);
@@ -15,28 +14,9 @@ export default class SendRequest extends React.Component {
     this.handlePending = this.handlePending.bind(this)
   }
 
-  componentDidMount() {
-  }
-
   handleSubmit(e) {
-    // debugger
     e.preventDefault();
     this.setState({ sending: true })
-    // const pending = document.getElementById(`pending-button${this.props.walk}`);
-    // const paw = document.getElementById(`paw-button${this.props.walk}`);
-    // pending.classList.toggle('hidden');
-    // paw.classList.toggle('hidden')
-    // debugger
-    // this.props.receiveRoom(this.props.walk.user);
-    // this.props.receiveRoom(this.props.requester);
-    // let requestInfo = { action: 'sendRequest', value: { approvalRoom: this.props.walk.user, requster: this.props.requester } }
-    // this.props.receiveEmit(requestInfo);
-
-    // this.socket.emit('joinRoom', this.props.walk.user)
-    // this.socket.emit('joinRoom', this.props.requester)
-    // let requestInfo = { approvalRoom: this.props.walk.user, requster: this.props.requester}
-    // this.socket.emit('sendRequest', requestInfo)
-    // this.socket.on('success', (res) => console.log(res))
     this.props.paw(this.props.walk._id).then(
       this.setState({ sending: false })
     )
@@ -45,10 +25,6 @@ export default class SendRequest extends React.Component {
   handlePending(e) {
     e.preventDefault();
     this.setState({ cancelling: true }) 
-    // const pending = document.getElementById(`pending-button${this.props.walk}`);
-    // const paw = document.getElementById(`paw-button${this.props.walk}`);
-    // pending.classList.toggle('hidden');
-    // paw.classList.toggle('hidden');
     this.props.deleteRequest(this.props.request._id).then(
       this.setState({ cancelling: false })
     )

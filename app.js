@@ -81,7 +81,7 @@ app.use("/api/requests", requests);
 
 io
   .on('connection', (socket) => {
-    console.log('New Client');
+    
     socket.emit('welcome', 'Welcome to the walk namespace')
 
     // socket.on('sendMessage', message => {
@@ -99,14 +99,14 @@ io
       return socket.emit('success', "You have successfully left " + room)
     })
 
-    socket.on('sendRequest', (requestInfo) => {
-      io
-        .in(requestInfo.approvalRoom).emit('sendRequest', requestInfo)
-    })
+    // socket.on('sendRequest', (requestInfo) => {
+    //   io
+    //     .in(requestInfo.approvalRoom).emit('sendRequest', requestInfo)
+    // })
 
     socket.on('sendLocation', location => {
       io
-        .in(`${location.currentUser}`).emit('sendLocation', location) 
+        .in(`${location.room}`).emit('sendLocation', location) 
     })
 
     socket.on('sendMessage', messageInfo => {

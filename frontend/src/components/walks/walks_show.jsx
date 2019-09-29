@@ -2,14 +2,15 @@ import '../../stylesheets/walks_show.scss'
 
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import Map from '../map/map'
+import MapContainer from '../map/map_container';
 import WalkShowItemContainer from './walks_show_item_container';
 
 class WalksShow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      map: false
+      map: false,
+      approved: []
     }
     this.handleDelete = this.handleDelete.bind(this);
     this.handleMapBtn = this.handleMapBtn.bind(this);
@@ -19,6 +20,8 @@ class WalksShow extends React.Component {
   componentDidMount() {
     this.props.fetchRequests(this.props.match.params.id)
   }
+
+  
 
   handleDelete() {
     // debugger
@@ -39,7 +42,7 @@ class WalksShow extends React.Component {
     } else {
       return (
         <div className="walks-map-container">
-          {/* <Map /> */}
+          <MapContainer />
         </div> 
       )
     }
@@ -87,7 +90,7 @@ class WalksShow extends React.Component {
         <div className="walks-delete-button-container">
           <button className="main large button walks-delete-btn" onClick={this.handleDelete}>Delete walk</button>
           {/* comment back in if needed. and change back to space-between css */}
-          {/* {this.renderButtons()} */}
+          {this.renderButtons()}
         </div>
       </div>
 
