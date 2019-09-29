@@ -3,10 +3,8 @@ import { Link } from 'react-router-dom';
 import '../../stylesheets/main_page.scss';
 
 import waggingDogGIF from '../../assets/wagging_dog.gif';
-import MapContainer from '../map/map_container';
 
 class MainPage extends React.Component {
-
   render() {
     return (
       <div className="main-page container">
@@ -33,8 +31,6 @@ class MainPage extends React.Component {
             alt="walking-dog-gif"
           />
         </div>
-        
-        {/* <MapContainer /> */}
       </div>
     );
   }
