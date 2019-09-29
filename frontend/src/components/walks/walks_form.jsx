@@ -1,6 +1,9 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import '../../stylesheets/walks_form.scss';
+const io = require('socket.io-client');
+
+
 
 class WalksForm extends React.Component {
   constructor(props) {
@@ -16,6 +19,8 @@ class WalksForm extends React.Component {
 
   componentDidMount() {
     this.props.fetchDogsFromUser(this.props.currentUser.id)
+
+    this.socket = io();
   }
 
   handleSubmit(e) {
@@ -25,6 +30,10 @@ class WalksForm extends React.Component {
       dogs: this.state.dogs,
       user: this.props.currentUser
     });
+    this.props.receiveRoom(this.props.currentUser.id)
+    // this.socket.emit('joinRoom', this.props.currentUser.id)
+    // this.socket.on('success', (res) => console.log(res))
+
     this.props.history.push('/walks')
   }
 

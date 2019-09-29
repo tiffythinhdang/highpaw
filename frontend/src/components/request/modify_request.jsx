@@ -1,18 +1,27 @@
 import '../../stylesheets/walks_show.scss'
-
 import React from 'react';
+const io = require('socket.io-client');
 
 export default class ModifyRequest extends React.Component {
   constructor(props) {
     super(props);
-
     this.handleApprove = this.handleApprove.bind(this);
     this.handleDeny = this.handleDeny.bind(this);
+    
+  }
+
+  componentDidMount() {
+    this.socket = io();
   }
 
   handleApprove(e) {
     e.preventDefault()
+
     let approval = { _id: this.props.request._id, status: "approved" }
+
+    this.props.receiveRoom(this.props.request.requester);
+    // this.socket.emit('joinRoom', this.props.request.requester )
+    // this.socket.on('success', (res) => console.log(res))
     this.props.modify(approval);
   }
 

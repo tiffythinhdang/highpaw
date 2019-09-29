@@ -1,23 +1,5 @@
 import React from 'react';
 const google = window.google
-const io = require('socket.io-client');
-const port = process.env.PORT || 5000;
-
-// let walks = io.connect(process.env.PORT ? `http://highpaw.herokuapp.com:${process.env.PORT + 1}` : `http://localhost:${port + 1}/walks`)
-
-// walks.on('welcome', (msg) => {
-//   console.log('Received: ', msg)
-// })
-
-// walks.emit('joinRoom', 'testing')
-
-// walks.on('success', (res) => console.log(res))
-
-// walks.on('sendLocation', location => {
-//   console.log(location)
-// });
-
-// window.walks = walks
 
 export default class Map extends React.Component {
 
@@ -41,29 +23,27 @@ export default class Map extends React.Component {
     const locationTag = document.getElementById('demo');
 
 
-    let walks = io();
+    // let walks = io();
 
 
-    walks.on('welcome', (msg) => {
-      console.log('Received: ', msg)
-    });
+    // walks.on('welcome', (msg) => {
+    //   console.log('Received: ', msg)
+    // });
 
-    walks.emit('joinRoom', 'testing');
+    // walks.emit('joinRoom', 'testing');
 
-    walks.on('success', (res) => console.log(res));
+    // walks.on('success', (res) => console.log(res));
 
-    walks.on('sendLocation', location => {
-      // console.log(location)
-    });
+    // walks.on('sendLocation', location => {
+    //   // console.log(location)
+    // });
 
-    window.walks = walks;
-    
-    walks.on('sendLocation', data => {
-      
+    // window.walks = walks;
+    let locationCallBack = (data) => {
       let location = data.latLng;
       let user = data.currentUser;
-      
-      if (this.state.markers[user]) { 
+      // debugger
+      if (this.state.markers[user]) {
         this.state.markers[user].setPosition(location)
       } else {
 
@@ -76,7 +56,31 @@ export default class Map extends React.Component {
         this.state.markers[user] = marker;
         this.map.setCenter(location)
       }
-    })
+    }
+
+    let locationListener = { action: 'sendLocation', callback: locationCallBack}
+
+    this.props.receiveListener(locationListener)
+    
+    // walks.on('sendLocation', data => {
+      
+    //   let location = data.latLng;
+    //   let user = data.currentUser;
+      
+    //   if (this.state.markers[user]) { 
+    //     this.state.markers[user].setPosition(location)
+    //   } else {
+
+    //     let marker = new google.maps.Marker({
+    //       position: location,
+    //       map: this.map,
+    //       label: data.name
+    //     })
+
+    //     this.state.markers[user] = marker;
+    //     this.map.setCenter(location)
+    //   }
+    // })
 
 
     if (navigator.geolocation) {
@@ -84,11 +88,14 @@ export default class Map extends React.Component {
       setInterval(() => {
         navigator.geolocation.getCurrentPosition((position) => {
           let latLng = { lat: position.coords.latitude, lng: position.coords.longitude }
-
+          // debugger
           let data = { currentUser: this.props.currentUser , name: this.props.userName, latLng}
-          // console.log(latLng);
-          walks.emit('sendLocation', data)
-          // debugger;
+
+      //     // console.log(latLng);
+            let locationEmit =  { action: 'sendLocation', value: data};
+            this.props.receiveEmit(locationEmit);
+      //     walks.emit('sendLocation', data)
+      //     // debugger;
         })
       }, 4000)
     } else {

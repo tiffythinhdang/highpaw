@@ -1,5 +1,7 @@
 import { connect } from 'react-redux'
 import Map from './map';
+import { receiveEmit, receiveListener, receiveLeaveRoom } from '../../actions/socket_actions';
+
 
 const mapStateToProps = state => {
   
@@ -17,6 +19,15 @@ const mapStateToProps = state => {
   }
 }
 
+const mapDispatchToProps = dispatch => {
+  return {
+    receiveEmit: emit => dispatch(receiveEmit(emit)),
+    receiveListener: listener =>  dispatch(receiveListener(listener)),
+    receiveLeaveRoom: room => dispatch(receiveLeaveRoom(room))
+  }
+}
+
 export default connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(Map)
