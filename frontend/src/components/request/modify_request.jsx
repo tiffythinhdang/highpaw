@@ -19,7 +19,7 @@ export default class ModifyRequest extends React.Component {
 
     let approval = { _id: this.props.request._id, status: "approved" }
 
-    this.props.receiveRoom(this.props.request.requester);
+    // this.props.receiveRoom(this.props.request.requester);
     // this.socket.emit('joinRoom', this.props.request.requester )
     // this.socket.on('success', (res) => console.log(res))
     this.props.modify(approval);

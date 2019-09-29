@@ -12,7 +12,7 @@ export const requestsReducer = (state = {}, action) => {
         })
         return newState
       // let obj = {};
-      // actions.requests.data.forEach(data => {
+      // action.requests.data.forEach(data => {
       // obj[data._id] = data
       // })
       // return obj
