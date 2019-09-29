@@ -35,14 +35,14 @@ class WalksIndex extends React.Component {
       }
     }
 
-    // return (
-    //   <div className="walks-index-top-buttons-container">
-    //     <button className="walks-index-map-btn inactive">Your walk</button>
-    //     <Link to="/walks/create" className="walks-index-form-btn">
-    //       <button className="">Start a walk!</button>
-    //     </Link>
-    //   </div>
-    // )
+    return (
+      <div className="walks-index-top-buttons-container">
+        <button className="walks-index-map-btn inactive">Your walk</button>
+        <Link to="/walks/create" className="walks-index-form-btn">
+          <button className="">Start a walk!</button>
+        </Link>
+      </div>
+    )
   }
 
   render() {

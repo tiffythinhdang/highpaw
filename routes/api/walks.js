@@ -47,8 +47,8 @@ router.post('/create',
 
       }
 
-      console.log(req.body.dogs.length)
-      console.log(res)
+      // console.log(req.body.dogs.length)
+      // console.log(res)
       const newWalk = new Walk({
         dogs: req.body.dogs, 
         // dogs: dogsArr,
@@ -73,12 +73,12 @@ router.delete('/:id',
       Walk.findByIdAndDelete(req.params.id,
      
 
-      // (err) => {
-      //   if (err) {
-      //     res.status(422).send({ error: err });
-      //   }
+      (err) => {
+        if (err) {
+          res.status(422).send({ error: err });
+        }
         res.status(200).json({ message: 'Walk deleted!' })
-      // }
+      }
       )
     )
   })

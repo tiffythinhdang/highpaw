@@ -39,7 +39,7 @@ class WalksShow extends React.Component {
     } else {
       return (
         <div className="walks-map-container">
-          <Map />
+          {/* <Map /> */}
         </div> 
       )
     }
@@ -80,13 +80,14 @@ class WalksShow extends React.Component {
           <Link to="/walks" >
             <button className="walks-show-back-btn">Back</button>
           </Link>
-          <button className="walks-show-chat-btn" >Chat</button>
+          {/* <button className="walks-show-chat-btn" >Chat</button> */}
         </div>
         <div className="form main header">Your walk</div>
         {this.renderMap(requests)}
         <div className="walks-delete-button-container">
           <button className="walks-delete-btn" onClick={this.handleDelete}>Delete walk</button>
-          {this.renderButtons()}
+          {/* comment back in if needed. and change back to space-between css */}
+          {/* {this.renderButtons()} */}
         </div>
       </div>
 

@@ -30,7 +30,7 @@ export const fetchWalk = walk => dispatch => (
 )
 
 export const createWalk = walk => dispatch => {
-  console.log(walk)
+  // console.log(walk)
   return (
     WalkApiUtil.createWalk(walk)
       .then(walk => dispatch(receiveWalk(walk)))
