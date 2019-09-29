@@ -24,12 +24,14 @@ class WalksShow extends React.Component {
 
 
   handleDelete() {
-    // debugger
     this.props.deleteWalk(this.props.match.params.id)
       .then(this.props.history.push('/walks'))
   }
 
   renderMap(requests) {
+    let approvedReq = this.props.requests.filter((request) => request.status === "approved")
+    let approvedReqIds = approvedReq.map((request) => request._id)
+    
     if (!this.state.map) {
       return (
         <div className="walks-req-container">
@@ -42,8 +44,8 @@ class WalksShow extends React.Component {
     } else {
       return (
         <div className="walks-map-container">
-          <MapContainer />
-        </div>
+          <MapContainer approved={approvedReqIds} />
+        </div> 
       )
     }
   }
