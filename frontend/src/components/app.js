@@ -24,7 +24,7 @@ import WalksShowContainer from '../components/walks/walks_show_container';
 import ChatContainer from '../components/chat/chat_container';
 
 const App = () => (
-  <div>
+  <div className="app">
     <NavBar />
     <Switch>
       <Route exact path="/" component={MainPage} />
