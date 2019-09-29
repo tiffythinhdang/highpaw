@@ -20,7 +20,7 @@ highpaw
 ======================
 
 ### Description
-- highpaw is a web application that allows users to meet and pet dogs in their area.
+- An interactive, light-weight, mobile-first web application that lets people meet and pet dogs in their area.
 
 ### Technologies
 - MERN - MongoDB, Express, React, Node
@@ -40,7 +40,9 @@ highpaw
 - [ ] Live chat between users
 
 ### Group Members & Work Breakdown
-- Aaron: User Feature
-- Tiffany: Dog Feature
-- Brian: Walk Feature
-- Jason: Request Feature
+- User CRUD Feature: Aaron, Tiffany
+- Dog CRUD Feature: Tiffany
+- Walk Feature: Brian
+- Request Feature: Jason
+- Socket.io, Google Map Api: Jason, Aaron
+- AWS S3: Tiffany
