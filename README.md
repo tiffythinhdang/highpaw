@@ -22,16 +22,21 @@ highpaw
 ### Description
 - An interactive, light-weight, mobile-first web application that lets people meet and pet dogs in their area.
 
+### Link
+* [Web site]()
+
+## Table of content
+
+- [Technologies](#technologies)
+- [Features/ MVP](#features-mvps)
+- [Group Members & Responsibilities ](#group-members-&-responsibilities)
+
 ### Technologies
 - MERN - MongoDB, Express, React, Node
 - Socket.io
 - Google Map Api
 
-### Link
-* [Web site]()
-* [Documentation]()
-
-### Functionality / MVPs
+### Features/ MVPs
 - [ ] User Authentication
 - [ ] User Profile Page
 - [ ] Search for surrounding active walks
@@ -39,7 +44,7 @@ highpaw
 - [ ] Sending / Accepting / Rejecting requests to pet a dog
 - [ ] Live chat between users
 
-### Group Members & Work Breakdown
+### Group Members & Responsibilities
 - User CRUD Feature: Aaron, Tiffany
 - Dog CRUD Feature: Tiffany
 - Walk Feature: Brian
