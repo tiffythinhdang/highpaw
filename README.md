@@ -29,7 +29,7 @@ highpaw
 
 - [Technologies](#technologies)
 - [Features/ MVP](#features-mvps)
-- [Group Members & Responsibilities ](#group-members)
+- [Group Members & Responsibilities ](#group-members-and-responsibilities)
 
 ### Technologies
 - MERN - MongoDB, Express, React, Node
@@ -44,7 +44,7 @@ highpaw
 - [ ] Sending / Accepting / Rejecting requests to pet a dog
 - [ ] Live chat between users
 
-### Group Members & Responsibilities
+### Group Members and Responsibilities
 - User CRUD Feature: Aaron, Tiffany
 - Dog CRUD Feature: Tiffany
 - Walk Feature: Brian
