@@ -28,7 +28,7 @@ import { getWalks, createWalk } from '../util/walk_api_util';
 
 
 const App = () => (
-  <div>
+  <div className="app">
     <NavBar />
     <Switch>
       <Route exact path="/" component={MainPage} />
