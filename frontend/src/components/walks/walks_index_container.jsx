@@ -5,7 +5,7 @@ import WalksIndex from './walks_index';
 const mapStateToProps = state => {
   return {
     currentUser: state.session.user,
-    walks: Object.values(state.entities.walks),
+    walks: Object.values(state.entities.walks)
   };
 };
 

@@ -88,7 +88,7 @@ class WalksShow extends React.Component {
         <div className="form main header">Your walk</div>
         {this.renderMap(requests)}
         <div className="walks-delete-button-container">
-          <button className="walks-delete-btn" onClick={this.handleDelete}>Delete walk</button>
+          <button className="main large button walks-delete-btn" onClick={this.handleDelete}>Delete walk</button>
           {/* comment back in if needed. and change back to space-between css */}
           {this.renderButtons()}
         </div>

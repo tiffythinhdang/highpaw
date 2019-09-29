@@ -9,8 +9,6 @@ export default class ModifyRequest extends React.Component {
     
   }
 
-  
-
   handleApprove(e) {
     e.preventDefault()
 

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import '../../stylesheets/index.scss';
 import '../../stylesheets/user_show.scss';
+import LoadingSpinner from '../loading_spinner/loading_spinner';
 
 class UserShow extends React.Component {x
   constructor(props){
@@ -77,7 +78,12 @@ class UserShow extends React.Component {x
   }
 
   render() {
+    if (this.props.loading) {
+      return <LoadingSpinner />;
+    }
+    
     if (!this.props.user) return null;
+
     return(
       <div className="user-show outer-container">
         <div className="user-show infor-container">

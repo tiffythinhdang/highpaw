@@ -1,0 +1,27 @@
+@import './util.scss';
+
+#loading-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+} 
+
+#loading-spinnner-background {
+  width: 100vw;
+  height: 100vh;
+  background-color: $main_pink;
+  opacity: 0.25;
+}
+
+#loading-spinner {
+  position: absolute;
+  width: 100px;
+  z-index: 11;
+}
+
+#loading-spinner > img{
+  width: 100%;
+}

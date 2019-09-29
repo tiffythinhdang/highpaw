@@ -7,7 +7,7 @@
   align-items: center;
 
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 54px - 10px);
 }
 
 .walks-show-buttons-container {
@@ -106,18 +106,18 @@
   // border: 1px dotted green;
 }
 
-.walks-delete-btn {
-  display: flex;
-  justify-content: center;
-  width: 144px;
-  height: 40px;
-  left: 216px;
-  top: 170px;
-  background: #F78888;
-  box-sizing: border-box;
-  border-radius: 200px; 
-  color: white;
-}
+// .walks-delete-btn {
+//   display: flex;
+//   justify-content: center;
+//   width: 300px;
+//   height: 45px;
+//   left: 216px;
+//   top: 170px;
+//   background: #F78888;
+//   box-sizing: border-box;
+//   border-radius: 200px; 
+//   color: white;
+// }
 
 .walks-show-map-btn {
   display: flex;
@@ -138,9 +138,12 @@
   justify-content: space-between;
   align-items: center;
 
-  height: 24%;
+  height: 26%;
   width: 100%;
-  margin-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
 
   background: white;
   box-shadow: 0px 3px 11px
@@ -156,7 +159,7 @@
 }
 
 .profile-photo.container {
-  margin: 0px 10px
+  margin-right: 10px;
 }
 
 .req-user-name-container {
@@ -181,7 +184,6 @@
 
 .modify-deny {
   background-color: $main_pink;
-  margin-right: 5px;
   color: white;
 }
 

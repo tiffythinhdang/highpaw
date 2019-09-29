@@ -2,9 +2,6 @@ import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import '../../stylesheets/walks_form.scss';
 
-
-
-
 class WalksForm extends React.Component {
   constructor(props) {
     super(props);
@@ -30,10 +27,6 @@ class WalksForm extends React.Component {
     }).then(
       this.props.history.push('/walks')
     );
-    // this.props.receiveRoom(this.props.currentUser.id)
-    // this.socket.emit('joinRoom', this.props.currentUser.id)
-    // this.socket.on('success', (res) => console.log(res))
-
 
   }
 

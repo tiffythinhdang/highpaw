@@ -1,8 +1,6 @@
 import React from 'react';
 import '../../stylesheets/index.scss';
 
-
-
 export default class SendRequest extends React.Component {
   constructor(props) {
     super(props);
@@ -16,27 +14,9 @@ export default class SendRequest extends React.Component {
     this.handlePending = this.handlePending.bind(this)
   }
 
-
-
   handleSubmit(e) {
-    // debugger
     e.preventDefault();
     this.setState({ sending: true })
-    // const pending = document.getElementById(`pending-button${this.props.walk}`);
-    // const paw = document.getElementById(`paw-button${this.props.walk}`);
-    // pending.classList.toggle('hidden');
-    // paw.classList.toggle('hidden')
-    // debugger
-    // this.props.receiveRoom(this.props.walk.user);
-    // this.props.receiveRoom(this.props.requester);
-    // let requestInfo = { action: 'sendRequest', value: { approvalRoom: this.props.walk.user, requster: this.props.requester } }
-    // this.props.receiveEmit(requestInfo);
-
-    // this.socket.emit('joinRoom', this.props.walk.user)
-    // this.socket.emit('joinRoom', this.props.requester)
-    // let requestInfo = { approvalRoom: this.props.walk.user, requster: this.props.requester}
-    // this.socket.emit('sendRequest', requestInfo)
-    // this.socket.on('success', (res) => console.log(res))
     this.props.paw(this.props.walk._id).then(
       this.setState({ sending: false })
     )
@@ -45,10 +25,6 @@ export default class SendRequest extends React.Component {
   handlePending(e) {
     e.preventDefault();
     this.setState({ cancelling: true }) 
-    // const pending = document.getElementById(`pending-button${this.props.walk}`);
-    // const paw = document.getElementById(`paw-button${this.props.walk}`);
-    // pending.classList.toggle('hidden');
-    // paw.classList.toggle('hidden');
     this.props.deleteRequest(this.props.request._id).then(
       this.setState({ cancelling: false })
     )
@@ -63,12 +39,12 @@ export default class SendRequest extends React.Component {
         <input type="hidden" value={this.state.walk} />
         <button className={this.state.sending ? "small main button" : "hidden"}>Sending</button>
         <button className={this.state.cancelling ? "small main button" : "hidden"}>Canceling</button>
-        <button active className={!this.state.sending ? this.props.request ? "hidden" : "small main button" : "hidden"}
+        <button active className={this.props.requested ? "hidden" : "small main button"}
           id={`paw-button${this.props.walk}`}
           onClick={this.handleSubmit}>
           Paw!
         </button>
-        <button active className={!this.state.cancelling ? this.props.request ? "small main button" : "hidden" : "hidden" }
+        <button active className={this.props.requested ? "small main button" : "hidden"}
           id={`pending-button${this.props.walk}`}
           onClick={this.handlePending}>
           Pending

@@ -1,4 +1,5 @@
 import * as WalkApiUtil from '../util/walk_api_util';
+import { startLoading } from './loading_actions';
 
 export const RECEIVE_ALL_WALKS = 'RECEIVE_ALL_WALKS';
 export const RECEIVE_WALK = 'RECEIVE_WALK';
@@ -19,17 +20,20 @@ const removeWalk = walkId => ({
   walkId
 });
 
-export const fetchWalks = () => dispatch => (
-  WalkApiUtil.fetchWalks()
+export const fetchWalks = () => dispatch => {
+  dispatch(startLoading());
+  return WalkApiUtil.fetchWalks()
     .then(walks => dispatch(receiveAllWalks(walks)))
-)
+}
 
-export const fetchWalk = walk => dispatch => (
-  WalkApiUtil.fetchWalk(walk)
+export const fetchWalk = walk => dispatch => {
+  dispatch(startLoading());
+  return WalkApiUtil.fetchWalk(walk)
     .then(walk => dispatch(receiveWalk(walk)))
-)
+}
 
 export const createWalk = walk => dispatch => {
+  dispatch(startLoading());
   // console.log(walk)
   return (
     WalkApiUtil.createWalk(walk)
@@ -37,7 +41,8 @@ export const createWalk = walk => dispatch => {
   )
 }
 
-export const deleteWalk = walkId => dispatch => (
-  WalkApiUtil.deleteWalk(walkId)
+export const deleteWalk = walkId => dispatch => {
+  dispatch(startLoading());
+  return WalkApiUtil.deleteWalk(walkId)
     .then(walk => dispatch(removeWalk(walkId)))
-)
+}
