@@ -1,12 +1,13 @@
 import { RECEIVE_LISTENER, RECEIVE_ROOM, RECEIVE_EMIT, RECEIVE_LEAVE_ROOM } from '../actions/socket_actions'
 
 const io = require('socket.io-client');
-let socket = io('ws://localhost:5000', { transports: ['websocket'] });
-socket.on('success', (res) => console.log(res))
+// let socket = io('ws://localhost:5000', { transports: ['websocket'] });
+// socket.on('success', (res) => console.log(res))
 // intialState = {
 //   listeners: [],
 //   rooms: []
 // }
+let socket = io();
 
 export const socketReducer = (state = {}, action) => {
   Object.freeze(state);
