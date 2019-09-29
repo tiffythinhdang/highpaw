@@ -90,6 +90,7 @@ export default class Map extends React.Component {
           let latLng = { lat: position.coords.latitude, lng: position.coords.longitude }
           // debugger
           let data = { currentUser: this.props.currentUser , name: this.props.userName, latLng}
+
       //     // console.log(latLng);
             let locationEmit =  { action: 'sendLocation', value: data};
             this.props.receiveEmit(locationEmit);

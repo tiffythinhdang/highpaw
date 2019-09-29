@@ -18,18 +18,14 @@ class WalksForm extends React.Component {
 
 
   componentDidMount() {
-    // debugger
     this.props.fetchDogsFromUser(this.props.currentUser.id)
 
     this.socket = io();
   }
 
   handleSubmit(e) {
-    // debugger;
     this.setState({ submitting: true })
     e.preventDefault();
-    // console.log(this.state.dogs + "dogs")
-    // console.log(this.props.currentUser + "cu")
     this.props.createWalk({
       dogs: this.state.dogs,
       user: this.props.currentUser
@@ -42,10 +38,7 @@ class WalksForm extends React.Component {
   }
 
   handleCheckbox(e) {
-    // debugger
     console.log("clicked")
-    // console.log(this.state.dogs)
-    // console.log(this.state)
     let dog = JSON.parse(e.target.value)
     if (this.state.dogs.includes(dog)) {
       this.setState({
@@ -59,7 +52,6 @@ class WalksForm extends React.Component {
   }
 
   showDogs(dog) {
-    // debugger
     return (
 
       <div className="walks-form-dogs-item-container" key={dog.name}>
@@ -79,7 +71,6 @@ class WalksForm extends React.Component {
   }
 
   render() {
-    // debugger;
     if (!this.props.dogs) return null;
     if (!this.props.currentUser) return null;
 
@@ -103,8 +94,6 @@ class WalksForm extends React.Component {
         <div className="dog-form-container">
           <form className="dog-checkbox-container">
             {dogs}
-            {/* <div className="walks-submit-btn-container">
-            </div> */}
           </form>
           <button className="walks-submit-btn" onClick={this.handleSubmit}>Start your walk!</button>
         </div>

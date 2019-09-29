@@ -46,24 +46,40 @@ class Menu extends React.Component {
           <div className="singup link">
             <Link to={'/signup'} onClick={this.props.toggleMenu}>Signup</Link>
           </div>
-          <div className="login link" onClick={this.props.toggleMenu}>
-            <Link to={'/login'}>Login</Link>
+          <div className="login link" >
+            <Link to={'/login'} onClick={this.props.toggleMenu}>Login</Link>
           </div>
         </div>
       );
     }
   }
 
+  closeSidebar() {
+    document.addEventListener('click', function(e) {
+      const navBar = document.getElementById('nav-bar-menu');
+      const menuIcon = document.getElementById('menu-icon');
+      if (navBar) {
+        let clickedInsideNavBar = navBar.contains(e.target)
+        let clickedMenuIcon = menuIcon.contains(e.target);
+        if (!clickedInsideNavBar && !clickedMenuIcon) {
+          navBar.classList.add("hidden");
+        }
+      }
+    })
+  }
+
   render() {
+    this.closeSidebar()
+
     return (
       <div id="nav-bar-menu" className="nav-bar menu hidden">
-        <a className="nav-bar menu-icon">
+        <button className="nav-bar menu-icon">
           <img
             className="small icon menu"
             onClick={this.props.toggleMenu}
             src={iconMenuWhite}
             alt="menu-icon" />
-        </a>
+        </button>
         {this.getLinks()}
       </div>
     );

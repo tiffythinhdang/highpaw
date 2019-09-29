@@ -17,7 +17,6 @@ class WalksShow extends React.Component {
   }
 
   componentDidMount() {
-    // debugger
     this.props.fetchRequests(this.props.match.params.id)
   }
 
@@ -62,13 +61,11 @@ class WalksShow extends React.Component {
   }
 
   render() {
-    // debugger;
     let requests = this.props.requests.map(request => {
       return (
         <WalkShowItemContainer request={request} />
       )
     })
-
 
     return (
 
@@ -79,21 +76,11 @@ class WalksShow extends React.Component {
           </Link>
           <button className="walks-show-chat-btn">Chat</button>
         </div>
-        <div className="walks-head-container">Your walk</div>
+        <div className="form main header">Your walk</div>
         {this.renderMap(requests)}
-        {/* <div className="walks-map-container">
-          <Map />
-        </div> */}
-        {/* <div className="walks-req-container">
-          <p className="walks-req-head">Active requests</p>
-          <div className="walks-req-index">
-            {requests}
-          </div>
-        </div> */}
         <div className="walks-delete-button-container">
           <button className="walks-delete-btn" onClick={this.handleDelete}>Delete walk</button>
           {this.renderButtons()}
-          {/* <button className="walks-show-map-btn" onClick={this.handleMapBtn}>Show Map</button> */}
         </div>
       </div>
 

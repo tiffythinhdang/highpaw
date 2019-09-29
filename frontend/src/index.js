@@ -10,19 +10,6 @@ import jwt_decode from 'jwt-decode';
 import { logout } from './actions/session_actions';
 import { setAuthToken } from './util/session_api_util';
 
-
-
-
-//test
-import { fetchRequests, modifyRequest, sendRequest } from './actions/request_actions';
-import { login } from './actions/session_actions';
-import { createADog, fetchDogsFromUser, fetchDogsFromWalk, deleteADog, fetchADog } from './actions/dogs_action';
-// testing codes end
-
-
-
-
-
 document.addEventListener('DOMContentLoaded', () => {
   let store;
 
@@ -50,8 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // testing codes start
-  window.login = login;
-  window.setAuthToken = setAuthToken;
   window.getState = store.getState;
   window.dispatch = store.dispatch;
   // testing codes end

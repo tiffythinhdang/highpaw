@@ -7,7 +7,6 @@ import { receiveRoom } from '../../actions/socket_actions';
 const mapStateToProps = state => {
   let currentUser = state.session.user;
   let dogs = Object.values(state.entities.dogs)
-  // dogs = dogs.map(dog => dog.user === currentUser.id) 
   return {
     currentUser,
     dogs,

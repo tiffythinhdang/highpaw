@@ -1,6 +1,5 @@
 import React from 'react';
 import '../../stylesheets/user_auth.scss'
-import { Link } from 'react-router-dom'
 
 export default class SignIn extends React.Component {
   constructor(props) {
