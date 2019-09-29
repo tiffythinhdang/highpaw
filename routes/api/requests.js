@@ -29,6 +29,26 @@ router.get('/walks/:walkId',
       .then(requests => res.json(requests))
   })
 
+//Gets all the approved requests associated with a walk
+router.get('/walks/approved/:walkId',
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+  
+    Request
+      .find({ walk: req.params.walkId, status: "approved" })
+      .then( requests => {
+        // let approved = [];
+        // requests.forEach(request => {
+        //   if (request.stauts === "approved") {
+        //     approved.push(request)
+        //     console.log(request)
+        //   }
+        // })
+        res.json(requests);
+      })
+   
+})
+
 //Modifies the status of existing request
 router.patch("/:id",
   passport.authenticate("jwt", { session: false }),

@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../stylesheets/index.scss';
-const io = require('socket.io-client');
+
 
 
 export default class SendRequest extends React.Component {
@@ -16,9 +16,7 @@ export default class SendRequest extends React.Component {
     this.handlePending = this.handlePending.bind(this)
   }
 
-  componentDidMount() {
-    this.socket = io();
-  }
+
 
   handleSubmit(e) {
     // debugger

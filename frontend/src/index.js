@@ -13,17 +13,14 @@ import { setAuthToken } from './util/session_api_util';
 document.addEventListener('DOMContentLoaded', () => {
   let store;
 
-  const io = require('socket.io-client');
-  const port = process.env.PORT || 5000;
 
-  // let walks = io();
 
 
   if (localStorage.jwtToken) {
     setAuthToken(localStorage.jwtToken);
     const decodedUser = jwt_decode(localStorage.jwtToken);
     const preloadedState = { session: { isAuthenticated: true, user: decodedUser }};
-    // socket: walks 
+   
 
     store = configureStore(preloadedState);
 

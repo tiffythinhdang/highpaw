@@ -3,9 +3,6 @@ import '../../stylesheets/chat.scss';
 import iconArrow from '../../assets/small_icon_back_arrow_white.png';
 import { withRouter } from 'react-router-dom';
 
-const io = require('socket.io-client');
-
-
 class Chat extends React.Component {
 
   constructor(props) {
@@ -69,7 +66,7 @@ class Chat extends React.Component {
 
   componentWillUnmount() {
     console.log('chat has unmounted')
-    this.props.receiveLeaveRoom(this.props.params.match.requestId)
+    this.props.receiveLeaveRoom(this.props.match.params.requestId)
   }
 
   handleSend(e) {

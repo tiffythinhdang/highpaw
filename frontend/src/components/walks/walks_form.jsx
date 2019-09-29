@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import '../../stylesheets/walks_form.scss';
-const io = require('socket.io-client');
+
 
 
 
@@ -19,8 +19,6 @@ class WalksForm extends React.Component {
 
   componentDidMount() {
     this.props.fetchDogsFromUser(this.props.currentUser.id)
-
-    this.socket = io();
   }
 
   handleSubmit(e) {
