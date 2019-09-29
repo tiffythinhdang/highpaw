@@ -1,6 +1,5 @@
 import React from 'react';
 import '../../stylesheets/index.scss';
-const io = require('socket.io-client');
 
 
 export default class SendRequest extends React.Component {
@@ -17,7 +16,6 @@ export default class SendRequest extends React.Component {
   }
 
   componentDidMount() {
-    this.socket = io();
   }
 
   handleSubmit(e) {
@@ -65,12 +63,12 @@ export default class SendRequest extends React.Component {
         <input type="hidden" value={this.state.walk} />
         <button className={this.state.sending ? "small main button" : "hidden"}>Sending</button>
         <button className={this.state.cancelling ? "small main button" : "hidden"}>Canceling</button>
-        <button active className={!this.state.sending ? this.props.request ? "hidden" : "small main button" : "hidden"}
+        <button active className={this.props.requested ? "hidden" : "small main button"}
           id={`paw-button${this.props.walk}`}
           onClick={this.handleSubmit}>
           Paw!
         </button>
-        <button active className={!this.state.cancelling ? this.props.request ? "small main button pending" : "hidden" : "hidden" }
+        <button active className={this.props.requested ? "small main button" : "hidden"}
           id={`pending-button${this.props.walk}`}
           onClick={this.handlePending}>
           Pending
