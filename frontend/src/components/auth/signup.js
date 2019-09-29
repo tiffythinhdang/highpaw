@@ -117,7 +117,7 @@ class SignUp extends React.Component {
 
             <div className="photo-upload input">
               <div className="profile-photo container">
-                {this.state.profilePhotoUrl ? <img src={this.state.profilePhotoUrl} /> : <img className="medium light icon dog" src={iconPaw} />}
+                {this.state.profilePhotoUrl ? <img src={this.state.profilePhotoUrl} alt="" /> : <img className="medium light icon dog" src={iconPaw} alt="" />}
               </div>
 
               <label className="small secondary button">

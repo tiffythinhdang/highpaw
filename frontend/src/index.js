@@ -10,32 +10,20 @@ import jwt_decode from 'jwt-decode';
 import { logout } from './actions/session_actions';
 import { setAuthToken } from './util/session_api_util';
 
-
-
-
-//test
-import { fetchRequests, modifyRequest, sendRequest } from './actions/request_actions';
-import { login } from './actions/session_actions';
-import { createADog, fetchDogsFromUser, fetchDogsFromWalk, deleteADog, fetchADog } from './actions/dogs_action';
-// testing codes end
-
-
-
-
-
 document.addEventListener('DOMContentLoaded', () => {
   let store;
 
   const io = require('socket.io-client');
   const port = process.env.PORT || 5000;
 
-  let walks = io();
+  // let walks = io();
 
 
   if (localStorage.jwtToken) {
     setAuthToken(localStorage.jwtToken);
     const decodedUser = jwt_decode(localStorage.jwtToken);
-    const preloadedState = { session: { isAuthenticated: true, user: decodedUser }, socket: walks };
+    const preloadedState = { session: { isAuthenticated: true, user: decodedUser }};
+    // socket: walks 
 
     store = configureStore(preloadedState);
 
@@ -49,8 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // testing codes start
-  window.login = login;
-  window.setAuthToken = setAuthToken;
   window.getState = store.getState;
   window.dispatch = store.dispatch;
   // testing codes end
