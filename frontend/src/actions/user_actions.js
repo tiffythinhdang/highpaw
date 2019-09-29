@@ -1,4 +1,5 @@
 import * as UserAPIUtil from '../util/users_api_util';
+import { startLoading } from './loading_actions';
 
 export const RECEIVE_A_USER = "RECEIVE_A_USER";
 export const RECEIVE_USER_ERRORS = "RECEIVE_USER_ERRORS";
@@ -20,23 +21,24 @@ export const clearUserErrors = () => ({
 });
 
 // thunk actions
-export const fetchAUser = (id) => dispatch => (
-  UserAPIUtil.fetchAUser(id)
+export const fetchAUser = (id) => dispatch => {
+  dispatch(startLoading());
+  return UserAPIUtil.fetchAUser(id)
     .then(user => dispatch(receiveAUser(user)))
     .catch(err => dispatch(receiveUserErrors(err.response.data)))
-);
+};
 
-export const updateAUser = (data) => dispatch => (
+export const updateAUser = (data) => dispatch => {
+  dispatch(startLoading());
   UserAPIUtil.updateAUser(data)
     .then(user => dispatch(receiveAUser(user)),
       err => dispatch(receiveUserErrors(err.response.data)))
-);
+};
 
 export const fetchUserFromRequest = (requestId) => dispatch => {
-  // debugger
-  UserAPIUtil.fetchUserFromRequest(requestId)
+  dispatch(startLoading());
+  return UserAPIUtil.fetchUserFromRequest(requestId)
     .then(
       user => dispatch(receiveAUser(user))
-
     )
 }

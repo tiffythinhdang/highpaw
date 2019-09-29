@@ -1,4 +1,6 @@
 import * as DogAPIUtil from '../util/dogs_api_util';
+import { startLoading } from './loading_actions';
+
 
 export const RECEIVE_DOGS = "RECEIVE_DOGS";
 export const RECEIVE_A_DOG = "RECEIVE_A_DOG";
@@ -27,38 +29,44 @@ export const clearDogErrors = () => ({
 });
 
 // thunk actions
-export const fetchDogsFromWalk = (walkId) => dispatch => (
-  DogAPIUtil.fetchDogsFromWalk(walkId)
+export const fetchDogsFromWalk = (walkId) => dispatch => {
+  dispatch(startLoading());
+  return DogAPIUtil.fetchDogsFromWalk(walkId)
     .then( dogs => dispatch(receiveDogs(dogs)) )
     .catch(err => dispatch(receiveDogErrors(err.response.data)) )
-);
+};
 
-export const fetchDogsFromUser = (userId) => dispatch => (
-  DogAPIUtil.fetchDogsFromUser(userId)
+export const fetchDogsFromUser = (userId) => dispatch => {
+  dispatch(startLoading());
+  return DogAPIUtil.fetchDogsFromUser(userId)
     .then( dogs => dispatch(receiveDogs(dogs)) )
     .catch(err => dispatch(receiveDogErrors(err.response.data)) )
-);
+};
 
-export const fetchADog = (id) => dispatch => (
-  DogAPIUtil.fetchADog(id)
+export const fetchADog = (id) => dispatch => {
+  dispatch(startLoading());
+  return DogAPIUtil.fetchADog(id)
     .then( dog => dispatch(receiveADog(dog)) )
     .catch(err => dispatch(receiveDogErrors(err.response.data)) )
-);
+};
 
-export const createADog = (data) => dispatch => (
-  DogAPIUtil.createADog(data)
+export const createADog = (data) => dispatch => {
+  dispatch(startLoading());
+  return DogAPIUtil.createADog(data)
     .then( dog => dispatch(receiveADog(dog)),
       err => dispatch(receiveDogErrors(err.response.data)) )
-);
+};
 
-export const updateADog = (data) => dispatch => (
-  DogAPIUtil.updateADog(data)
+export const updateADog = (data) => dispatch => {
+  dispatch(startLoading());
+  return DogAPIUtil.updateADog(data)
     .then( dog => dispatch(receiveADog(dog)),
       err => dispatch(receiveDogErrors(err.response.data)) )
-);
+};
 
-export const deleteADog = (id) => dispatch => (
-  DogAPIUtil.deleteADog(id)
+export const deleteADog = (id) => dispatch => {
+  dispatch(startLoading());
+  return DogAPIUtil.deleteADog(id)
     .then( dog => dispatch(receiveADog(dog)) )
     .catch(err => dispatch(receiveDogErrors(err.response.data)) )
-);
+};

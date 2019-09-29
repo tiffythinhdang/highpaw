@@ -117,6 +117,10 @@ input[type="submit"] {
   color: $white;
 }
 
+.pending.button {
+  background-color: $main_yellow;
+}
+
 // Form Input settings
 .form.main.header {
   font-family: Chilanka;

@@ -66,11 +66,10 @@ class WalksIndexItem extends React.Component {
     }
   }
 
-    render() {
-
-      if (!this.props.currentUser) return null;
-      if (!this.props.dogs) return null;
-      if (!this.props.requests) return null;
+  render() {
+    if (!this.props.currentUser) return null;
+    if (!this.props.dogs) return null;
+    if (!this.props.requests) return null;
 
       let dogs = this.props.dogs.map(dog => {
         if (this.props.walk.dogs.includes(dog._id)) {
