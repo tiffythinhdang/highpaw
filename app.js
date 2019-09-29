@@ -111,7 +111,7 @@ io
 
     socket.on('sendMessage', messageInfo => {
       io
-        .in(`${messageInfo.user.id}`).emit('sendMessage', messageInfo)
+        .in(`${messageInfo.room}`).emit('sendMessage', messageInfo)
     })
   })
 

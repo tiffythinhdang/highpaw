@@ -30,7 +30,7 @@ class WalksForm extends React.Component {
       dogs: this.state.dogs,
       user: this.props.currentUser
     });
-    this.props.receiveRoom(this.props.currentUser.id)
+    // this.props.receiveRoom(this.props.currentUser.id)
     // this.socket.emit('joinRoom', this.props.currentUser.id)
     // this.socket.on('success', (res) => console.log(res))
 
