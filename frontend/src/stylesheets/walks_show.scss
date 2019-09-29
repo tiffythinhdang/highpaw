@@ -7,7 +7,7 @@
   align-items: center;
 
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 54px - 10px);
 }
 
 .walks-show-buttons-container {
