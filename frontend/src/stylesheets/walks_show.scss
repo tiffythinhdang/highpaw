@@ -8,14 +8,17 @@
 
   width: 100vw;
   height: calc(100vh - 54px - 10px);
+  // height: 112vh;
+  // border: 1px dotted white;
 }
 
 .walks-show-buttons-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 12%;
-  width: 90%;
+  // height: 12%;
+  height: 80px;
+  width: 95%;
 
   // border: 1px green dotted;
 }
@@ -31,6 +34,15 @@
   box-sizing: border-box;
   background: white;
   border-radius: 150px;
+}
+
+.walks-show-container {
+  
+  display: flex;
+  flex-direction: column;
+  height: 71%;
+  width: 95%;
+  // border: 1px dotted teal;
 }
 
 .walks-show-chat-btn {
@@ -61,8 +73,8 @@
   display: flex;
   flex-direction: column;
   align-items:center;
-  height: 68%; 
-  width: 95%;
+  height: 83%; 
+  width: 100%;
   margin-bottom: 10px;
 
   // border: 1px dotted green
@@ -73,10 +85,10 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items:center;
-  height: 68%; 
+  height: 100%; 
   width: 100%;
   // margin-bottom: 10px;
-  // border: 1px dotted yellow;
+  // border: 1px dotted green;
 }
 
 .walks-req-head {
@@ -87,8 +99,8 @@
 .walks-req-index {
   display: flex;
   flex-direction: column;
-  height: 85%;
-  width: 95%;
+  height: 100%;
+  width: 100%;
   flex-wrap: nowrap;
   overflow-y: auto;
 
@@ -98,10 +110,11 @@
 .walks-delete-button-container {
   display: flex;
   flex-direction: row;
-  // justify-content: space-between;
-  justify-content: center;
-  width: 90%;
-  height: 10%;
+  justify-content: space-between;
+  // justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
 
   // border: 1px dotted green;
 }
@@ -149,6 +162,8 @@
   box-shadow: 0px 3px 11px
     rgba(0, 0, 0, 0.25);
   border-radius: 8px;
+
+  // border: 1px green dotted;
 }
 
 .request-user-information-container {
@@ -201,8 +216,6 @@
   height: 68%; 
   width: 100%;
   margin-bottom: 10px;
-
-  border: 1px dotted green 
 }
 
 .chatbtn {

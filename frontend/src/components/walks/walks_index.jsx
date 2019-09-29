@@ -15,6 +15,13 @@ class WalksIndex extends React.Component {
     this.props.fetchWalks();
   }
 
+  handleBack(e) {
+    e.preventDefault();
+    if (this.props.history) {
+      this.props.history.goBack();
+    }
+  }
+
   renderButtons() {
 
     let walks = this.props.walks;
@@ -23,13 +30,14 @@ class WalksIndex extends React.Component {
     for (let i = 0; i < walks.length; i++) {
       let walk = walks[i]
       if (walk.user === currentUser.id) {
-        
+
         return (
           <div className="walks-index-top-buttons-container">
+            {/* <button className="medium tertiary button" onClick={this.handleBack}>Back</button> */}
             <Link to={`/walks/${walk._id}`} >
-              <button className="walks-index-map-btn">Your walk</button>
+              <button className="medium secondary button">Your walk</button>
             </Link>
-            <button className="walks-index-form-btn inactive">Start a walk!</button>
+            {/* <button className="walks-index-form-btn inactive">Start a walk!</button> */}
           </div>
         )
       }
@@ -37,9 +45,10 @@ class WalksIndex extends React.Component {
 
     return (
       <div className="walks-index-top-buttons-container">
-        <button className="walks-index-map-btn inactive">Your walk</button>
-        <Link to="/walks/create" className="walks-index-form-btn">
-          <button className="">Start a walk!</button>
+        {/* <button className="medium tertiary button" onClick={this.handleBack}>Back</button> */}
+        {/* <button className="walks-index-map-btn inactive">Your walk</button> */}
+        <Link to="/walks/create" >
+          <button className="medium secondary button">Start a walk!</button>
         </Link>
       </div>
     )
@@ -58,9 +67,9 @@ class WalksIndex extends React.Component {
       <div className="walks-index-main">
         {this.renderButtons()}
 
-        <div className="walks-head">
+        {/* <div className="walks-head"> */}
           <p className="form main header">Active walks</p>
-        </div>
+        {/* </div> */}
         <div className="walks-items-container">
           {walks}
         </div>

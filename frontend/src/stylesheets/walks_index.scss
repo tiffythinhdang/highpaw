@@ -6,7 +6,7 @@
   justify-content: center;
   align-items: center;
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 54px - 10px);
 
   // border: 1px dotted white;
 }
@@ -14,10 +14,12 @@
 .walks-index-top-buttons-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  // justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
 
-  height: 12%;
+  // height: 12%;
+  height: 80px;
   width: 95%;
 
   // border: 1px dotted green;
@@ -113,6 +115,8 @@
   flex-wrap: nowrap;
   overflow-x: auto;
   width: 50%;
+
+  // border: 1px red dotted;
 }
 
 .walks-dog-information-container {
@@ -151,6 +155,9 @@
 
 .form.main.header {
   font-size: 40px;
+  height: 10%;
+
+  // border: 1px dotted orange;
 }
 
 .your-dog-button {
