@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import '../../stylesheets/index.scss';
 import '../../stylesheets/dog_show.scss';
 import displayAge from '../../util/display_age_util';
+import LoadingSpinner from '../loading_spinner/loading_spinner';
 
 class DogShow extends React.Component {
   constructor(props) {
@@ -128,7 +129,12 @@ class DogShow extends React.Component {
   }
 
   render() {
+    if (this.props.loading) {
+      return <LoadingSpinner />;
+    }
+
     if (!this.props.dog) return null;
+
     return (
       <div className="dog-show container">
         <h1 className="form main header">about me</h1>
