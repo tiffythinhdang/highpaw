@@ -21,6 +21,7 @@ class WalksShow extends React.Component {
   }
 
   handleDelete() {
+    // debugger
     this.props.deleteWalk(this.props.match.params.id)
       .then(this.props.history.push('/walks'))
   }
@@ -61,10 +62,15 @@ class WalksShow extends React.Component {
   }
 
   render() {
+    // debugger
+    let walkId = this.props.match.params.id;
+
     let requests = this.props.requests.map(request => {
-      return (
-        <WalkShowItemContainer request={request} />
-      )
+      if (request.walk === walkId) {
+        return (
+          <WalkShowItemContainer request={request} />
+        )
+      }
     })
 
     return (

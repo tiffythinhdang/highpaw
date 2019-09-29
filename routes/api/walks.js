@@ -73,12 +73,13 @@ router.delete('/:id',
       Walk.findByIdAndDelete(req.params.id,
      
 
-      (err) => {
-        if (err) {
-          res.status(422).send({ error: err });
-        }
+      // (err) => {
+      //   if (err) {
+      //     res.status(422).send({ error: err });
+      //   }
         res.status(200).json({ message: 'Walk deleted!' })
-      })
+      // }
+      )
     )
   })
 
