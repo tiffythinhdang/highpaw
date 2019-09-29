@@ -11,6 +11,7 @@
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.1.2",
     "redux": "^4.0.4",
+    "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0"
   },
   "proxy": "http://localhost:5000",
@@ -35,7 +36,5 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "redux-logger": "^3.0.6"
-  }
+  "devDependencies": {}
 }
