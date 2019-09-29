@@ -1,21 +1,18 @@
 import { connect } from 'react-redux'
 import Map from './map';
-import { receiveEmit, receiveListener, receiveLeaveRoom } from '../../actions/socket_actions';
+import { receiveEmit, receiveListener, receiveLeaveRoom, receiveRoom } from '../../actions/socket_actions';
 
 
 const mapStateToProps = state => {
   
   let currentUser;
-  let userName;
   if (state.session.user) {
-    currentUser = state.session.user.id;
-    userName = state.session.user.name
+    currentUser = state.session.user
   }
 
   return {
     socket: state.socket,
     currentUser,
-    userName
   }
 }
 
@@ -23,7 +20,8 @@ const mapDispatchToProps = dispatch => {
   return {
     receiveEmit: emit => dispatch(receiveEmit(emit)),
     receiveListener: listener =>  dispatch(receiveListener(listener)),
-    receiveLeaveRoom: room => dispatch(receiveLeaveRoom(room))
+    receiveLeaveRoom: room => dispatch(receiveLeaveRoom(room)),
+    receiveRoom: room => dispatch(receiveRoom(room))
   }
 }
 

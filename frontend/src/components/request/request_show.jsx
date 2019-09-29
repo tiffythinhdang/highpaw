@@ -28,7 +28,8 @@ class RequestShow extends React.Component {
   }
 
   handleDelete() {
-    this.props.deleteRequest(this.props.match.params.id)
+    // debugger
+    this.props.deleteRequest(this.props.match.params.requestId)
       .then(this.props.history.push('/walks'))
   }
 

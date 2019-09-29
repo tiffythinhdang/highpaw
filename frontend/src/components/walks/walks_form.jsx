@@ -1,9 +1,6 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import '../../stylesheets/walks_form.scss';
-const io = require('socket.io-client');
-
-
 
 class WalksForm extends React.Component {
   constructor(props) {
@@ -19,8 +16,6 @@ class WalksForm extends React.Component {
 
   componentDidMount() {
     this.props.fetchDogsFromUser(this.props.currentUser.id)
-
-    this.socket = io();
   }
 
   handleSubmit(e) {
@@ -32,10 +27,6 @@ class WalksForm extends React.Component {
     }).then(
       this.props.history.push('/walks')
     );
-    // this.props.receiveRoom(this.props.currentUser.id)
-    // this.socket.emit('joinRoom', this.props.currentUser.id)
-    // this.socket.on('success', (res) => console.log(res))
-
 
   }
 
@@ -85,8 +76,8 @@ class WalksForm extends React.Component {
     return (
       <div className="walks-form-main">
         <div className="walks-form-back-container">
-          <Link to="/walks" className="walks-form-back-btn" >
-            <button>Back to walks</button>
+          <Link to="/walks"  >
+            <button className="medium tertiary button">Back to walks</button>
           </Link>
 
         </div>
