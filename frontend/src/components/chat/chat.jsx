@@ -1,11 +1,12 @@
 import React from 'react';
 import '../../stylesheets/chat.scss';
 import iconArrow from '../../assets/small_icon_back_arrow_white.png';
+import { withRouter } from 'react-router-dom';
 
 const io = require('socket.io-client');
 
 
-export default class Chat extends React.Component {
+class Chat extends React.Component {
 
   constructor(props) {
     super(props);
@@ -18,12 +19,12 @@ export default class Chat extends React.Component {
 
   componentDidMount() {
 
-  
+    this.props.receiveRoom(this.props.match.params.requestId)
     
     // debugger
     // this.chat = this.props.socket;
 
-    this.props.receiveRoom(`${this.props.currentUser.id}`)
+    // this.props.receiveRoom(`${this.props.currentUser.id}`)
 
     // this.chat.emit('joinRoom', `${this.props.currentUser.id}`)
 
@@ -68,7 +69,7 @@ export default class Chat extends React.Component {
 
   componentWillUnmount() {
     console.log('chat has unmounted')
-    this.props.receiveLeaveRoom(this.props.currentUser.id)
+    this.props.receiveLeaveRoom(this.props.params.match.requestId)
   }
 
   handleSend(e) {
@@ -77,6 +78,7 @@ export default class Chat extends React.Component {
     const msg = document.createElement('p');
     msg.innerText += input.value
     let messageInfo = { 
+      room: this.props.match.params.requestId,
       user: this.props.currentUser,
       content: msg.innerText, 
     }
@@ -125,3 +127,5 @@ export default class Chat extends React.Component {
     )
   }
 }
+
+export default withRouter(Chat);

@@ -33,8 +33,8 @@ export const fetchWalk = walk => dispatch => {
 }
 
 export const createWalk = walk => dispatch => {
-  console.log(walk)
   dispatch(startLoading());
+  // console.log(walk)
   return (
     WalkApiUtil.createWalk(walk)
       .then(walk => dispatch(receiveWalk(walk)))

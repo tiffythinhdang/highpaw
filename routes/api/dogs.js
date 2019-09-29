@@ -13,14 +13,14 @@ router.get('/walks/:walkId',
   (req, res) => {
   // let dog_ids = req.params.dog_id;
   // let dogs = dog_ids.map(id => Dog.findbyId(id));
-  console.log(req.params)
+  // console.log(req.params)
   let walk = Walk.findById(req.params.walkId).then(walk => { 
-    console.log(walk.dogs)
+    // console.log(walk.dogs)
     // let dogs = [];
     // walk.dogs.map(dog => Dog.findById(dog.id).then(dog => console.log(dog))
     // );
     Dog.find({ _id: { $in: walk.dogs }}).then(dogs => {
-      console.log(dogs)
+      // console.log(dogs)
       res.json(dogs)
     })
     // return dogs

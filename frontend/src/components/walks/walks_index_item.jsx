@@ -5,6 +5,11 @@ import { Link, withRouter } from 'react-router-dom';
 import SendRequestContainer from '../request/send_request_container';
 
 class WalksIndexItem extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.handleAccept = this.handleAccept.bind(this)
+  }
 
   componentDidMount() {
     this.props.fetchRequests(this.props.walk._id)
@@ -30,6 +35,11 @@ class WalksIndexItem extends React.Component {
     )
   }
 
+  handleAccept() {
+    let request = this.props.requests.find(request => this.props.requests.includes(request) && request.walk === this.props.walk._id)
+    this.props.history.push(`/requests/${request._id}`)
+  }
+
   renderReqBtn() {
     let walk = this.props.walk
 
@@ -43,12 +53,16 @@ class WalksIndexItem extends React.Component {
       let request = this.props.requests.find(request => this.props.requests.includes(request) && request.walk === this.props.walk._id)
       // debugger
       if (request) {
-        return <SendRequestContainer walk={walk} request={request} requested={true} />
+        if (request.status === "pending") {
+          return <SendRequestContainer walk={walk} request={request} requested={true} />
+        } else if (request.status === "approved" && request.requester === this.props.currentUser.id) {
+          return <button className="small main button" onClick={this.handleAccept}>Accepted</button>
+        } else {
+          return <SendRequestContainer walk={walk} request={request} requested={false} />
+        }
       } else {
-        return <SendRequestContainer walk={walk} request={request} requested={false} />
+        return <SendRequestContainer walk={walk} requested={true} />
       }
-    } else {
-      return <SendRequestContainer walk={walk} requested={true} />
     }
   }
 
@@ -57,25 +71,25 @@ class WalksIndexItem extends React.Component {
     if (!this.props.dogs) return null;
     if (!this.props.requests) return null;
 
-    let dogs = this.props.dogs.map(dog => {
-      if (this.props.walk.dogs.includes(dog._id)) {
-        return (
-          this.renderDogs(dog)
-        )
-      }
-    })
+      let dogs = this.props.dogs.map(dog => {
+        if (this.props.walk.dogs.includes(dog._id)) {
+          return (
+            this.renderDogs(dog)
+          )
+        }
+      })
 
-    return (
-      <div className="walk-item-container">
-        <div className="walk-dogs-container">
-          {dogs}
+      return (
+        <div className="walk-item-container">
+          <div className="walk-dogs-container">
+            {dogs}
+          </div>
+          <div className="walks-request-container">
+            {this.renderReqBtn()}
+          </div>
         </div>
-        <div className="walks-request-container">
-          {this.renderReqBtn()}
-        </div>
-      </div>
-    )
+      )
+    }
   }
-}
 
-export default withRouter(WalksIndexItem);
+  export default withRouter(WalksIndexItem);

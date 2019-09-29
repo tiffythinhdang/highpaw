@@ -50,7 +50,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 12%;
+  height: 10%;
   width: 95%;
   font-size: 40px;
 
@@ -71,10 +71,12 @@
 .walks-req-container {
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   align-items:center;
   height: 68%; 
   width: 100%;
-  margin-bottom: 10px;
+  // margin-bottom: 10px;
+  // border: 1px dotted yellow;
 }
 
 .walks-req-head {
@@ -85,7 +87,7 @@
 .walks-req-index {
   display: flex;
   flex-direction: column;
-  height: 90%;
+  height: 85%;
   width: 95%;
   flex-wrap: nowrap;
   overflow-y: auto;
@@ -96,8 +98,12 @@
 .walks-delete-button-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  // justify-content: space-between;
+  justify-content: center;
   width: 90%;
+  height: 10%;
+
+  // border: 1px dotted green;
 }
 
 .walks-delete-btn {
@@ -132,7 +138,7 @@
   justify-content: space-between;
   align-items: center;
 
-  height: 22%;
+  height: 24%;
   width: 100%;
   margin-bottom: 10px;
 
@@ -183,4 +189,16 @@
   background-color: $main_green;
   margin-right: 5px;
   color: white;
+}
+
+.show-map-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items:center;
+  height: 68%; 
+  width: 100%;
+  margin-bottom: 10px;
+
+  border: 1px dotted green 
 }
