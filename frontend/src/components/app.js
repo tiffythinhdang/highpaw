@@ -27,7 +27,7 @@ import ChatContainer from '../components/chat/chat_container';
 import RequestShowContainer from '../components/request/request_show_container';
 
 const App = () => (
-  <div>
+  <div className="app">
     <NavBar />
     <Switch>
       <Route exact path="/" component={MainPage} />
