@@ -7,7 +7,8 @@ const mapStateToProps = state => {
   return {
     requests: Object.values(state.entities.requests),
     currentUser: state.session.user,
-    dogs: Object.values(state.entities.dogs)
+    dogs: Object.values(state.entities.dogs),
+    loading: state.loading
   };
 };
 

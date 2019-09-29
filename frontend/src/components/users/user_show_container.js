@@ -15,7 +15,8 @@ const mapStateToProps = (state, ownProps) => {
   return {
     user: state.entities.users[userId],
     currentUserId,
-    dogs: state.entities.dogs
+    dogs: state.entities.dogs,
+    loading: state.loading
   }
 };
 

@@ -36,6 +36,18 @@ const loadingReducer = (state = false, action) => {
     case RECEIVE_DOGS:
     case RECEIVE_A_DOG:
     case RECEIVE_DOG_ERRORS:
+    case RECEIVE_CURRENT_USER:
+    case RECEIVE_SESSION_ERRORS:
+    case RECEIVE_USER_LOGOUT:
+    case RECEIVE_A_USER:
+    case RECEIVE_USER_ERRORS:
+    case RECEIVE_ALL_WALKS:
+    case RECEIVE_WALK:
+    case REMOVE_WALK:
+    case RECEIVE_REQUESTS:
+    case RECEIVE_REQUEST:
+    case RECEIVE_REQUEST_ERRORS:
+    case REMOVE_REQUEST:
       return false;
 
     case START_LOADING:
