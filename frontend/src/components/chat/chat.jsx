@@ -30,6 +30,11 @@ export default class Chat extends React.Component {
     // this.chat.on('success', (res) => console.log(res))
 
     let msgCallback = (message) => {
+      const senderName = document.querySelector('.requester-name')
+      // debugger
+      if (message.user.id !== this.props.currentUser.id) {
+        senderName.innerHTML = message.user.name
+      }
       this.setState({
         chat: this.state.chat.concat([
           <div className={message.user.id === this.props.currentUser.id ? "me" : "other"} key={this.state.chat.length}>
@@ -100,9 +105,9 @@ export default class Chat extends React.Component {
             className="small icon"
             src={iconArrow}
             alt="back-arrow"
-            onCLick={this.handleGoBack}
+            onClick={this.handleGoBack}
           />
-          <p className="chat-header requester-name">Requester's Name</p>
+          <p className="chat-header requester-name"></p>
         </div>
         {/* Tiffany's code ends*/}
 
