@@ -1,6 +1,6 @@
 import '../../stylesheets/walks_show.scss'
 import React from 'react';
-const io = require('socket.io-client');
+
 
 export default class ModifyRequest extends React.Component {
   constructor(props) {
@@ -11,7 +11,7 @@ export default class ModifyRequest extends React.Component {
   }
 
   componentDidMount() {
-    this.socket = io();
+
   }
 
   handleApprove(e) {
