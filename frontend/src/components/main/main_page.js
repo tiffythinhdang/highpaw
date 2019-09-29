@@ -6,7 +6,7 @@ class MainPage extends React.Component {
   render() {
     return (
       <div>
-        <MapContainer />
+        {/* <MapContainer /> */}
       </div>
     );
   }

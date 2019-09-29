@@ -94,16 +94,24 @@ io
       return socket.emit('success', "You have successfully joined " + room)
     })
 
-    socket.on('sendLocation', location => {
-      io
-        
-        .in('testing').emit('sendLocation', location) 
+    socket.on('leaveRoom', room => {
+      socket.leave(room);
+      return socket.emit('success', "You have successfully left " + room)
     })
 
-    socket.on('sendMessage', message => {
+    socket.on('sendRequest', (requestInfo) => {
       io
-      
-        .in('chattest').emit('sendMessage', message)
+        .in(requestInfo.approvalRoom).emit('sendRequest', requestInfo)
+    })
+
+    socket.on('sendLocation', location => {
+      io
+        .in(`${location.currentUser}`).emit('sendLocation', location) 
+    })
+
+    socket.on('sendMessage', messageInfo => {
+      io
+        .in(`${messageInfo.room}`).emit('sendMessage', messageInfo)
     })
   })
 
@@ -117,7 +125,17 @@ io
 
 
 // } 
-server.listen( port, () => {
-  console.log(`Server is listening on localhost: ${port}`)
-})
+
+// if (process.env.PORT) {
+
+  server.listen( port, () => {
+    console.log(`Server is listening on localhost: ${port}`)
+  })
+
+// } else {
+//   app.listen(port, () => console.log(`Server is running on port ${port}`));
+//   server.listen(`${port + 1}`, () => {
+//     console.log(`Server is listening on localhost: ${port + 1}`)
+//   })
+// }
 

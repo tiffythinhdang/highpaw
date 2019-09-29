@@ -1,28 +1,34 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
-export default class FulfillRequest extends React.Component {
+class FulfillRequest extends React.Component {
 
   constructor(props) {
     super(props);
     
-    this.handleFulfilled = this.handleFulfilled.bind(this);
+    this.handlePush = this.handlePush.bind(this);
   }
 
-  handleFulfilled(e) {
+  handlePush(e) {
     e.preventDefault();
+    // debugger
+    // console.log('hi')
+    this.props.history.push(`/requests/${this.props.request._id}`)
     // let fufillment = { _id: this.props.review._id, status: "fulfilled" }
     // this.props.fulfill(fufillment)
-    this.props.deleteRequest(this.props.request._id) 
+    // this.props.deleteRequest(this.props.request._id) 
   }
 
   render() {
     return (
       <form>
-        <button className="small button pawed-btn" onClick={this.handleFulfilled}>Pawed</button>
+        <button className="small button pawed-btn" onClick={this.handlePush}>Pawed</button>
       </form>
     )
   }
 }
+
+export default withRouter(FulfillRequest)
 
 /*
 import the container of this in your walk show page which has all the requests from that walk. 

@@ -7,14 +7,9 @@ import ModifyRequestContainer from '../request/modify_request_container';
 import FulfillRequestContainer from '../request/fulfill_request_container';
 
 
-class WalksShow extends React.Component {
-  constructor(props) {
-    super(props);
-   
-  }
+class WalksShowItem extends React.Component {
 
   componentDidMount() {
-    console.log(this.props.request)
     this.props.fetchUserFromRequest(this.props.request.requester)
   }
 
@@ -24,10 +19,9 @@ class WalksShow extends React.Component {
   }
 
   render() {
-    // debugger;
     let reqUser;
-    this.props.user.forEach(user => {
-      if (this.props.request.requester == user._id) {
+    this.props.users.forEach(user => {
+      if (this.props.request.requester === user._id && user._id !== this.props.currentUser.id) {
         reqUser = user
       }
     })
@@ -36,24 +30,28 @@ class WalksShow extends React.Component {
     return (
 
       <div className="request-item-main">
-        {/* <Link to={`/users/${user._id}`} > */}
+        <Link to={`/users/${reqUser._id}`} key={reqUser._id} >
           <div className="request-user-information-container">
-            <div className="req-user-icon"></div>
+            <div className="profile-photo container">
+            <img
+                src={reqUser.profilePhotoUrl}
+                alt="user-pic"
+              />
+            </div>
             <div className="req-user-name-container">
               <p className="req-user-name">{reqUser.name}</p>
               <p className="req user-age">{reqUser.age} {reqUser.age > 1 ? "yrs old" : "yr old"}</p>
             </div>
           </div>
-        {/* </Link> */}
+        </Link>
         <div className="req-user-btn">
-          {/* <ModifyRequestContainer request={this.props.request} /> */}
-          {this.props.request.status === "pending" ? <ModifyRequestContainer request={this.props.request}/> : ""}
+          {this.props.request.status === "pending" ? <ModifyRequestContainer request={this.props.request} /> : ""}
           {this.props.request.status === "approved" ? <FulfillRequestContainer request={this.props.request} /> : ""}
         </div>
-      </div> 
+      </div>
 
     )
   }
 }
 
-export default withRouter(WalksShow);
+export default withRouter(WalksShowItem);

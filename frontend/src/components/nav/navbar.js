@@ -8,9 +8,6 @@ import MenuContainer from './menu_container';
 import '../../stylesheets/nav_bar.scss';
 
 class NavBar extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   toggleMenu(){
     let menu = document.getElementById("nav-bar-menu");
@@ -22,13 +19,14 @@ class NavBar extends React.Component {
       <div className="top-bar container">
         <MenuContainer toggleMenu={this.toggleMenu} />
         <div className="nav-bar container">
-          <a className="nav-bar menu-icon">
+          <button className="nav-bar menu-icon">
             <img 
               className="small icon menu"
+              id="menu-icon"
               onClick={this.toggleMenu}
               src={iconMenu} 
               alt="menu-icon"/>
-          </a>
+          </button>
           <Link className="nav-bar logo" to={'/'}>
             <img src={mainLogo} alt="logo"/>
           </Link>

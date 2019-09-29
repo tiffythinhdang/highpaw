@@ -2,10 +2,10 @@ import '../../stylesheets/walks_show.scss'
 
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import Map from '../map/map'
-import WalkShowItemContainer from './walks_show_item_container';
+import MapContainer from '../map/map_container';
+// import WalkShowItemContainer from './walks_show_item_container';
 
-class WalksShow extends React.Component {
+class RequestShow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -13,34 +13,34 @@ class WalksShow extends React.Component {
     }
     this.handleDelete = this.handleDelete.bind(this);
     this.handleMapBtn = this.handleMapBtn.bind(this);
-    this.handleReqBtn = this.handleReqBtn.bind(this);
+    this.handleChat = this.handleChat.bind(this);
+    // this.handleReqBtn = this.handleReqBtn.bind(this);
   }
 
   componentDidMount() {
-    this.props.fetchRequests(this.props.match.params.id)
+    // debugger;
+    // this.props.fetchRequests(this.props.match.params.id)
+    // this.props.receiveRoom(this.props.match.params.requestId)
+  }
+
+  componentWillUnmount() {
+    // this.props.receiveLeaveRoom(this.props.match.params.requestId)
   }
 
   handleDelete() {
-    this.props.deleteWalk(this.props.match.params.id)
+    this.props.deleteRequest(this.props.match.params.id)
       .then(this.props.history.push('/walks'))
   }
 
-  renderMap(requests) {
+  renderMap() {
     if (!this.state.map) {
       return (
-        <div className="walks-req-container">
-          <p className="walks-req-head">Active requests</p>
-          <div className="walks-req-index">
-            {requests}
-          </div>
-        </div>
-      )
-    } else {
-      return (
         <div className="walks-map-container">
-          <Map />
+        <MapContainer />
         </div> 
       )
+    } else {
+      return (<div></div>)
     }
   }
 
@@ -52,6 +52,11 @@ class WalksShow extends React.Component {
     }
   }
 
+  handleChat() {
+    this.props.history.push(`/requests/${this.props.match.params.requestId}/chat`)
+  }
+
+
   handleMapBtn() {
     this.setState({ map: true })
   }
@@ -61,11 +66,11 @@ class WalksShow extends React.Component {
   }
 
   render() {
-    let requests = this.props.requests.map(request => {
-      return (
-        <WalkShowItemContainer request={request} />
-      )
-    })
+    // let requests = this.props.requests.map(request => {
+    //   return (
+    //     // <WalkS request={request} />
+    //   )
+    // })
 
     return (
 
@@ -74,10 +79,10 @@ class WalksShow extends React.Component {
           <Link to="/walks" >
             <button className="walks-show-back-btn">Back</button>
           </Link>
-          <button className="walks-show-chat-btn" >Chat</button>
+          <button className="walks-show-chat-btn" onClick={this.handleChat}>Chat</button>
         </div>
-        <div className="form main header">Your walk</div>
-        {this.renderMap(requests)}
+        <div className="form main header">Paw dog</div>
+        {this.renderMap()}
         <div className="walks-delete-button-container">
           <button className="walks-delete-btn" onClick={this.handleDelete}>Delete walk</button>
           {this.renderButtons()}
@@ -88,4 +93,4 @@ class WalksShow extends React.Component {
   }
 }
 
-export default withRouter(WalksShow);
+export default withRouter(RequestShow);

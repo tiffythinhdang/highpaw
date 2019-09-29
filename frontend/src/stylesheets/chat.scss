@@ -1,0 +1,111 @@
+@import './util.scss';
+
+.chat-container {
+  width: 100%;
+  min-height: calc(100vh - 54px);
+}
+
+.chat-header.container {
+  width: 100%;
+  height: 54px;
+  background: $main_pink;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+.chat-header.requester-name {
+  font-size: 22px;
+  font-weight: lighter;
+  color: $white;
+}
+
+.chat-type-box.container {
+  width: 100%;
+  min-height: 60px;
+  background: $lightest_gray;
+  position: sticky;
+  bottom: 0;
+  top: 100%;
+  padding: 0px 15px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#chat-input {
+  background-color: $white;
+  min-height: 45px;
+  min-width: calc(100vw - 78px - 2 * 15px - 10px);
+  border-radius: 300px;
+  padding: 0px 15px;
+}
+
+#chat-input::placeholder{
+  color: $light_gray;
+  font-size: 16px;
+}
+
+#chat-output {
+  width: 100%;
+  min-height: 100%;
+  padding: 15px;
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#chat-output > .me, #chat-output > .other {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+#chat-output > .other {
+  flex-direction: row-reverse;
+}
+
+#chat-output > .me > img, #chat-output > .other > img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid $white;
+  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+}
+
+#chat-output > .me > p, #chat-output > .other > p {
+  max-width: calc(100vw - 50px - 3 * 15px);
+  font-size: 16px;
+  line-height: 30px;
+  border-radius: 8px;
+  padding: 10px;
+  margin-top: 15px;
+  word-wrap: break-word;
+}
+
+#chat-output > .me > p {
+  margin-left: 10px;
+  background-color: $main_blue;
+  color: $white;
+}
+
+#chat-output > .other > p {
+  margin-right: 10px;
+  background-color: $lightest_gray;
+  color: $black-gray;
+}
+
+// Media-query
+
+@media only screen and (max-width: 414px) {
+ footer {
+    display: none;
+ }
+}
