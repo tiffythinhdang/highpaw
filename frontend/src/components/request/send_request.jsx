@@ -39,7 +39,6 @@ export default class SendRequest extends React.Component {
     // let requestInfo = { approvalRoom: this.props.walk.user, requster: this.props.requester}
     // this.socket.emit('sendRequest', requestInfo)
     // this.socket.on('success', (res) => console.log(res))
-    this.props.paw(this.props.walk._id)
     this.props.paw(this.props.walk._id).then(
       this.setState({ sending: false })
     )
