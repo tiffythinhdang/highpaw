@@ -29,7 +29,7 @@ highpaw
 
 - [Technologies](#technologies)
 - [Features/ MVP](#features-mvps)
-- [Group Members & Responsibilities ](#group-members-&-responsibilities)
+- [Group Members & Responsibilities ](#group-members)
 
 ### Technologies
 - MERN - MongoDB, Express, React, Node
