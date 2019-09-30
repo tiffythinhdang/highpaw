@@ -26,6 +26,7 @@ class Map extends React.Component {
       })
       this.sendLocation(this.props.approved)
     } else {
+      debugger
       this.props.receiveRoom(this.props.match.params.requestId)
       let rooms = [this.props.match.params.requestId];
       this.sendLocation(rooms);
@@ -56,7 +57,8 @@ class Map extends React.Component {
   }
 
   sendLocation(rooms) {
-    const locationTag = document.getElementById('unsupported');
+    
+
     if (navigator.geolocation) {
       this.locationInterval = setInterval(() => {
         rooms.forEach(room => {
@@ -68,9 +70,8 @@ class Map extends React.Component {
           })
         })
       }, 4000)
-    } else {
-      locationTag.innerHTML = "Geolocation isn't supported by your browser."
     }
+
   }
 
   componentWillUnmount() {
