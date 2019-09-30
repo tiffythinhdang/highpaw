@@ -26,7 +26,7 @@ export default class SignIn extends React.Component {
   }
 
   handleSubmit(e) {
-    e.preventDefault();
+    if (e) e.preventDefault();
     this.props.clearSessionErrors();
     this.props.login(this.state).then(() => {
       this.props.history.push('/walks');
@@ -70,7 +70,7 @@ export default class SignIn extends React.Component {
       this.setState({
         password: this.state.password + demoPassword.shift()
       });
-      demoPassword.length > 0 ? this.setPassword(demoPassword) : this.props.login(this.state)
+      demoPassword.length > 0 ? this.setPassword(demoPassword) : this.handleSubmit()
     }, 100)
   }
 

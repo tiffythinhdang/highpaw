@@ -36,8 +36,7 @@ class RequestShow extends React.Component {
   renderMap() {
     if (!this.state.map) {
       return (
-        <div className="show-map-container">
-          mapmapmap
+        <div className="walks-map-container">
         <MapContainer />
         </div> 
       )
@@ -79,15 +78,18 @@ class RequestShow extends React.Component {
       <div className="walks-show-main">
         <div className="walks-show-buttons-container">
           <Link to="/walks" >
-            <button className="walks-show-back-btn">Back</button>
+            <button className="medium tertiary button">Back</button>
           </Link>
-          <button className="walks-show-chat-btn" onClick={this.handleChat}>Chat</button>
+          <button className="medium secondary button" onClick={this.handleChat}>Chat</button>
         </div>
         <div className="form main header">Paw dog</div>
-        {this.renderMap()}
-        <div className="walks-delete-button-container">
-          <button className="walks-delete-btn" onClick={this.handleDelete}>Delete request</button>
-          {/* {this.renderButtons()} */}
+        <div className="walks-show-container">
+          {this.renderMap()}
+          <div className="show-delete-button-container">
+            <button className="main medium button" onClick={this.handleDelete}>Delete request</button>
+            {/* {this.renderButtons()} */}
+          </div>
+
         </div>
       </div>
 

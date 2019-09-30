@@ -10,7 +10,7 @@ import SignInContainer from "./auth/signin_container";
 import UserShowContainer from "./users/user_show_container";
 import EditUserContainer from "./users/edit_user_container";
 
-import NavBar from './nav/navbar';
+import NavBarContainer from './nav/navbar_container';
 import MainPage from './main/main_page';
 import Footer from './footer/footer';
 
@@ -28,7 +28,7 @@ import RequestShowContainer from '../components/request/request_show_container';
 
 const App = () => (
   <div className="app">
-    <NavBar />
+    <NavBarContainer />
     <Switch>
       <Route exact path="/" component={MainPage} />
       <AuthRoute exact path="/login" component={SignInContainer} />
@@ -37,16 +37,16 @@ const App = () => (
       <ProtectedRoute path="/users/:id/edit" component={EditUserContainer}/>
       <ProtectedRoute path="/users/:id" component={UserShowContainer}/>
 
-      <Route exact path="/walks/create" component={WalksFormContainer} />
-      <Route exact path="/walks/:id" component={WalksShowContainer} />
-      <Route exact path="/walks" component={WalksIndexContainer} />
+      <ProtectedRoute exact path="/walks/create" component={WalksFormContainer} />
+      <ProtectedRoute exact path="/walks/:id" component={WalksShowContainer} />
+      <ProtectedRoute exact path="/walks" component={WalksIndexContainer} />
 
-      <Route exact path="/requests/:requestId" component={RequestShowContainer} />
-      <Route exact path="/requests/:requestId/chat" component={ChatContainer} />
+      <ProtectedRoute exact path="/requests/:requestId" component={RequestShowContainer} />
+      <ProtectedRoute exact path="/requests/:requestId/chat" component={ChatContainer} />
 
-      <Route path="/dogs/:id/edit" component={EditDogContainer} />
-      <Route path="/dogs/:id" component={DogShowContainer} />
-      <Route path="/dogs" component={CreateDogContainer} />
+      <ProtectedRoute path="/dogs/:id/edit" component={EditDogContainer} />
+      <ProtectedRoute path="/dogs/:id" component={DogShowContainer} />
+      <ProtectedRoute path="/dogs" component={CreateDogContainer} />
     </Switch>
     <Footer />
   </div>

@@ -44,7 +44,7 @@ export default class SendRequest extends React.Component {
           onClick={this.handleSubmit}>
           Paw!
         </button>
-        <button active className={this.props.requested ? "small main button" : "hidden"}
+        <button active className={this.props.requested ? "small pending button" : "hidden"}
           id={`pending-button${this.props.walk}`}
           onClick={this.handlePending}>
           Pending
