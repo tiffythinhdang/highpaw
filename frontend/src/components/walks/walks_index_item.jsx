@@ -36,7 +36,7 @@ class WalksIndexItem extends React.Component {
   }
 
   handleAccept() {
-    let request = this.props.requests.find(request => this.props.requests.includes(request) && request.walk === this.props.walk._id)
+    let request = this.props.requests.find(request => this.props.requests.includes(request) && request.walk === this.props.walk._id && request.requester === this.props.currentUser.id)
     this.props.history.push(`/requests/${request._id}`)
   }
 
