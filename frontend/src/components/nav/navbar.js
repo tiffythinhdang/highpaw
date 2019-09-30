@@ -27,7 +27,7 @@ class NavBar extends React.Component {
               src={iconMenu} 
               alt="menu-icon"/>
           </button>
-          <Link className="nav-bar logo" to={'/'}>
+          <Link className="nav-bar logo" to={this.props.currentUserId ? '/walks' : '/'}>
             <img src={mainLogo} alt="logo"/>
           </Link>
         </div>

@@ -20,7 +20,7 @@
   height: 80px;
   width: 95%;
 
-  // border: 1px green dotted;
+  border: 1px green dotted;
 }
 
 .walks-show-back-btn {
@@ -218,4 +218,14 @@
   margin-bottom: 10px;
 
   // border: 1px dotted green 
+}
+
+.show-delete-button-container {
+  display: flex;
+  flex-direction: row;
+  // justify-content: space-between;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto; 
 }
