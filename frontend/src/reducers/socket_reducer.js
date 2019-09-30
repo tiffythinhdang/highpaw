@@ -2,6 +2,8 @@ import { RECEIVE_LISTENER, RECEIVE_ROOM, RECEIVE_EMIT, RECEIVE_LEAVE_ROOM } from
 
 const io = require('socket.io-client');
 // let socket = process.env.PORT ? io() : io('ws://localhost:5000', { transports: ['websocket'] });
+
+let socket = io()
 // intialState = {
   //   listeners: [],
   //   rooms: []
