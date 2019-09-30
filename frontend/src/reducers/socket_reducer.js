@@ -8,7 +8,7 @@ let socket = io()
   //   listeners: [],
   //   rooms: []
   // }
-  let socket = io();
+  // let socket = io();
   socket.on('success', (res) => console.log(res))
 
 export const socketReducer = (state = {}, action) => {
