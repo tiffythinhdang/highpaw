@@ -8,7 +8,7 @@ Include screenshots of anything that looks pretty
 To-dos and future features -->
 
 <!-- Banner -->
-<a href="#">
+<a>
   <img 
     src="https://i.imgur.com/NHEr1B3.png"
     alt="highpaw logo" 
@@ -21,6 +21,10 @@ highpaw
 
 ### Description
 - An interactive, light-weight, mobile-first web application that lets people meet and pet dogs in their area.
+
+<p align="center">
+  <img src="https://imgur.com/39bN44E.png"/>
+</p>
 
 ### Link
 * [Web site]()
