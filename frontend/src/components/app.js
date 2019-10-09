@@ -30,7 +30,7 @@ const App = () => (
   <div className="app">
     <NavBarContainer />
     <Switch>
-      <Route exact path="/" component={MainPage} />
+      <AuthRoute exact path="/" component={MainPage} />
       <AuthRoute exact path="/login" component={SignInContainer} />
       <AuthRoute exact path="/signup" component={SignUpContainer} />
 
