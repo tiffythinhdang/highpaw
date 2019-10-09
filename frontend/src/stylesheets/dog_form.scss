@@ -44,3 +44,10 @@
   justify-content: center;
   align-items: center;
 }
+
+@media only screen and (min-width: 1024px) {
+  .create-dog.form-container {
+    margin-top: 54px;
+    padding: 5vh 0;
+  } 
+}
