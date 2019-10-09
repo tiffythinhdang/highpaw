@@ -50,15 +50,16 @@
   .main-page.container {
     flex-direction: row;
     justify-content: space-between;
-    padding: 50px;
+    margin-top: 54px;
+    padding: 0 10vw;
+    height: calc(100vh - 54px - 50px);
   }
 
   .main-page.gif-container {
-    width: 50vw;
-    height: 50vw;
-    margin-bottom: 0px;
-    border-radius: 15px;
-    box-shadow: 5px 5px 14px rgba(0, 0, 0, 0.25);
+    width: 35vw;
+    height: 35vw;
+    border-radius: 20px;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.25);
   }
 
   .main-page.header {
