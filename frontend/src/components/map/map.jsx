@@ -7,7 +7,8 @@ class Map extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      markers: {}
+      markers: {},
+      infoWindow: {}
     }
   }
 
@@ -35,20 +36,38 @@ class Map extends React.Component {
     let locationCallBack = (data) => {
       let location = data.latLng;
       let user = data.currentUser.id;
+      let icon = {
+        url: data.currentUser.profilePhotoUrl,
+        scaledSize: new google.maps.Size(35, 35),
+      }
       
       if (this.state.markers[user]) {
         this.state.markers[user].setPosition(location)
       } else {
 
+        let infoWindow = new google.maps.InfoWindow({
+          content: data.currentUser.name
+        })
+        // debugger;
+        this.state.infoWindow[user] = infoWindow;
+
         let marker = new google.maps.Marker({
           position: location,
           map: this.map,
-          label: data.currentUser.name
+          icon: icon,
+          // label: data.currentUser.name
         })
 
+        marker.addListener('click', () => {
+          // debugger;
+          this.state.infoWindow[user].open(this.map, this.state.markers[user]);
+        })
+        
         this.state.markers[user] = marker;
         this.map.setCenter(location)
       }
+
+      
     }
 
     let locationListener = { action: 'sendLocation', callback: locationCallBack}
@@ -89,6 +108,14 @@ class Map extends React.Component {
 
 
   render() {
+
+    let image = document.querySelector(`img[src='${this.props.currentUser.profilePhotoUrl}']`)
+    if (image) {
+      image.style.borderRadius = '32px';
+      image.style.boxSizing = 'border-box'
+      image.style.border = '3px solid #ff8847';
+    }
+    
     return (
       
 
