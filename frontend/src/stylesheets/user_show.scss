@@ -137,3 +137,16 @@
   justify-content: flex-end;
   align-items: center;
 }
+
+@media only screen and (min-width: 1024px) {
+  .user-show.outer-container {
+    margin: 0px;
+    margin-top: 54px;
+    padding: 5vh 0;
+  } 
+  
+  .user-show.infor-container {
+    width: 40vw;
+    margin-top: 0;
+  }
+}

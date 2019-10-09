@@ -145,9 +145,14 @@
 }
 
 @media only screen and (min-width: 1024px) {
+  .dog-show.container {
+    margin-top: 54px;
+    padding: 5vh 0;
+  } 
+  
   .dog-show.main-infor.container {
     width: 40vw;
-    padding: 20px 0 20px 0;
+    margin-top: 0;
+    padding: 2vw 0 2vw 0;
   }
-
 }
