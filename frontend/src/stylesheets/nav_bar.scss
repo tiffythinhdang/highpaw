@@ -56,3 +56,37 @@
 .link button:hover {
   cursor: pointer;
 }
+
+@media only screen and (min-width: 1024px) {
+  .nav-bar.container {
+  position: fixed;
+  padding: 0 10vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  }
+
+  #nav-bar-menu {
+    position: fixed;
+    width: 20%;
+    padding: 15px 0 15px 5vw;
+  }
+
+  .link > a:hover{
+    color: $hover_pink;
+  }
+
+  .link button:hover {
+    background-color: $hover_blue;
+  }
+
+  .nav-bar.close-icon {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .nav-bar.close-icon > img {
+    padding-right: 10%;
+  }
+}
