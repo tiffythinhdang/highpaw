@@ -26,7 +26,7 @@ class Map extends React.Component {
       })
       this.sendLocation(this.props.approved)
     } else {
-      debugger
+      // debugger
       this.props.receiveRoom(this.props.match.params.requestId)
       let rooms = [this.props.match.params.requestId];
       this.sendLocation(rooms);
