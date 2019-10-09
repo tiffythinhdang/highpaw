@@ -34,8 +34,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // testing codes start
-  window.getState = store.getState;
-  window.dispatch = store.dispatch;
+  // window.getState = store.getState;
+  // window.dispatch = store.dispatch;
   // testing codes end
 
   const root = document.getElementById('root');
