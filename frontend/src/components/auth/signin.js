@@ -29,7 +29,7 @@ export default class SignIn extends React.Component {
     if (e) e.preventDefault();
     this.props.clearSessionErrors();
     this.props.login(this.state).then(() => {
-      this.props.history.push('/walks');
+      if (!this.props.errors.email && !this.props.errors.password) this.props.history.push('/walks');
     });
   }
 
