@@ -75,6 +75,7 @@ class WalksForm extends React.Component {
 
     return (
       <div className="walks-form-main">
+        <div className="walks-form-container">
         <div className="walks-form-back-container">
           <Link to="/walks"  >
             <button className="medium tertiary button">Back to walks</button>
@@ -89,6 +90,7 @@ class WalksForm extends React.Component {
             {dogs}
           </form>
           <button className="walks-submit-btn" onClick={this.handleSubmit}>Start your walk!</button>
+        </div>
         </div>
       </div>
     )

@@ -65,13 +65,15 @@ class WalksIndex extends React.Component {
 
     return (
       <div className="walks-index-main">
-        {this.renderButtons()}
+        <div className="walks-index-container">
+          {this.renderButtons()}
 
-        {/* <div className="walks-head"> */}
+          {/* <div className="walks-head"> */}
           <p className="form main header">Active walks</p>
-        {/* </div> */}
-        <div className="walks-items-container">
-          {walks}
+          {/* </div> */}
+          <div className="walks-items-container">
+            {walks}
+          </div>
         </div>
       </div>
     )

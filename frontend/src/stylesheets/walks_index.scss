@@ -11,6 +11,11 @@
   // border: 1px dotted white;
 }
 
+.walks-index-container {
+  width: 100%;
+  height: 100%;
+}
+
 .walks-index-top-buttons-container {
   display: flex;
   flex-direction: row;
@@ -176,3 +181,32 @@
   font-size: 18px;
   color: $hover_pink;
 }
+
+@media only screen and (min-width: 1024px) {
+  .walks-index-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: calc(100vh - 54px - 10px);
+  
+    // border: 1px dotted white;
+  }
+
+  .walks-index-container {
+    width: 40vw;
+    height: 100%;
+  }
+
+ }
+
+
+// 90vw
+
+
+
+
+// 1024px
+
+// 40vw

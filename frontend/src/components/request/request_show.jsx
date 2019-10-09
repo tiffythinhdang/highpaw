@@ -76,6 +76,7 @@ class RequestShow extends React.Component {
     return (
 
       <div className="walks-show-main">
+        <div className="walks-show-main-container">
         <div className="walks-show-buttons-container">
           <Link to="/walks" >
             <button className="medium tertiary button">Back</button>
@@ -90,6 +91,7 @@ class RequestShow extends React.Component {
             {/* {this.renderButtons()} */}
           </div>
 
+        </div>
         </div>
       </div>
 
