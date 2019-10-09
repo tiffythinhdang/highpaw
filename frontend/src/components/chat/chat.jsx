@@ -17,7 +17,7 @@ class Chat extends React.Component {
   componentDidMount() {
 
     this.props.receiveRoom(this.props.match.params.requestId)
-    
+
     // debugger
     // this.chat = this.props.socket;
 
@@ -43,7 +43,7 @@ class Chat extends React.Component {
       })
     }
 
-    let messageListener = { action: 'sendMessage', callback: msgCallback  }
+    let messageListener = { action: 'sendMessage', callback: msgCallback }
 
     this.props.receiveListener(messageListener)
 
@@ -61,7 +61,7 @@ class Chat extends React.Component {
   }
 
   componentDidUpdate() {
-    
+
   }
 
   componentWillUnmount() {
@@ -74,10 +74,10 @@ class Chat extends React.Component {
     const input = document.getElementById('chat-input')
     const msg = document.createElement('p');
     msg.innerText += input.value
-    let messageInfo = { 
+    let messageInfo = {
       room: this.props.match.params.requestId,
       user: this.props.currentUser,
-      content: msg.innerText, 
+      content: msg.innerText,
     }
     input.value = "";
 
@@ -97,7 +97,6 @@ class Chat extends React.Component {
   render() {
     return (
       <div className="chat-container">
-
         {/* Tiffany's code starts*/}
         <div className="chat-header container">
           <img
@@ -116,7 +115,7 @@ class Chat extends React.Component {
 
         <form className="chat-type-box container">
 
-          <input type="text" id="chat-input" placeholder="Message"/>
+          <input type="text" id="chat-input" placeholder="Message" />
           <button className="small main button" onClick={this.handleSend}>Send</button>
 
         </form>

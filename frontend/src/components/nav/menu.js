@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import iconMenuWhite from '../../assets/small_icon_menu_white.png';
+import iconCloseWhite from '../../assets/small_icon_close_white.png';
+import iconCloseHover from '../../assets/small_icon_close_hover_pink.png';
 import '../../stylesheets/index.scss';
 
 class Menu extends React.Component {
@@ -8,6 +9,14 @@ class Menu extends React.Component {
     super(props);
     this.logoutUser = this.logoutUser.bind(this);
     this.getLinks = this.getLinks.bind(this);
+  }
+
+  hoverCloseIcon(e) {
+    e.target.src = iconCloseHover;
+  }
+
+  unhoverCloseIcon(e) {
+    e.target.src = iconCloseWhite;
   }
 
   logoutUser(e) {
@@ -23,11 +32,7 @@ class Menu extends React.Component {
           <div className="link inactive">
             <p>Welcome back!</p>
           </div>
-
-          <div className="link" onClick={this.props.toggleMenu}>
-            <Link to={`/`}>Main</Link>
-          </div>
-
+          
           <div className="link" onClick={this.props.toggleMenu}>
             <Link to={`/walks`}>Active Walks</Link>
           </div>
@@ -74,12 +79,14 @@ class Menu extends React.Component {
 
     return (
       <div id="nav-bar-menu" className="nav-bar menu hidden">
-        <button className="nav-bar menu-icon">
+        <button className="nav-bar close-icon">
           <img
-            className="small icon menu"
+            className="small icon close"
             onClick={this.props.toggleMenu}
-            src={iconMenuWhite}
-            alt="menu-icon" />
+            onMouseEnter={this.hoverCloseIcon}
+            onMouseLeave={this.unhoverCloseIcon}
+            src={iconCloseWhite}
+            alt="close-icon" />
         </button>
         {this.getLinks()}
       </div>

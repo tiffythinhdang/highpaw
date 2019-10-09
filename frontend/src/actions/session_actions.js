@@ -51,10 +51,9 @@ export const signup = user => dispatch => (
 export const login = user => dispatch => (
   APIUtil.login(user).then(res => {
     setAuthToken(res, dispatch)
+  }, err => {
+    dispatch(receiveErrors(err.response.data));
   })
-    .catch(err => {
-      dispatch(receiveErrors(err.response.data));
-    })
 );
 
 export const logout = () => dispatch => {

@@ -9,9 +9,8 @@
 }
 
 .dog-show.main-infor.container {
-  width: 340px;
-  padding: 10px 0 10px 0;
-  // height: 437px;
+  width: 90vw;
+  padding: 5vw 0 5vw 0;
   background: $white;
   box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
@@ -143,4 +142,17 @@
 .dog-show.pictures > .update-photos:hover {
   background-color: $medium_gray;
   color: $white;
+}
+
+@media only screen and (min-width: 1024px) {
+  .dog-show.container {
+    margin-top: 54px;
+    padding: 5vh 0;
+  } 
+  
+  .dog-show.main-infor.container {
+    width: 40vw;
+    margin-top: 0;
+    padding: 2vw 0 2vw 0;
+  }
 }

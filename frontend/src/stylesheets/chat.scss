@@ -105,7 +105,18 @@
 // Media-query
 
 @media only screen and (max-width: 414px) {
- footer {
+  footer {
     display: none;
- }
+  }
+
+  
+
+}
+
+@media only screen and (min-width: 1024px) {
+  .chat-container {
+    width: 100%;
+    min-height: calc(100vh - 54px);
+    margin-top: 54px;
+  }
 }

@@ -81,6 +81,7 @@ class WalksShow extends React.Component {
     return (
 
       <div className="walks-show-main">
+        <div className="walks-show-main-container">
         <div className="walks-show-buttons-container">
           <Link to="/walks" >
             <button className="medium tertiary button">Back</button>
@@ -96,6 +97,7 @@ class WalksShow extends React.Component {
             {/* comment back in if needed. and change back to space-between css */}
           </div>
 
+        </div>
         </div>
       </div>
 
