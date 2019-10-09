@@ -8,7 +8,7 @@ Include screenshots of anything that looks pretty
 To-dos and future features -->
 
 <!-- Banner -->
-<a href="#">
+<a>
   <img 
     src="https://i.imgur.com/NHEr1B3.png"
     alt="highpaw logo" 
@@ -20,18 +20,27 @@ highpaw
 ======================
 
 ### Description
-- highpaw is a web application that allows users to meet and pet dogs in their area.
+- An interactive, light-weight, mobile-first web application that lets people meet and pet dogs in their area.
+
+<p align="center">
+  <img src="https://imgur.com/39bN44E.png"/>
+</p>
+
+### Link
+* [Web site]()
+
+## Table of content
+
+- [Technologies](#technologies)
+- [Features/ MVP](#features-mvps)
+- [Group Members & Responsibilities ](#group-members-and-responsibilities)
 
 ### Technologies
 - MERN - MongoDB, Express, React, Node
 - Socket.io
 - Google Map Api
 
-### Link
-* [Web site]()
-* [Documentation]()
-
-### Functionality / MVPs
+### Features/ MVPs
 - [ ] User Authentication
 - [ ] User Profile Page
 - [ ] Search for surrounding active walks
@@ -39,8 +48,10 @@ highpaw
 - [ ] Sending / Accepting / Rejecting requests to pet a dog
 - [ ] Live chat between users
 
-### Group Members & Work Breakdown
-- Aaron: User Feature
-- Tiffany: Dog Feature
-- Brian: Walk Feature
-- Jason: Request Feature
+### Group Members and Responsibilities
+- **User Feature**: Aaron, Tiffany
+- **Dog Feature**: Tiffany
+- **Walk Feature**: Brian
+- **Request Feature**: Jason
+- **Socket.io, Google Map Api**: Jason, Aaron
+- **AWS S3 & Direct Uploading**: Tiffany
