@@ -40,7 +40,7 @@ highpaw
 - Socket.io
 - Google Map Api
 
-### Features/ MVPs
+### Features
 - [ ] User Authentication
 - [ ] User Profile Page
 - [ ] Search for surrounding active walks
