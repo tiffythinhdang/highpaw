@@ -32,11 +32,7 @@ class Menu extends React.Component {
           <div className="link inactive">
             <p>Welcome back!</p>
           </div>
-
-          <div className="link" onClick={this.props.toggleMenu}>
-            <Link to={`/`}>Main</Link>
-          </div>
-
+          
           <div className="link" onClick={this.props.toggleMenu}>
             <Link to={`/walks`}>Active Walks</Link>
           </div>
