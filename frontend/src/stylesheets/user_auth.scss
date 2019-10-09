@@ -26,3 +26,9 @@
   width: 280px;
 }
 
+@media only screen and (min-width: 1024px) {
+  .login-form-container {
+    margin-top: 54px;
+    padding: 5vh 0;
+  } 
+}
