@@ -32,7 +32,7 @@ highpaw
 ## Table of content
 
 - [Technologies](#technologies)
-- [Features/ MVP](#features-mvps)
+- [Features](#features)
 - [Group Members & Responsibilities ](#group-members-and-responsibilities)
 
 ### Technologies
@@ -40,7 +40,7 @@ highpaw
 - Socket.io
 - Google Map Api
 
-### Features/ MVPs
+### Features
 - [ ] User Authentication
 - [ ] User Profile Page
 - [ ] Search for surrounding active walks

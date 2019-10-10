@@ -1,0 +1,77 @@
+@import './util.scss';
+
+.about-page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  margin: 20px 0 20px 0;
+}
+
+.app-description {
+  width: 90vw;
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.in-line.bold {
+  font-weight: 700;
+  color: $main_pink;
+}
+
+.developers-outer-container {
+  width: 90vw;
+}
+
+.developer.container {
+  display: flex;
+  flex-direction: row;
+  background: $white;
+  box-shadow: 0px 3px 11px
+    rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 25px;
+}
+
+.developer-infor {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 25px;
+}
+
+.developer-name {
+  font-size: 22px;
+  color: $medium_gray;
+}
+
+.developer-professional-links {
+  display: flex;
+  flex-direction: row;
+}
+
+.developer-professional-links .icon {
+  width: 35px;
+  height: 35px;
+  margin-right: 25px;
+}
+
+@media only screen and (min-width: 1024px) {
+  .about-page-container {
+    margin-top: 54px;
+    padding: 5vh 0;
+  } 
+  
+  .developers-outer-container {
+    width: 40vw;
+    margin-top: 0;
+    padding: 2vw 0 2vw 0;
+  }
+
+  .app-description {
+    width: 40vw;
+  }
+}

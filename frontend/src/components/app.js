@@ -5,6 +5,8 @@ import '../stylesheets/index.scss';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import { Switch , Route} from 'react-router-dom';
 
+import AboutPage from "./about/about_page";
+
 import SignUpContainer from "./auth/signup_container";
 import SignInContainer from "./auth/signin_container";
 import UserShowContainer from "./users/user_show_container";
@@ -33,6 +35,8 @@ const App = () => (
       <AuthRoute exact path="/" component={MainPage} />
       <AuthRoute exact path="/login" component={SignInContainer} />
       <AuthRoute exact path="/signup" component={SignUpContainer} />
+
+      <Route exact path="/about" component={AboutPage}/>
 
       <ProtectedRoute path="/users/:id/edit" component={EditUserContainer}/>
       <ProtectedRoute path="/users/:id" component={UserShowContainer}/>
