@@ -41,6 +41,10 @@ class Menu extends React.Component {
             <Link to={`/users/${this.props.currentUserId}`}>Profile</Link>
           </div>
 
+          <div className="link" onClick={this.props.toggleMenu}>
+            <Link to={`/about`}>About</Link>
+          </div>
+
           <div className="link logout-button-container" onClick={this.props.toggleMenu}>
             <button className="medium secondary button" onClick={this.logoutUser}>Logout</button>
           </div>
@@ -54,6 +58,9 @@ class Menu extends React.Component {
           </div>
           <div className="login link" >
             <Link to={'/login'} onClick={this.props.toggleMenu}>Login</Link>
+          </div>
+          <div className="link" onClick={this.props.toggleMenu}>
+            <Link to={`/about`}>About</Link>
           </div>
         </div>
       );
