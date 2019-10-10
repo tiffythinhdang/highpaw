@@ -12,6 +12,8 @@ class AboutPage extends React.Component {
   render() {
     return (
       <div className="about-page-container">
+        <p className="app-description"><span className="in-line bold">highpaw</span> is a lightweight mobile application that allows users to interact with dog walkers and owners in their area.</p>
+
         <h1 className="form main header">Developers</h1>
 
         <div className="developers-outer-container">
@@ -126,11 +128,11 @@ class AboutPage extends React.Component {
                   target="_blank">
                   <img className="icon" src={githubIcon} alt="github-icon" />
                 </a>
-                {/* <a
-                  href=""
+                <a
+                  href="https://www.jliao.me/"
                   target="_blank">
                   <img className="icon" src={portfolioIcon} alt="contact-icon" />
-                </a> */}
+                </a>
               </div>
             </div>
           </div>
