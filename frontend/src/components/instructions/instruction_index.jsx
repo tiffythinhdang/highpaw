@@ -22,7 +22,7 @@ class InstructionIndex extends React.Component {
       return(
         <div className="main-page button-container">
           <Link to={'/signup'}>
-            <button className="main large button">Sign up</button>
+            <button className="main large button">Get Started!</button>
           </Link>
           <Link to={'/login'}>
             <button className="secondary large button">Log In</button>
@@ -37,7 +37,7 @@ class InstructionIndex extends React.Component {
       <div className="instruction outer-container">
         <h1 className="form main header">How to&nbsp;<span className="inline-pink">Go Paw</span>?</h1>
         <p className="app-description"><span className="in-line bold">highpaw</span> is a lightweight mobile application that allows users to interact with dog walkers and pet their dogs in the neighborhood.</p>
-        
+
         <div className="instruction container">
           <div className="instruction words">
             <p>Click <span className="inline-pink">Get Started</span> to sign up</p>
