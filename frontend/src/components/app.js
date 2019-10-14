@@ -6,7 +6,7 @@ import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import { Switch , Route} from 'react-router-dom';
 
 import AboutPage from "./about/about_page";
-import InstructionIndex from "./instructions/instruction_index";
+import InstructionIndexContainer from "./instructions/instruction_index_container";
 
 import SignUpContainer from "./auth/signup_container";
 import SignInContainer from "./auth/signin_container";
@@ -38,7 +38,7 @@ const App = () => (
       <AuthRoute exact path="/signup" component={SignUpContainer} />
 
       <Route exact path="/about" component={AboutPage}/>
-      <Route exact path="/instructions" component={InstructionIndex}/>
+      <Route exact path="/instructions" component={InstructionIndexContainer}/>
 
       <ProtectedRoute path="/users/:id/edit" component={EditUserContainer}/>
       <ProtectedRoute path="/users/:id" component={UserShowContainer}/>

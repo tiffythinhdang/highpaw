@@ -17,8 +17,19 @@ class InstructionIndex extends React.Component {
     super(props);
   }
 
-  handleGoBack() {
-    this.props.history.goBack();
+  displayLogInButton() {
+    if (!this.props.currentUserId) {
+      return(
+        <div className="main-page button-container">
+          <Link to={'/signup'}>
+            <button className="main large button">Get Started!</button>
+          </Link>
+          <Link to={'/login'}>
+            <button className="secondary large button">Log In</button>
+          </Link>
+        </div>
+      )
+    }
   }
 
   render() {
@@ -98,15 +109,7 @@ class InstructionIndex extends React.Component {
           <div className="instruction img-container">
             <img src={instructionIMG8} alt="icon-paw" />
           </div>
-          
-          <div className="main-page button-container">
-            <Link to={'/signup'}>
-              <button className="main large button">Get Started!</button>
-            </Link>
-            <Link to={'/login'}>
-              <button className="secondary large button">Log In</button>
-            </Link>
-          </div>
+          {this.displayLogInButton()}
         </div>
 
       </div>
