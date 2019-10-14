@@ -7,8 +7,6 @@ import waggingDogGIF from '../../assets/wagging_dog.gif';
 class MainPage extends React.Component {
   render() {
     return (
-
-
       <div className="main-page container">
         <div className="main-page infor">
           <div className="main-page header">
