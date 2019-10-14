@@ -32,7 +32,7 @@ class Menu extends React.Component {
           <div className="link inactive">
             <p>Welcome back!</p>
           </div>
-          
+        
           <div className="link" onClick={this.props.toggleMenu}>
             <Link to={`/walks`}>Active Walks</Link>
           </div>
@@ -43,6 +43,10 @@ class Menu extends React.Component {
 
           <div className="link" onClick={this.props.toggleMenu}>
             <Link to={`/about`}>About</Link>
+          </div>
+
+          <div className="link" onClick={this.props.toggleMenu}>
+            <Link to={`/instructions`}>How to Go Paw</Link>
           </div>
 
           <div className="link logout-button-container" onClick={this.props.toggleMenu}>
@@ -61,6 +65,9 @@ class Menu extends React.Component {
           </div>
           <div className="link" onClick={this.props.toggleMenu}>
             <Link to={`/about`}>About</Link>
+          </div>
+          <div className="link" onClick={this.props.toggleMenu}>
+            <Link to={`/instructions`}>How to Go Paw</Link>
           </div>
         </div>
       );

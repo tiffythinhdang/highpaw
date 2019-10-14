@@ -7,8 +7,6 @@ import waggingDogGIF from '../../assets/wagging_dog.gif';
 class MainPage extends React.Component {
   render() {
     return (
-
-
       <div className="main-page container">
         <div className="main-page infor">
           <div className="main-page header">
@@ -17,8 +15,8 @@ class MainPage extends React.Component {
           </div>
 
           <div className="main-page button-container">
-            <Link to={'/signup'}>
-              <button className="main large button">Get Started!</button>
+            <Link to={'/instructions'}>
+              <button className="main large button">How to Go Paw</button>
             </Link>
             <Link to={'/login'}>
               <button className="secondary large button">Log In</button>
