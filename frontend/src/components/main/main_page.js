@@ -21,7 +21,7 @@ class MainPage extends React.Component {
             <Link to={'/login'}>
               <button className="secondary large button">Log In</button>
             </Link>
-            <Link to={'/login'}>
+            <Link to={'/instructions'}>
               <button className="tertiary large button">How to Go Paw</button>
             </Link>
           </div>
