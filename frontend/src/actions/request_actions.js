@@ -53,6 +53,13 @@ export const fetchRequests = walkId => dispatch => {
     )
 }
 
+export const fetchRequest = requestId => dispatch => {
+  dispatch(startLoading());
+  return RequestApiUtil.fetchRequest(requestId).then(
+    request => dispatch(receiveRequest(request))
+  )
+};
+
 export const fetchActiveRequest = userId => dispatch => {
   dispatch(startLoading());
   return RequestApiUtil.fetchActiveRequest(userId)

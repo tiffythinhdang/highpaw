@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import { requestsReducer } from './requests_reducer';
 
+import chatReducer from "./chat_reducer";
 import walkReducer from './walk_reducer';
 import dogsReducer from './dogs_reducer';
 import usersReducer from './users_reducer';
@@ -11,5 +12,6 @@ export default combineReducers({
   walks: walkReducer,
   users: usersReducer,
   dogs: dogsReducer,
+  chats: chatReducer,
   requesters: RequestersReducer
 })

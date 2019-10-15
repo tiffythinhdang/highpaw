@@ -9,30 +9,29 @@ class Chat extends React.Component {
     super(props);
     this.state = {
       chat: [],
-    }
+    };
     this.handleSend = this.handleSend.bind(this);
     this.handleGoBack = this.handleGoBack.bind(this);
   }
 
   componentDidMount() {
 
-    this.props.receiveRoom(this.props.match.params.requestId)
+    this.props.receiveRoom(this.props.match.params.requestId);
 
-    // debugger
-    // this.chat = this.props.socket;
+    this.props.fetchParticipants(this.props.match.params.requestId);
 
-    // this.props.receiveRoom(`${this.props.currentUser.id}`)
-
-    // this.chat.emit('joinRoom', `${this.props.currentUser.id}`)
-
-    // this.chat.on('success', (res) => console.log(res))
+    this.props.fetchAllChats(this.props.match.params.requestId).then(response => {
+      this.setState({
+        chat: this.props.chats.map(chat => (
+          <div className={chat.user.id === this.props.currentUser.id ? "me" : "other"} key={chat._id}>
+            <img src={chat.user.profilePhotoUrl} alt="" />
+            <p>{chat.content}</p>
+          </div>
+        ))
+      });
+    });
 
     let msgCallback = (message) => {
-      const senderName = document.querySelector('.requester-name')
-      // debugger
-      if (message.user.id !== this.props.currentUser.id) {
-        senderName.innerHTML = message.user.name
-      }
       this.setState({
         chat: this.state.chat.concat([
           <div className={message.user.id === this.props.currentUser.id ? "me" : "other"} key={this.state.chat.length}>
@@ -41,50 +40,31 @@ class Chat extends React.Component {
           </div>
         ])
       })
-    }
+    };
 
     let messageListener = { action: 'sendMessage', callback: msgCallback }
 
     this.props.receiveListener(messageListener)
 
-    // this.chat.on('sendMessage', (message) => {
-    //   this.setState({
-    //     chat: this.state.chat.concat([
-    //       <div className={message.user.id === this.props.currentUser.id ? "me" : "other"} key={this.state.chat.length}>
-    //         <img src={message.user.profilePhotoUrl} alt=""/>
-    //         <p>{message.content}</p>
-    //       </div>
-    //     ])
-    //   })
-    // })
-
-  }
-
-  componentDidUpdate() {
-
   }
 
   componentWillUnmount() {
-    console.log('chat has unmounted')
+    console.log('chat has unmounted');
     this.props.receiveLeaveRoom(this.props.match.params.requestId)
   }
 
   handleSend(e) {
     e.preventDefault();
     const input = document.getElementById('chat-input')
-    const msg = document.createElement('p');
-    msg.innerText += input.value
     let messageInfo = {
       room: this.props.match.params.requestId,
       user: this.props.currentUser,
-      content: msg.innerText,
-    }
+      content: input.value,
+    };
     input.value = "";
 
     let messageEmission = { action: 'sendMessage', value: messageInfo }
     this.props.receiveEmit(messageEmission);
-
-    // this.chat.emit('sendMessage', messageInfo)
   }
 
   /* Tiffany's code starts*/
@@ -95,6 +75,11 @@ class Chat extends React.Component {
   /* Tiffany's code ends*/
 
   render() {
+
+    let title = "";
+    if (this.props.users.length === 2) {
+      title = this.props.users[0]._id === this.props.currentUser.id ? this.props.users[1].name : this.props.users[0].name
+    }
     return (
       <div className="chat-container">
         {/* Tiffany's code starts*/}
@@ -105,7 +90,7 @@ class Chat extends React.Component {
             alt="back-arrow"
             onClick={this.handleGoBack}
           />
-          <p className="chat-header requester-name"></p>
+          <p className="chat-header requester-name">{title}</p>
         </div>
         {/* Tiffany's code ends*/}
 
