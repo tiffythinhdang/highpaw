@@ -4,6 +4,10 @@ export const fetchDogsFromWalk = (walkId) => {
   return axios.get(`/api/dogs/walks/${walkId}`);
 };
 
+export const fetchDogFromRequest = (requestId) => {
+  return axios.get(`/api/dogs/requests/${requestId}`)
+}
+
 export const fetchDogsFromUser = (userId) => {
   return axios.get(`/api/dogs/user/${userId}`);
 };
@@ -23,3 +27,5 @@ export const updateADog = (data) => {
 export const deleteADog = (id) => {
   return axios.delete(`/api/dogs/${id}`);
 };
+
+window.fetchDogFromRequest = fetchDogFromRequest;

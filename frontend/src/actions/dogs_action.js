@@ -43,6 +43,11 @@ export const fetchDogsFromUser = (userId) => dispatch => {
     .catch(err => dispatch(receiveDogErrors(err.response.data)) )
 };
 
+export const fetchDogFromRequest = (requestId) => dispatch => {
+  return DogAPIUtil.fetchDogFromRequest(requestId)
+    .then(dog => dispatch(receiveADog(dog)))
+}
+
 export const fetchADog = (id) => dispatch => {
   dispatch(startLoading());
   return DogAPIUtil.fetchADog(id)
