@@ -7,12 +7,11 @@ import waggingDogGIF from '../../assets/wagging_dog.gif';
 class MainPage extends React.Component {
   render() {
     return (
-
-
       <div className="main-page container">
         <div className="main-page infor">
           <div className="main-page header">
-            <p>Feeling down?</p>
+            <p><span className="in-line bold">highpaw</span> is a lightweight mobile application that allows users to interact with dog walkers and pet their dogs in the neighborhood.</p>
+            {/* <p>Feeling down?</p> */}
             <p className="main-message">Pet a dog near you now!</p>
           </div>
 
@@ -22,6 +21,9 @@ class MainPage extends React.Component {
             </Link>
             <Link to={'/login'}>
               <button className="secondary large button">Log In</button>
+            </Link>
+            <Link to={'/instructions'}>
+              <button className="tertiary large button">How to Go Paw</button>
             </Link>
           </div>
         </div>

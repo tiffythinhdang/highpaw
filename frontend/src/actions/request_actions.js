@@ -69,6 +69,13 @@ export const fetchActiveRequest = userId => dispatch => {
     )
 }
 
+export const fetchUserRequests = () => dispatch => {
+  return RequestApiUtil.fetchUserRequests()
+  .then(
+    (requests) => dispatch(receiveRequests(requests))
+  )
+}
+
 export const deleteRequest = requestId => dispatch => {
   dispatch(startLoading());
   return RequestApiUtil.deleteRequest(requestId)

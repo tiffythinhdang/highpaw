@@ -14,15 +14,18 @@
 .main-page.header {
   width: 100%;
   padding: 15px;
-  font-size: 22px;
-  font-family: Chilanka;
+  font-size: 16px;
+  line-height: 24px;
+  font-family: 'Varela Round', sans-serif;
 }
 
 .main-message {
   font-size: 28px;
   font-weight: bold;
-  padding-top: 10px;
+  line-height: 42px;
+  padding-top: 15px;
   color: $main_pink;
+  font-family: 'Chilanka';
 }
 
 .main-page.button-container {
@@ -50,6 +53,7 @@
   .main-page.container {
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     margin-top: 54px;
     padding: 0 10vw;
     height: calc(100vh - 54px - 50px);
@@ -62,15 +66,24 @@
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.25);
   }
 
+  .main-page.infor {
+    width: 35vw;
+    height: 35vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
   .main-page.header {
-    font-size: 24px;
+    font-size: 20px;
+    line-height: 32px;
     padding: 0px;
-    font-family: Chilanka;
   }
 
   .main-message {
-    font-size: 34px;
-    padding-top: 15px;
+    font-size: 36px;
+    padding-top: 25px;
+    padding-bottom: 25px;
   }
 
   .main-page.button-container {

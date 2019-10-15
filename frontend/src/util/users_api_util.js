@@ -12,3 +12,9 @@ export const fetchUserFromRequest = (requestId) => {
   // debugger requests/:requestId
   return axios.get(`/api/users/requests/${requestId}`)
 }
+
+export const fetchRequestersFromWalk = (walkId) => {
+  return axios.get(`/api/users/walks/${walkId}`)
+}
+
+window.fetchRequestersFromWalk = fetchRequestersFromWalk

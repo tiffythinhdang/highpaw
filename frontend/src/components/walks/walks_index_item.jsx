@@ -14,6 +14,7 @@ class WalksIndexItem extends React.Component {
   componentDidMount() {
     this.props.fetchRequests(this.props.walk._id)
     this.props.fetchDogsFromWalk(this.props.walk._id);
+    this.props.fetchRequestersFromWalk(this.props.walk._id)
   }
 
   renderDogs(dog) {
@@ -28,6 +29,7 @@ class WalksIndexItem extends React.Component {
           </div>
           <div className="walks-dog-name-container">
             <p className="walks-dog-name">{dog.name}</p>
+            <p>{dog.breed}</p>
             <p className="walks-dog-age">{dog.age} {dog.age > 1 ? "yrs old" : "yr old"}</p>
           </div>
         </div>
@@ -55,7 +57,7 @@ class WalksIndexItem extends React.Component {
         if (request.status === "pending") {
           return <SendRequestContainer walk={walk} request={request} requested={true} />
         } else if (request.status === "approved" && (request.requester === this.props.currentUser.id)) {
-          return <button className="small main button" onClick={this.handleAccept}>Accepted</button>
+          return <button className="small main button" onClick={this.handleAccept}>Go Paw!</button>        
         } else {
           return <SendRequestContainer walk={walk} request={request} requested={false} />
         }
@@ -77,6 +79,10 @@ class WalksIndexItem extends React.Component {
       }
     })
 
+    let request = this.props.requests.find(request => this.props.requests.includes(request) && request.walk === this.props.walk._id && request.requester === this.props.currentUser.id)
+    
+    if (request && (request.status === "approved" || request.status === 'pending')) return null;
+    
     return (
       <div className="walk-item-container">
         <div className="walk-dogs-container">

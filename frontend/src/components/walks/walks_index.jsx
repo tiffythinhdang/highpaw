@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import WalksIndexItemContainer from './walks_index_item_container';
 import '../../stylesheets/walks_index.scss';
+import Modal from '../modal/modal';
 
 class WalksIndex extends React.Component {
   constructor(props) {
@@ -33,6 +34,10 @@ class WalksIndex extends React.Component {
 
         return (
           <div className="walks-index-top-buttons-container">
+            <Link to="/requests">
+              <button className="medium main button">Your Requests</button>
+            </Link>
+
             {/* <button className="medium tertiary button" onClick={this.handleBack}>Back</button> */}
             <Link to={`/walks/${walk._id}`} >
               <button className="medium secondary button">Your walk</button>
@@ -45,6 +50,9 @@ class WalksIndex extends React.Component {
 
     return (
       <div className="walks-index-top-buttons-container">
+        <Link to="/requests">
+          <button className="medium main button">Your Requests</button>
+        </Link>
         {/* <button className="medium tertiary button" onClick={this.handleBack}>Back</button> */}
         {/* <button className="walks-index-map-btn inactive">Your walk</button> */}
         <Link to="/walks/create" >
@@ -65,6 +73,7 @@ class WalksIndex extends React.Component {
 
     return (
       <div className="walks-index-main">
+        <Modal/>
         <div className="walks-index-container">
           {this.renderButtons()}
 

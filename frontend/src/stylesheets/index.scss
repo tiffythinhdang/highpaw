@@ -112,6 +112,20 @@ input[type="submit"] {
   border: 1px solid $black_gray;
 }
 
+.main.button:hover {
+  background-color: $hover_pink;
+}
+
+.secondary.button:hover {
+  background-color: $hover_blue;
+}
+
+.tertiary.button:hover {
+  background-color: $light_gray;
+  color: $white;
+  border: none;
+}
+
 .disabled.button {
   background-color: $medium_gray;
   color: $white;

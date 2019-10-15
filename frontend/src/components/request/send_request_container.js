@@ -2,7 +2,7 @@ import { sendRequest, deleteRequest } from '../../actions/request_actions';
 import { connect } from 'react-redux';
 import SendRequest from './send_request';
 import {receiveListener, receiveRoom, receiveEmit, receiveLeaveRoom} from '../../actions/socket_actions'
-
+import { openModal } from '../../actions/modal_action'
 
 const mapStateToProps = state => {
   return {
@@ -19,7 +19,8 @@ const mapDispatchToProps = dispatch => {
     receiveListener: listener => dispatch(receiveListener(listener)),
     receiveRoom: room => dispatch(receiveRoom(room)),
     receiveEmit: emit => dispatch(receiveEmit(emit)),
-    receiveLeaveRoom: room => dispatch(receiveLeaveRoom(room))
+    receiveLeaveRoom: room => dispatch(receiveLeaveRoom(room)),
+    openModal: modal => dispatch(openModal(modal))
   }
 }
 
