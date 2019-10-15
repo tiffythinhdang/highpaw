@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import WalksIndexItemContainer from './walks_index_item_container';
 import '../../stylesheets/walks_index.scss';
+import Modal from '../modal/modal';
 
 class WalksIndex extends React.Component {
   constructor(props) {
@@ -72,6 +73,7 @@ class WalksIndex extends React.Component {
 
     return (
       <div className="walks-index-main">
+        <Modal/>
         <div className="walks-index-container">
           {this.renderButtons()}
 

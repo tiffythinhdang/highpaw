@@ -19,6 +19,8 @@ export default class SendRequest extends React.Component {
     this.setState({ sending: true })
     this.props.paw(this.props.walk._id).then(
       this.setState({ sending: false })
+    ).then(
+      this.props.openModal('requestSent')
     )
   }
 
