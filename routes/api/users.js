@@ -6,7 +6,7 @@ const keys = process.env.secretOrKey ? { secretOrKey: process.env.secretOrKey } 
 const passport = require('passport');
 const User = require('../../models/User');
 const Request = require('../../models/Request');
-
+const Walk = require('../../models/Walk');
 const validateRegisterInput = require('../../validation/users/register');
 const validateLoginInput = require('../../validation/users/login');
 const validateUpdateInput = require('../../validation/users/update');
@@ -161,5 +161,20 @@ router.get('/requests/:requestId', passport.authenticate('jwt', {session: false}
     })
     // console.log(user + 'test')
 })
+
+//Gets Requesters of a walk
+router.get('/walks/:walkId',
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    Walk.findOne({_id: req.params.walkId})
+      .then(walk => {
+        Request.find({walk: walk._id})
+        .then(requests => {
+          let requester = requests.map(request => request.requester)
+          res.json(requester)
+        })
+      })
+  }
+)
 
 module.exports = router;

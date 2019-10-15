@@ -71,6 +71,7 @@ router.patch("/:id",
     )
   })
 
+//Gets approved request of user
 router.get('/users/:userId',
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
@@ -78,6 +79,16 @@ router.get('/users/:userId',
     const request = requests.filter((request) => request.status === "approved")
     res.json(request)
   })
+
+//Gets all requests of user
+router.get('/',
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    Request.find({ requester: req.user._id })
+    .then(requests => res.json(requests))
+    
+  }
+)
 
 router.delete('/:id',
   (req, res) => {

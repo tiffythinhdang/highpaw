@@ -6,6 +6,7 @@ const passport = require('passport');
 const Dog = require('../../models/Dog');
 const validateDogInput = require('../../validation/dogs');
 const Walk = require('../../models/Walk');
+const Request = require('../../models/Request');
 
 // Gets all dogs that belongs to a walk
 router.get('/walks/:walkId', 
@@ -129,5 +130,20 @@ router.delete('/:id',
       );
     }
 );
+
+//fetch dog from request
+router.get('/requests/:requestId',
+    (req, res) => {
+      Request.findById(req.params.requestId)
+      .then(request => {
+        Walk.findOne({_id: request.walk})
+        .then(walk => {
+          Dog.findOne({_id: walk.dogs[0]})
+          .then(dog => res.json(dog))
+        })
+      })
+      
+    }
+)
 
 module.exports = router;

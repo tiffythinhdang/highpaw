@@ -28,6 +28,8 @@ import WalksShowContainer from '../components/walks/walks_show_container';
 import ChatContainer from '../components/chat/chat_container';
 
 import RequestShowContainer from '../components/request/request_show_container';
+import RequestIndexContainer from '../components/request/request_index_container';
+
 
 const App = () => (
   <div className="app">
@@ -47,6 +49,7 @@ const App = () => (
       <ProtectedRoute exact path="/walks/:id" component={WalksShowContainer} />
       <ProtectedRoute exact path="/walks" component={WalksIndexContainer} />
 
+      <ProtectedRoute exact path="/requests" component={RequestIndexContainer} />
       <ProtectedRoute exact path="/requests/:requestId" component={RequestShowContainer} />
       <ProtectedRoute exact path="/requests/:requestId/chat" component={ChatContainer} />
 

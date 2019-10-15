@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { fetchDogsFromWalk } from '../../actions/dogs_action';
 import { fetchRequests } from '../../actions/request_actions';
+import { fetchRequestersFromWalk } from '../../actions/requesters_action';
 import WalksIndexItem from './walks_index_item';
 
 const mapStateToProps = state => {
@@ -16,6 +17,7 @@ const mapDispatchToProps = dispatch => {
   return {
     fetchDogsFromWalk: id => dispatch(fetchDogsFromWalk(id)),
     fetchRequests: walkId => dispatch(fetchRequests(walkId)),
+    fetchRequestersFromWalk: walkId => dispatch(fetchRequestersFromWalk(walkId))
   };
 };
 
