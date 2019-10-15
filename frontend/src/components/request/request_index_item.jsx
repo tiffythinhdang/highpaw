@@ -1,6 +1,5 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import '../../stylesheets/request_index_item.scss';
 
 export default class RequestIndexItem extends React.Component {
 
@@ -24,8 +23,8 @@ export default class RequestIndexItem extends React.Component {
             <img src={dog.profilePhotoUrl} alt=""/>
           </div>
           <div>
-            <p>{dog.name}</p>           
-            <p>Status: {this.props.status}</p>
+            <p className="request-dog-name">{dog.name}</p>           
+            <p className="request-status">Status: {this.props.status}</p>
           </div>
         </div>
         {this.props.status === 'approved' ? 

@@ -1,0 +1,73 @@
+@import './util.scss';
+
+.request-index.outer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  height: 100%;
+}
+
+.request-index-buttons-container {
+  width: 95%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.request-index-item-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 15vh;
+  width: 95%;
+  padding: 10px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+
+  background: white;
+  box-shadow: 0px 3px 11px
+    rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+}
+
+.request-index-item {
+  display: flex;
+  flex-direction: row;
+}
+
+.request-dog-name {
+  font-size: 18px;
+  color: $hover_pink;
+}
+
+.request-status {
+  color: $medium-gray;
+}
+
+.form.main.header {
+  font-size: 40px;
+  height: 10%;
+}
+
+@media only screen and (min-width: 1024px) {
+  .request-index.outer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    height: calc(100vh - 54px - 10px);
+    margin-top: 54px;
+  }
+
+  .request-index-buttons-container {
+    width: 40vw;
+  }
+
+  .request-index-item-container {
+    width: 40vw;
+  }
+ }
