@@ -12,6 +12,6 @@ export default combineReducers({
   walks: walkReducer,
   users: usersReducer,
   dogs: dogsReducer,
-  chats: chatReducer
+  chats: chatReducer,
   requesters: RequestersReducer
 })
