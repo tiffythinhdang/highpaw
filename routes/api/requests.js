@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 const Request = require('../../models/Request');
+const Chat = require('../../models/Chat');
+const validateChatInput = require('../../validation/chats');
 const validateRequestStatus = require('../../validation/requests');
 
 
@@ -81,15 +83,53 @@ router.get('/users/:userId',
 
 router.delete('/:id',
   (req, res) => {
-    Request.findByIdAndDelete(req.params.id,
+    Chat.deleteMany({ request: req.params.id }, err => {
+      // Error handler
+    }).then(
+      Request.findByIdAndDelete(req.params.id,
 
-      (err) => {
-        if (err) {
-          res.status(422).send({ error: err });
-        }
-        res.status(200).json({ message: 'Request Deleted!' })
-      })
+        err => {
+          if (err) {
+            res.status(422).send({ error: err });
+          }
+          res.status(200).json({ message: 'Request Deleted!' })
+        })
+    );
   }
 )
 
-module.exports = router
+//Makes a chat
+router.post('/:requestId/chat',
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+
+    const { errors, isValid } = validateChatInput(req.body);
+
+    if (!isValid) {
+      return res.status(400).json(errors)
+    }
+
+    const newChat = new Chat({
+      user: {
+        _id: req.user._id,
+        name: req.user.name
+      },
+      request: req.params.requestId,
+      message: req.body.message
+    });
+
+    newChat.save()
+      .then(request => res.json(request))
+      .catch(err => res.status(400).json(err))
+  });
+
+//Gets the chat for each request
+router.get('/:requestId/chat',
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    Chat
+      .find({ request: req.params.requestId })
+      .then(chats => res.json(chats))
+  });
+
+module.exports = router;

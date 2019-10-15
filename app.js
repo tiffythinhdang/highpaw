@@ -23,6 +23,8 @@ const dogs = require("./routes/api/dogs");
 const requests = require('./routes/api/requests');
 const walks = require('./routes/api/walks');
 
+const Chat = require('./models/Chat');
+
 app.use(passport.initialize());
 require('./config/passport')(passport);
 
@@ -111,9 +113,20 @@ io
 
     socket.on('sendMessage', messageInfo => {
       io
-        .in(`${messageInfo.room}`).emit('sendMessage', messageInfo)
+        .in(`${messageInfo.room}`).emit('sendMessage', messageInfo);
+      const newChat = new Chat({
+        user: {
+          id: messageInfo.user.id,
+          name: messageInfo.user.name,
+          profilePhotoUrl: messageInfo.user.profilePhotoUrl
+        },
+        request: messageInfo.room,
+        content: messageInfo.content
+      });
+
+      newChat.save()
     })
-  })
+  });
 
 // io.on('connection', socket => {
 //   socket.on('sendMessage', message => {

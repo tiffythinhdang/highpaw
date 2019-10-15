@@ -16,20 +16,21 @@ class Chat extends React.Component {
 
   componentDidMount() {
 
-    this.props.receiveRoom(this.props.match.params.requestId)
+    this.props.receiveRoom(this.props.match.params.requestId);
 
-    // debugger
-    // this.chat = this.props.socket;
-
-    // this.props.receiveRoom(`${this.props.currentUser.id}`)
-
-    // this.chat.emit('joinRoom', `${this.props.currentUser.id}`)
-
-    // this.chat.on('success', (res) => console.log(res))
+    this.props.fetchAllChats(this.props.match.params.requestId).then(response => {
+      this.setState({
+        chat: this.props.chats.map(chat => (
+          <div className={chat.user.id === this.props.currentUser.id ? "me" : "other"} key={chat._id}>
+            <img src={chat.user.profilePhotoUrl} alt="" />
+            <p>{chat.content}</p>
+          </div>
+        ))
+      });
+    });
 
     let msgCallback = (message) => {
-      const senderName = document.querySelector('.requester-name')
-      // debugger
+      const senderName = document.querySelector('.requester-name');
       if (message.user.id !== this.props.currentUser.id) {
         senderName.innerHTML = message.user.name
       }
@@ -46,21 +47,6 @@ class Chat extends React.Component {
     let messageListener = { action: 'sendMessage', callback: msgCallback }
 
     this.props.receiveListener(messageListener)
-
-    // this.chat.on('sendMessage', (message) => {
-    //   this.setState({
-    //     chat: this.state.chat.concat([
-    //       <div className={message.user.id === this.props.currentUser.id ? "me" : "other"} key={this.state.chat.length}>
-    //         <img src={message.user.profilePhotoUrl} alt=""/>
-    //         <p>{message.content}</p>
-    //       </div>
-    //     ])
-    //   })
-    // })
-
-  }
-
-  componentDidUpdate() {
 
   }
 
@@ -83,8 +69,6 @@ class Chat extends React.Component {
 
     let messageEmission = { action: 'sendMessage', value: messageInfo }
     this.props.receiveEmit(messageEmission);
-
-    // this.chat.emit('sendMessage', messageInfo)
   }
 
   /* Tiffany's code starts*/
