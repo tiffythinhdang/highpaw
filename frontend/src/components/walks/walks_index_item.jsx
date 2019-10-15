@@ -3,6 +3,7 @@ import '../../stylesheets/walks_index.scss'
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import SendRequestContainer from '../request/send_request_container';
+import { capitalize } from '../../util/string';
 
 class WalksIndexItem extends React.Component {
   constructor(props) {
@@ -29,7 +30,7 @@ class WalksIndexItem extends React.Component {
           </div>
           <div className="walks-dog-name-container">
             <p className="walks-dog-name">{dog.name}</p>
-            <p>{dog.breed}</p>
+            <p>{capitalize(dog.breed)}</p>
             <p className="walks-dog-age">{dog.age} {dog.age > 1 ? "yrs old" : "yr old"}</p>
           </div>
         </div>
@@ -46,7 +47,7 @@ class WalksIndexItem extends React.Component {
     let walk = this.props.walk
 
     if (walk.user === this.props.currentUser.id) {
-      return <button className="your-dog-button">Your dog</button>
+      return <p>Your dog</p>
     }
 
     // if error, check if at least one dummy request is in this.props.requests array in mongoDB or get rid of requests.length if statement.
