@@ -1,13 +1,14 @@
 import { connect } from 'react-redux';
 import Chat from './chat';
 import {receiveListener, receiveRoom, receiveEmit, receiveLeaveRoom} from '../../actions/socket_actions'
-import {fetchAllChats} from "../../actions/chat_actions";
+import {fetchAllChats, fetchParticipants} from "../../actions/chat_actions";
 
 const mapStateToProps = state => {
   return {
     currentUser: state.session.user,
     socket: state.socket,
-    chats: state.entities.chats
+    chats: state.entities.chats,
+    users: Object.values(state.entities.users)
   }
 };
 
@@ -16,7 +17,8 @@ const mDTP = dispatch => ({
   receiveRoom: room => dispatch(receiveRoom(room)),
   receiveEmit: emit => dispatch(receiveEmit(emit)),
   receiveLeaveRoom: room => dispatch(receiveLeaveRoom(room)),
-  fetchAllChats: requestId => dispatch(fetchAllChats(requestId))
+  fetchAllChats: requestId => dispatch(fetchAllChats(requestId)),
+  fetchParticipants: requestId => dispatch(fetchParticipants(requestId))
 });
 
 export default connect(

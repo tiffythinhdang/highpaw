@@ -92,7 +92,7 @@ io
 
     
     socket.on('joinRoom', (room) => {
-      socket.join(room)
+      socket.join(room);
       return socket.emit('success', "You have successfully joined " + room)
     })
 

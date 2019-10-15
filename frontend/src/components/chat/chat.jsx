@@ -9,7 +9,7 @@ class Chat extends React.Component {
     super(props);
     this.state = {
       chat: [],
-    }
+    };
     this.handleSend = this.handleSend.bind(this);
     this.handleGoBack = this.handleGoBack.bind(this);
   }
@@ -17,6 +17,8 @@ class Chat extends React.Component {
   componentDidMount() {
 
     this.props.receiveRoom(this.props.match.params.requestId);
+
+    this.props.fetchParticipants(this.props.match.params.requestId);
 
     this.props.fetchAllChats(this.props.match.params.requestId).then(response => {
       this.setState({
@@ -30,10 +32,6 @@ class Chat extends React.Component {
     });
 
     let msgCallback = (message) => {
-      const senderName = document.querySelector('.requester-name');
-      if (message.user.id !== this.props.currentUser.id) {
-        senderName.innerHTML = message.user.name
-      }
       this.setState({
         chat: this.state.chat.concat([
           <div className={message.user.id === this.props.currentUser.id ? "me" : "other"} key={this.state.chat.length}>
@@ -42,7 +40,7 @@ class Chat extends React.Component {
           </div>
         ])
       })
-    }
+    };
 
     let messageListener = { action: 'sendMessage', callback: msgCallback }
 
@@ -51,20 +49,18 @@ class Chat extends React.Component {
   }
 
   componentWillUnmount() {
-    console.log('chat has unmounted')
+    console.log('chat has unmounted');
     this.props.receiveLeaveRoom(this.props.match.params.requestId)
   }
 
   handleSend(e) {
     e.preventDefault();
     const input = document.getElementById('chat-input')
-    const msg = document.createElement('p');
-    msg.innerText += input.value
     let messageInfo = {
       room: this.props.match.params.requestId,
       user: this.props.currentUser,
-      content: msg.innerText,
-    }
+      content: input.value,
+    };
     input.value = "";
 
     let messageEmission = { action: 'sendMessage', value: messageInfo }
@@ -79,6 +75,11 @@ class Chat extends React.Component {
   /* Tiffany's code ends*/
 
   render() {
+
+    let title = "";
+    if (this.props.users.length === 2) {
+      title = this.props.users[0]._id === this.props.currentUser.id ? this.props.users[1].name : this.props.users[0].name
+    }
     return (
       <div className="chat-container">
         {/* Tiffany's code starts*/}
@@ -89,7 +90,7 @@ class Chat extends React.Component {
             alt="back-arrow"
             onClick={this.handleGoBack}
           />
-          <p className="chat-header requester-name"></p>
+          <p className="chat-header requester-name">{title}</p>
         </div>
         {/* Tiffany's code ends*/}
 

@@ -15,9 +15,9 @@ const walkReducer = (state={}, action) => {
       return obj;
       // return action.walks.data;
     case RECEIVE_WALK:
-      return Object.assign({}, state, { [action.walk.id]: action.walk.data });
-    case REMOVE_WALK:;
-      
+      newState[action.walk.data._id] = action.walk.data;
+      return newState;
+    case REMOVE_WALK:
       delete newState[action.walkId];
       return newState;
     default:

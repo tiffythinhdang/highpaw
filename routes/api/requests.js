@@ -3,8 +3,17 @@ const router = express.Router();
 const passport = require('passport');
 const Request = require('../../models/Request');
 const Chat = require('../../models/Chat');
+const Walk = require('../../models/Walk');
+const User = require('../../models/User');
 const validateChatInput = require('../../validation/chats');
 const validateRequestStatus = require('../../validation/requests');
+
+// Get Individual Request
+router.get('/:id',
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    Request.findById(req.params.id).then(request => res.json(request))
+  });
 
 
 //Makes a request to pet dog
@@ -119,7 +128,7 @@ router.post('/:requestId/chat',
     });
 
     newChat.save()
-      .then(request => res.json(request))
+      .then(chat => res.json(chat))
       .catch(err => res.status(400).json(err))
   });
 
@@ -130,6 +139,24 @@ router.get('/:requestId/chat',
     Chat
       .find({ request: req.params.requestId })
       .then(chats => res.json(chats))
+  });
+
+//Gets Participants for the chat
+router.get('/:requestId/chat/users',
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    let response = [];
+    Request.findById(req.params.requestId).then(request => {
+      User.findById(request.requester).then(userOne => {
+        response.push(userOne);
+        Walk.findById(request.walk).then(walk => {
+          User.findById(walk.user).then(userTwo => {
+            response.push(userTwo);
+            res.json(response)
+          })
+        })
+      })
+    })
   });
 
 module.exports = router;
