@@ -26,7 +26,7 @@ export default class SignIn extends React.Component {
   }
 
   handleSubmit(e) {
-    if (e) e.preventDefault();
+    if (e) e.preventDefault(); 
     this.props.clearSessionErrors();
     this.props.login(this.state).then(() => {
       if (!this.props.errors.email && !this.props.errors.password) this.props.history.push('/walks');

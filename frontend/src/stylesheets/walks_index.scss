@@ -23,8 +23,8 @@
 .walks-index-top-buttons-container {
   display: flex;
   flex-direction: row;
-  // justify-content: space-between;
-  justify-content: flex-end;
+  justify-content: space-between;
+  // justify-content: flex-end;
   align-items: center;
 
   // height: 12%;
@@ -103,7 +103,7 @@
   justify-content: space-between;
   align-items: center;
 
-  height: 20%;
+  height: 15vh;
   width: 100%;
   padding: 10px;
   margin-bottom: 15px;
@@ -152,7 +152,6 @@
   white-space: nowrap;
   height: 50px;
   width: auto;
-
 }
 
 .walks-request-container {
@@ -206,15 +205,4 @@
     width: 40%;
     height: 100%;
   }
-
  }
-
-
-// 90vw
-
-
-
-
-// 1024px
-
-// 40vw

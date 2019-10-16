@@ -53,6 +53,13 @@ export const fetchRequests = walkId => dispatch => {
     )
 }
 
+export const fetchRequest = requestId => dispatch => {
+  dispatch(startLoading());
+  return RequestApiUtil.fetchRequest(requestId).then(
+    request => dispatch(receiveRequest(request))
+  )
+};
+
 export const fetchActiveRequest = userId => dispatch => {
   dispatch(startLoading());
   return RequestApiUtil.fetchActiveRequest(userId)
@@ -60,6 +67,13 @@ export const fetchActiveRequest = userId => dispatch => {
       request => dispatch(receiveRequest(request)),
       err => dispatch(receiveRequestErrors(err.response.data))
     )
+}
+
+export const fetchUserRequests = () => dispatch => {
+  return RequestApiUtil.fetchUserRequests()
+  .then(
+    (requests) => dispatch(receiveRequests(requests))
+  )
 }
 
 export const deleteRequest = requestId => dispatch => {

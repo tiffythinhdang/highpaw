@@ -6,6 +6,7 @@ import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import { Switch , Route} from 'react-router-dom';
 
 import AboutPage from "./about/about_page";
+import InstructionIndexContainer from "./instructions/instruction_index_container";
 
 import SignUpContainer from "./auth/signup_container";
 import SignInContainer from "./auth/signin_container";
@@ -27,6 +28,8 @@ import WalksShowContainer from '../components/walks/walks_show_container';
 import ChatContainer from '../components/chat/chat_container';
 
 import RequestShowContainer from '../components/request/request_show_container';
+import RequestIndexContainer from '../components/request/request_index_container';
+
 
 const App = () => (
   <div className="app">
@@ -37,6 +40,7 @@ const App = () => (
       <AuthRoute exact path="/signup" component={SignUpContainer} />
 
       <Route exact path="/about" component={AboutPage}/>
+      <Route exact path="/instructions" component={InstructionIndexContainer}/>
 
       <ProtectedRoute path="/users/:id/edit" component={EditUserContainer}/>
       <ProtectedRoute path="/users/:id" component={UserShowContainer}/>
@@ -45,6 +49,7 @@ const App = () => (
       <ProtectedRoute exact path="/walks/:id" component={WalksShowContainer} />
       <ProtectedRoute exact path="/walks" component={WalksIndexContainer} />
 
+      <ProtectedRoute exact path="/requests" component={RequestIndexContainer} />
       <ProtectedRoute exact path="/requests/:requestId" component={RequestShowContainer} />
       <ProtectedRoute exact path="/requests/:requestId/chat" component={ChatContainer} />
 

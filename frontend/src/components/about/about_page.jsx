@@ -12,7 +12,7 @@ class AboutPage extends React.Component {
   render() {
     return (
       <div className="about-page-container">
-        <p className="app-description"><span className="in-line bold">highpaw</span> is a lightweight mobile application that allows users to interact with dog walkers and owners in their area.</p>
+        <p className="app-description"><span className="in-line bold">highpaw</span> is a lightweight mobile application that allows users to interact with dog walkers and pet their dogs in the neighborhood.</p>
 
         <h1 className="form main header">Developers</h1>
 
