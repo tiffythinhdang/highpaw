@@ -36,8 +36,10 @@ class WalksShow extends React.Component {
       return (
         <div className="walks-req-container">
           {/* // <p className="walks-req-head">Active requests</p> */}
-          <div className="walks-req-index">
-            {requests}
+          <div className={requests.length > 0 ? "walks-req-index" : "walks-no-req"}>
+            {requests.length > 0 ? requests : (<p>
+              You have no requests yet!
+            </p>)}
           </div>
         </div>
       )
