@@ -27,7 +27,7 @@ highpaw
 </p>
 
 ### Link
-* [Web site]()
+* [Web site](http://highpaw.herokuapp.com)
 
 ## Table of content
 
