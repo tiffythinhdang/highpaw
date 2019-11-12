@@ -44,3 +44,49 @@ highpaw
 - Tiffany: Dog Feature
 - Brian: Walk Feature
 - Jason: Request Feature
+
+
+### Code Snippets
+
+
+```js 
+sendLocation(rooms) {
+    if (navigator.geolocation) {
+      this.locationInterval = setInterval(() => {
+        rooms.forEach(room => {
+          navigator.geolocation.getCurrentPosition((position) => {
+            let latLng = { lat: position.coords.latitude, lng: position.coords.longitude }
+            let data = { currentUser: this.props.currentUser, latLng, room }
+            let locationEmit = { action: 'sendLocation', value: data }
+            this.props.receiveEmit(locationEmit)
+          })
+        })
+      }, 4000)
+    }
+  }
+  ```
+Using HTML Geolocation, we are getting the current position of the User every four seconds and then sending that position along with the User's information to our server and into a room via Socket.io. When that server receives that emit, We send that information back to the client side in the map, and make a marker if there isn't current one, and update its location if it there already is one associated with the User to allow for a constant update of a User's location.
+
+
+```js
+handleSend(e) {
+    e.preventDefault();
+    const input = document.getElementById('chat-input')
+    let messageInfo = {
+      room: this.props.match.params.requestId,
+      user: this.props.currentUser,
+      content: input.value,
+    };
+    input.value = "";
+
+    let messageEmission = { action: 'sendMessage', value: messageInfo }
+    this.props.receiveEmit(messageEmission);
+  }
+```
+
+We place all the information we need in a chat message, such as the room we need to send it to, the user sending the message, and the actual message is an Object. Then we send that Object to the server and back to the client side via Socket.io. We then use the information that sent to construct a chat message inside our chat room, so Users can have real-time chat.
+
+
+
+
+
