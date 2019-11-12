@@ -27,7 +27,6 @@ class Map extends React.Component {
       })
       this.sendLocation(this.props.approved)
     } else {
-      // debugger
       this.props.receiveRoom(this.props.match.params.requestId)
       let rooms = [this.props.match.params.requestId];
       this.sendLocation(rooms);
@@ -48,18 +47,15 @@ class Map extends React.Component {
         let infoWindow = new google.maps.InfoWindow({
           content: data.currentUser.name
         })
-        // debugger;
         this.state.infoWindow[user] = infoWindow;
 
         let marker = new google.maps.Marker({
           position: location,
           map: this.map,
           icon: icon,
-          // label: data.currentUser.name
         })
 
         marker.addListener('click', () => {
-          // debugger;
           this.state.infoWindow[user].open(this.map, this.state.markers[user]);
         })
         
@@ -90,7 +86,6 @@ class Map extends React.Component {
         })
       }, 4000)
     }
-
   }
 
   componentWillUnmount() {
